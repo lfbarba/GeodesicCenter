@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Outline}{}% 1
+\BOOKMARK [1][-]{section.2}{Hourglasses and Funnels}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Hourglasses}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Funnels}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Decomposing the boundary}{}% 5
+\BOOKMARK [1][-]{section.4}{Building hourglasses}{}% 6
+\BOOKMARK [1][-]{section.5}{Covering the polygon with apexed triangles}{}% 7
+\BOOKMARK [2][-]{subsection.5.1}{Inside the hourglass}{section.5}% 8
+\BOOKMARK [2][-]{subsection.5.2}{Inside the funnels of marked vertices}{section.5}% 9
+\BOOKMARK [1][-]{section.6}{Prune and search}{}% 10
+\BOOKMARK [1][-]{section.7}{Solving the problem restricted to a convex trapezoid}{}% 11
+\BOOKMARK [2][-]{subsection.7.1}{Optimization problem in a convex domain}{section.7}% 12
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 13

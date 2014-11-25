@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+
+\bibitem{aronov1989geodesic}
+B.~Aronov.
+\newblock On the geodesic voronoi diagram of point sites in a simple polygon.
+\newblock {\em Algorithmica}, 4(1-4):109--140, 1989.
+
+\bibitem{aronov1993furthest}
+B.~Aronov, S.~Fortune, and G.~Wilfong.
+\newblock The furthest-site geodesic voronoi diagram.
+\newblock {\em Discrete \& Computational Geometry}, 9(1):217--255, 1993.
+
+\bibitem{guibasShortestPathTree}
+L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
+\newblock Linear-time algorithms for visibility and shortest path problems
+  inside triangulated simple polygons.
+\newblock {\em Algorithmica}, 2(1-4):209--233, 1987.
+
+\bibitem{guibasShortestPathQueries}
+L.~J. Guibas and J.~Hershberger.
+\newblock Optimal shortest path queries in a simple polygon.
+\newblock In {\em Proceedings of the third annual symposium on Computational
+  geometry}, pages 50--63. ACM, 1987.
+
+\bibitem{hershberger1993matrix}
+J.~Hershberger and S.~Suri.
+\newblock Matrix searching with the shortest path metric.
+\newblock In {\em Proceedings of the twenty-fifth annual ACM symposium on
+  Theory of computing}, pages 485--494. ACM, 1993.
+
+\bibitem{lee1984euclidean}
+D.-T. Lee and F.~P. Preparata.
+\newblock Euclidean shortest paths in the presence of rectilinear barriers.
+\newblock {\em Networks}, 14(3):393--410, 1984.
+
+\bibitem{matousekCuttings}
+J.~Matou{\v{s}}ek.
+\newblock Approximations and optimal geometric divide-and-conquer.
+\newblock In {\em Proceedings of the twenty-third annual ACM symposium on
+  Theory of computing}, pages 505--511. ACM, 1991.
+
+\bibitem{ConstructionEpsilonNets}
+J.~Matou\v{s}ek.
+\newblock Construction of epsilon nets.
+\newblock In {\em Proceedings of the 5th Annual Symposium on Computational
+  Geometry}, pages 1--10, New York, 1989. ACM.
+
+\bibitem{megiddo1982linear}
+N.~Megiddo.
+\newblock Linear-time algorithms for linear programming in r3 and related
+  problems.
+\newblock In {\em Foundations of Computer Science, 1982. FOCS'08. 23rd Annual
+  Symposium on}, pages 329--338. IEEE, 1982.
+
+\bibitem{megiddo1989ball}
+N.~Megiddo.
+\newblock On the ball spanned by balls.
+\newblock {\em Discrete \& Computational Geometry}, 4(1):605--610, 1989.
+
+\bibitem{pollackComputingCenter}
+R.~Pollack, M.~Sharir, and G.~Rote.
+\newblock Computing the geodesic center of a simple polygon.
+\newblock {\em Discrete \& Computational Geometry}, 4(1):611--626, 1989.
+
+\bibitem{suri1989computing}
+S.~Suri.
+\newblock Computing geodesic furthest neighbors in simple polygons.
+\newblock {\em Journal of Computer and System Sciences}, 39(2):220--235, 1989.
+
+\end{thebibliography}
