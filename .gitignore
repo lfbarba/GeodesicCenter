@@ -1,0 +1,8 @@
+GeodesicCenter.pdf
+*.bbl
+*.blg
+*.log
+*.aux
+*.out
+*.gz
+*.vtc
