@@ -347,7 +347,8 @@ Thus, since $\p{v}{ u_1}\subset H_{u_0u_1}$ while $\p{v}{u_k}\subset H_{u_{k-1}u
 Consequently, the funnel $\fn{v}{C_v}$ can be constructed in $O(k + |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$. 
 
 Because a vertex on $\partial P$ has a unique farthest neighbor by our general position assumption, and since the total sum of the complexities of the transition hourglasses is $O(n)$ by Lemma~\ref{lemma:Bounding complexity of transition hourglasses}, we can compute the funnel of each vertex of $M$ in total $O(n)$ time. 
-Since the walls of these funnels are walls of transition hourglasses, and each wall appears at most twice, we get that $$\sum_{v\in M} |\fn{v}{C_v}|  = O(n).$$
+
+Since the complexity of the walls of these funnels is bounded by the complexity of the transition hourglasses used to compute them, we get that $$\sum_{v\in M} |\fn{v}{C_v}|  = O\left(n + \sum_{ab\in E} |H_{ab}|\right) = O(n).$$
 
 \begin{lemma}\label{lemma:Farthest points from marked are in funnel}
 Let $x$ be a point in $P$. If $v = \ff{x}$, then $x\in \fn{v}{C_v}$.
@@ -391,13 +392,28 @@ Note that processing either Case 1 or 2 of the algorithm takes constant time. Th
 In this section, we describe a procedure that finds either the geodesic center of $P$, or a convex trapezoid that contains the geodesic center.
 The idea of the proof is to consider the chords of the apexed triangles computed in previous sections and use a cutting of them that splits $P$ into $O(1)$ cells. Then, we test on which cell the geodesic center lies and recurse on that cell as a new subproblem having smaller complexity. To decrease the complexity of the problem, we consider only the apexed triangles intersecting this cell in the next iteration. Using the properties of the cutting, we are able to prove that the size of the subproblem decreases by a constant fraction which leads to a linear running time. This algorithm has however two stopping conditions, one is to reach a subproblem of constant size, and a second one is to find a convex trapezoid containing the geodesic center. In the latter case, we are not able to proceed with the prune and search. Nevertheless, by restricting the search space to a convex object, we are able to perform standard optimization techniques to find the geodesic center.
 
+Let $\tau$ be the set all apexed triangles computed in previous sections. 
+
+\begin{lemma}\label{lemma:Size of tau}
+Each point of $P$ is in at least one apexed triangle of $\tau$. Moreover $|\tau| = O(n)$.
+\end{lemma}
+\begin{proof}
+Let $x$ be a point in $P$. If $\ff{x}$ is a marked vertex, then by Lemma~\ref{lemma:Farthest points from marked are in funnel} we know that $x\in \fn{\ff{x}}{C_{\ff{x}}}$. Moreover, by Lemma~\ref{lemma:Triangles inside funnels}, we know that there is an apexed triangle that cover $x$.
+Otherwise, if $\ff{x}$ is not marked, then it belongs to the lower chain of some transition hourglass. 
+Therefore, by Lemma~\ref{lemma:Triangles inside hourglasses} there is a triangle covering it.
+
+To bound the complexity of $\tau$, recall that $E$ denotes the set of transition edges of $P$.
+Because $\sum_{ab\in E} H_{ab} = O(n)$ by Lemma~\ref{lemma:Bounding complexity of transition hourglasses} and since there are $O(|H_{ab}|)$ apexed triangles in each transition hourglass $H_{ab}$, we conclude that there $O(n)$ apexed triangles constructed using Lemma~\ref{lemma:Bounding complexity of transition hourglasses}.
+
+Furthermore, we know that $\sum_{v\in M} |\fn{v}{C_v}| = O(n)$. Because each funnel $\fn{v}{C_v}$ is subdivided into $O(|\fn{v}{C_v}|)$ apexed triangles by Lemma~\ref{lemma:Triangles inside funnels}, we conclude that at most $O(n)$ apexed triangles area constructed inside funnels of marked vertices. Consequently $|\tau| = O(n)$.
+\end{proof}
+
+
 A \emph{$P$-chain} is a polygonal chain contained in the boundary of $P$.
 A \emph{$P$-cell} is a simple polygon contained in $P$ bounded by a $P$-chain and a polygonal chain of length at most four contained in the interior of $P$ that connects the endpoints of this $P$-chain. Moreover, a $P$-cell contains the geodesic center of $P$.
-The recursive algorithm described in this section takes as input a $P$-cell (originally the whole polygon $P$) and the set of apexed triangles that intersect this $P$-cell, and produces then a new $P$-cell of smaller complexity.
+The recursive algorithm described in this section takes as input a $P$-cell (originally the whole polygon $P$) and the set of apexed triangles of $\tau$ that intersect this $P$-cell, and produces then a new $P$-cell of smaller complexity.
 
-Let $\tau$ be the set all apexed triangles computed in previous sections. Notice that by Lemmas~\ref{lemma:Triangles inside hourglasses} and~\ref{lemma:Triangles inside funnels} and since the FGV is defined in the whole polygon $P$, we know that the union of $\tau$ covers $P$. Moreover, $|\tau| = O(n)$.
 Given a $P$-cell $R$, let $\tau_R$ be the set of apexed triangles of $\tau$ that intersect $R$.
-
 Let $R$ be a $P$-cell and assume that the set $\tau_R$ has been computed.
 Let $m = \max\{|R|, |\tau_R|\}$.
 
@@ -520,16 +536,14 @@ In this paper, we follow a similar approach, but our set of separating planes ne
 Note that each apexed triangle that intersects $q^*$ has its endpoints either outside of $q^*$ or on its boundary, i.e., each chord bounding an apexed triangle splits $q^*$ into two convex regions.
 
 \subsection{Optimization problem in a convex domain}
-In this section we describe our algorithm to solve the optimization problem (P2):
-
-\textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
-$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
-
+In this section we describe our algorithm to solve the optimization problem (P2). 
+%\textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
+%$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
 To this end, we start by pairing the apexed triangles arbitrarily to obtain $m/2$ pairs.
 By identifying the plane where $P$ lies with the plane $Z_0 = \{(x,y,z): z = 0\}$, we can embed each apexed triangle in $\mathbb{R}^3$.
 A \emph{plane-set} is a set consisting of at most five planes in $\mathbb{R}^3$.
 For each pair $(\triangle_i, \triangle_j)$ we define a plane-set as follows: 
-For each chord bounding either $\triangle_i$ or $\triangle_j$, consider the line extending this chord and the vertical extrusion of this line in $\mathbb{R}^3$, that is the plane containing this chord orthogonal to $Z_0$. Moreover, consider the separating plane~$\gamma_{i,j}$. The set containing these planes is the plane-set of the pair $(\triangle_i, \triangle_j)$.
+For each chord bounding either $\triangle_i$ or $\triangle_j$, consider the line extending this chord and the vertical extrusion of this line in $\mathbb{R}^3$, i.e.,  the plane containing this chord orthogonal to $Z_0$. Moreover, consider the separating plane~$\gamma_{i,j}$. The set containing these planes is the plane-set of the pair $(\triangle_i, \triangle_j)$.
 
 Let $\Gamma$ be the union of all the plane-sets defined by the $m/2$ pairs of apexed triangles. Thus, $\Gamma$ is a set that consists of $O(m)$ planes. Compute an $1/r$-cutting of $\Gamma$ in $O(m)$ time for some constant $r$ to be specified later.
 Because $r$ is constant, this $1/r$-cutting splits the space into $O(1)$ convex cells, each bounded by a constant number of planes~\cite{matousekCuttings}. 
@@ -546,14 +560,14 @@ To this end, we consider the separating plane $\gamma_{i,j}$. Notice that inside
 \vspace{.05in}
 
 Regardless of the case if the plane-set of a pair $(\triangle_i, \triangle_j)$ does not intersect $Q$, then we can drop one of its constraints. Since at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$, we can drop at least $(r-1)|\Gamma|/r$ constraints.
-Because $m/2 \geq |\Gamma| $ as each plane-set contains at least one plane, by choosing $r = 2$, we are able to drop at least $|\Gamma|/2 \geq m/4$ constraints.
+Because $|\Gamma| \geq m/2$ as each plane-set contains at least one plane, by choosing $r = 2$, we are able to drop at least $|\Gamma|/2 \geq m/4$ constraints.
 Consequently, after $O(m)$ time, we are able to drop $m/4$ apexed triangles.
 By repeating this process recursively, we end up with a constant size problem in which we can compute the upper envelope of the functions explicitly and find the minimum using exhaustive search. 
 Thus, the running time of this algorithm is bounded by the recurrence $T(m) = T(3m/4) + O(m)$ which solves to $O(m)$. 
+Because $m = O(n)$, we obtain the following result.
 
 \begin{theorem}
-Given a convex trapezoid $q^*$ contained in $P$ such that $q^*$ contains the geodesic center of $P$. 
-We can compute the geodesic center of $P$ in $O(n)$ time.
+Let $q^*$ be a convex trapezoid contained in $P$ such that $q^*$ contains the geodesic center of $P$. Given the set of all apexed triangles of $\tau$ that intersect $q^*$, we can compute the geodesic center of $P$ in $O(n)$ time.
 \end{theorem}
 
 \begin{corollary}
