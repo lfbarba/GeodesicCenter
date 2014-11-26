@@ -192,8 +192,8 @@ Given a vertex $v$ of $P$, the vertices of $P$ that are farthest from $v$ than f
 
 Let $a$ and $b$ be the endpoints of an edge of $\partial P$ and assume that $a$ appears before $b$ in the clockwise order along $\partial P$. Recall that we have computed $\ff{a}$ and $\ff{b}$ in the previous step and note that $\ff{a}$ appears also before $\ff{b}$ along this clockwise order (if $\ff{a} \neq \ff{b}$). 
 For every vertex $v$ that lies between $\ff{a}$ and $\ff{b}$ in this clockwise order, we know that there is no vertex $u$ of $P$ such that $\ff{u} = v$.
-As proved by Aronov et al. (see Ordering Lemma of~\cite{aronov1993furthest}), we know that if there is a point $x$ on $\partial P$ such that $v = \ff{x}$, then $x$ has to lie on the open segment $(a,b)$. 
-In other words, the Voronoi cell $R(v)$ restricted to $\partial P$ is contained in $(a,b)$.
+As proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}, we know that if there is a point $x$ on $\partial P$ such that $v = \ff{x}$, then $x$ has to lie on the open segment $(a,b)$. 
+In other words, the Voronoi cell $R(v)$ restricted to $\partial P$ is contained in~$(a,b)$.
 
 \section{Building hourglasses}
 
@@ -349,35 +349,42 @@ Consequently, the funnel $\fn{v}{C_v}$ can be constructed in $O(k + |H_{u_0 u_1}
 Because a vertex on $\partial P$ has a unique farthest neighbor by our general position assumption, and since the total sum of the complexities of the transition hourglasses is $O(n)$ by Lemma~\ref{lemma:Bounding complexity of transition hourglasses}, we can compute the funnel of each vertex of $M$ in total $O(n)$ time. 
 Since the walls of these funnels are walls of transition hourglasses, and each wall appears at most twice, we get that $$\sum_{v\in M} |\fn{v}{C_v}|  = O(n).$$
 
-\begin{lemma}
-The farthest point Voronoi region of each vertex $v\in M$ is contained in $\fn{v}{C}$.
+\begin{lemma}\label{lemma:Farthest points from marked are in funnel}
+Let $x$ be a point in $P$. If $v = \ff{x}$, then $x\in \fn{v}{C_v}$.
 \end{lemma}
+\begin{proof}
+Because $\ff{u_0} \neq \ff{u_k}$, we know that $C_v$ is a transition chain. Moreover, $C_v$ contains $R(v)\cap \partial P$ by definition. Therefore, by Lemma~\ref{lemma:Funnel contains Voronoi region}, we know that $R(v)\subset \fn{v}{C_v}$.
+Since $v = \ff{x}$, we know that $x\in R(v)$ and hence that $x \in \fn{v}{C_v}$. 
+\end{proof}
 
-Given a funnel $\fn{v}{C}$, we would like to split it into $O(|\fn{v}{C}|)$ apexed triangles. 
-To this end, we compute the shortest path tree $T_v$ of $v$ in $\fn{v}{C}$ in $O(|\fn{v}{C}|)$ time~\cite{guibasShortestPathQueries}.
+Given a funnel $\fn{v}{C_v}$, we would like to split it into $O(|\fn{v}{C_v}|)$ apexed triangles that encode the distance function from $v$.
+To this end, we compute the shortest path tree $T_v$ of $v$ in $\fn{v}{C_v}$ in $O(|\fn{v}{C_v}|)$ time~\cite{guibasShortestPathQueries}.
 We consider the tree $T_v$ to be rooted at $v$ and assume that for each node $u$ of this tree 
 we have stored the geodesic distance $\g{u}{v}$. 
 
 Let $w_1$ be the first leaf of $T_v$ found when walking from $v$ around $T_v$ in clockwise order as in an Eulerian tour.
-Continue this Eulerian tour from $w_1$ and let $w_2$ and $w_3$ be the next two vertices visited along this tour. Two cases arise:
+Continue this Eulerian tour from $w_1$ and let $w_2$ and $w_3$ be the next two vertices visited. Two cases arise:
 
-\text{Case 1.} If $w_1, w_2, w_3$ makes a left turn, then let $s$ be the first point of the boundary of $\fn{v}{C}$ hit by the ray shooting from $w_3$ in the direction opposite to $w_2$ ($s$ could be equal to $w_3$ if $w_3$ already lies on the boundary).
-We claim that $s$ and $w_1$ lie on the same edge of the boundary of $\fn{v}{C}$. 
+\textbf{Case 1.} If $w_1, w_2, w_3$ makes a left turn, then let $s$ be the first point of the boundary of $\fn{v}{C_v}$ hit by the ray shooting from $w_3$ in the direction opposite to $w_2$ ($s$ could be equal to $w_3$ if $w_3$ already lies on the boundary).
+We claim that $s$ and $w_1$ lie on the same edge of the boundary of $\fn{v}{C_v}$. 
 Otherwise, there would be a vertex $u$ visible from $w_2$ inside the wedge with apex $w_2$ spanned by $w_1$ and $w_3$.
-Note that the first edge of the path $\p{u}{v}$ is the edge $uw_2$. Therefore, $uw_2$ belongs to the shortest path $T_v$ contradicting the eulerian order in which the vertices of this tree are visited as $u$ should be visited before $w_3$. Thus, $s$ and $w_1$ lie on the same edge and $s$ can be computed in $O(1)$.
+Note that the first edge of the path $\p{u}{v}$ is the edge $uw_2$. Therefore, $uw_2$ belongs to the shortest path $T_v$ contradicting the Eulerian order in which the vertices of this tree are visited as $u$ should be visited before $w_3$. Thus, $s$ and $w_1$ lie on the same edge and $s$ can be computed in $O(1)$ time.
 We then construct an apexed triangle $\triangle(w_1, w_2, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
 We now modify the tree $T_v$ by removing the edge $w_1w_2$ and adding the edge $w_3s$ (no edge is added if $w_3 = s$); see Figure~\ref{} for an illustration.
 
-\textbf{Case 2.} If $w_1, w_2, w_3$ makes a right turn, then let $s$ be the first point hit by the ray apexed at $w_2$ that shoots in the direction opposite to $w_3$. By the same argument as above, we can show that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C}$. Therefore, we can compute $s$ in $O(1)$ time. At this point, we construct the apexed triangle $\triangle(w_1, w_2, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
-We now modify the tree $T_v$ by removing the edges $w_1w_2$ and $w_2w_3$, and adding the edge $w_3s$ (no edge is added if $w_3 = s$); see Figure~\ref{}.
+\textbf{Case 2.} If $w_1, w_2, w_3$ makes a right turn, then let $s$ be the first point hit by the ray apexed at $w_2$ that shoots in the direction opposite to $w_3$. By the same argument as above, we can show that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C_v}$. Therefore, we can compute $s$ in $O(1)$ time. At this point, we construct the apexed triangle $\triangle(w_1, w_2, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
+We now modify the tree $T_v$ by removing the edge $w_1w_2$ and replacing the edge $w_3w_2$ by the edge $w_3s$; see Figure~\ref{}.
 
 \begin{lemma}\label{lemma:Triangles inside funnels}
-The above procedure runs in $O(|\fn{v}{C}|)$ time and computes $O(|\fn{v}{C}|)$ interior disjoint apexed triangles such that their union covers $\fn{v}{C}$. Moreover, for each point $x\in \fn{v}{C}$, there is an apexed triangle $\triangle$ with apex $a$ and apex function $g(x)$ such that (1) $x\in \triangle$ and (2) $g(x) = \g{x}{v}$.
+The above procedure runs in $O(|\fn{v}{C_v}|)$ time and computes $O(|\fn{v}{C_v}|)$ interior disjoint apexed triangles such that their union covers $\fn{v}{C_v}$. Moreover, for each point $x\in \fn{v}{C_v}$, there is an apexed triangle $\triangle$ with apex function $g(x)$ such that (1) $x\in \triangle$ and (2) $g(x) = \g{x}{v}$.
 \end{lemma}
 \begin{proof}
+The above procedure splits $\fn{v}{C_v}$ into apexed triangles, such that the apex function in each of them is defined as the geodesic distance to $v$. Since the path towards $v$ of every point in these triangles has to go through their apex, we obtain properties (1) and (2).
 
+To bound the running time and complexity we proceed as follows. 
+We can compute the shortest-path tree $T_v$ from $v$ in $O(|\fn{v}{C_v}|)$ time~\cite{guibasShortestPathQueries}.
+Note that processing either Case 1 or 2 of the algorithm takes constant time. Therefore, we are only interested in the number of times these steps are performed. Note that we are removing a leaf of the tree in each iteration. In Case 2, the number of leaves strictly decreases, while in case one a new leaf is added if $s\neq w_3$. However, the number of leaves that can be added is at most the number of edges of $T_v$. Note that the edges added by either Case 1 or 2 are chords of the polygon and hence cannot generate further leaves. Because $|T_v| = O(|\fn{v}{C_v}|)$, we conclude that either Case 1 or 2 is only executed $O(|\fn{v}{C_v}|)$ times yielding the bound in the number of produced apexed triangles and in the running time.
 \end{proof}
-
 
 \section{Prune and search}\label{section:Prune and search}
 
@@ -442,7 +449,7 @@ By recursing on $q^*$, we guarantee that after $O(\log m)$ iterations, we will f
 Because $|\tau| = O(n)$, the total running time of this algorithm on $P$ is $O(n)$.
 
 \begin{lemma}\label{lemma:Finding the convex trapezoid}
-In $O(n)$ time we can find either the geodesic center of $P$ or a convex trapezoid containing this center.
+In $O(n)$ time we can find either the geodesic center of $P$ or a convex trapezoid containing this geodesic center.
 \end{lemma}
 
 
@@ -450,14 +457,39 @@ In $O(n)$ time we can find either the geodesic center of $P$ or a convex trapezo
 In the previous section we show how to find either the geodesic center of $P$, or a convex trapezoid $q^*$contained in $P$ that contains this center. The important thing to notice is that, as in the case of chords, the upper envelope of the apex functions restricted to $q^*$ is a convex function, which allow us to do prune and search using cuttings.
 
 Formally, we have $m = O(n)$ apex triangles $\tau^* = \{\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}\}$ each with an apex function restricted to this triangle of the form $g_i(x) = |x a_i| + \kappa_i$, where $\kappa_i = \g{a_i, w_i}$ is a constant, $a_i$ and $w_i$ are the apex and the definer of $\triangle_i$, respectively.
-At this point, our problem can be reduced to the following optimization problem in $\mathbb{R}^3$:
 
-Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to
-$$\text{$g_i(x) = |x a_i| + \kappa_i \leq r$ if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}$$
+At this point, we claim that our problem can be reduced to the following optimization problem in $\mathbb{R}^3$:
 
-This optimization is almost identical to that studied by Megiddo in~\cite{megiddo1989ball}. 
-The main difference being that we have apex functions instead defined only in their corresponding apexed triangles. 
+\textbf{(P1).} Find a point $(x,r)\in \mathbb{R}^3$ minimizing $r$ subject to $x\in q^*$ and
+$$\text{$g_i(x) = |x a_i| + \kappa_i \leq r$ if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
 
+\begin{lemma}\label{lemma:Optimization problem same as geodesic center}
+Let $p\in \mathbb{R}^2$ and $r\in \mathbb{R}$ such that $(p,r)$ is the solution to the optimization problem (P1). Then $p$ is the geodesic center of $P$.
+\end{lemma}
+\begin{proof}
+Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau^*$.
+We claim that $\phi(x)$ coincides with the function $\F{P}{x}$.
+If this claim is true, then the optimum of both functions is the same and hence, $p$ is the geodesic center of $P$.
+
+To prove our claim, let $y$ be a point in $P$, we want to prove that $\phi(y) = \F{P}{y}$. 
+Two cases arise: 
+
+\textbf{Case 1.} If $\ff{y}$ is a marked vertex, then Lemma~\ref{lemma:Farthest points from marked are in funnel} implies that $y\in \fn{\ff{y}}{C_{\ff{y}}}$. Therefore
+by Lemma~\ref{lemma:Triangles inside funnels} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $y\in \triangle$ and $g(y) = \g{y}{\ff{y}} = \F{P}{y}$.
+
+\textbf{Case 2.} If $\ff{y}$ is not marked, then it belongs to the bottom chain of some transition hourglass. In this case by Lemma~\ref{lemma:Triangles inside hourglasses} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $y\in \triangle$ and $g(y) = \F{P}{y}$.
+
+Regardless of the case, there is an apexed triangle $\triangle$ that contains $y$ such that its apex function $g(y) = \F{P}{y}$.
+Since each apex function represent the geodesic distance from some vertex of $P$, we know that $\phi(y) \leq \F{P}{y}$. Moreover, since $g(x)$ is an apex function, we know that $g(y) \leq \phi(y)$.
+Because $g(y) = \F{P}{y}$ and since $g(y) \leq \phi(y) \leq  \F{P}{y}$, we conclude that $\phi(y) = \F{P}{y}$ proving our claim.
+\end{proof}
+
+By Lemma~\ref{lemma:Optimization problem same as geodesic center}, we need only to find the solution to (P1) to find the geodesic center of $P$.
+
+This optimization is similar to that studied by Megiddo in~\cite{megiddo1989ball}. 
+The main difference being that we have apex functions, defined only in their corresponding apexed triangles, instead of functions defined in the entire plane. 
+
+We use some observations noted by Megiddo in order to simplify the description of (P1).
 To simplify the formulas, we square the equations:
 $$g_i(x) = \|x\|^2 + 2x\cdot a_i + \|a_i\|^2  = |x a_i|^2 \leq (r - \kappa_i)^2 = r^2 - 2r\kappa_i + \kappa_i^2$$ 
 And finally for each $1\leq i\leq m$, we define the function $h_i(x, r)$ as follows:
@@ -465,8 +497,8 @@ $$h_i(x, r) = \|x\|^2 + 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2
 
 Therefore, our optimization problem can be reformulated as:
 
-Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
-$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}$$
+\textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
+$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
 
 Although the functions $h_i(x,r)$ are not linear, they all have the same non-linear terms. Therefore, for $i\neq j$, we get that
 $h_i(x,r) = h_j(x, r)$ defines a \emph{separating plane}
@@ -475,11 +507,11 @@ $$\gamma_{i,j} = \{(x, r) \in \mathbb{R}^3: 2 (a_i - a_j) \cdot x - 2( \kappa_i 
 As noted by Meggido, this separating plane has the following property:
 If the solution $(x, r)$ to our optimization problem is known to lie to one side of $\gamma_{i,j}$, then we know that one of the constraints is redundant. 
 
-In Megiddo's problem, it sufficed to have an \emph{side-decision algorithm} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement such an algorithm in linear time on the number of constraints~\cite{megiddo1989ball}.
+In Megiddo's problem, it sufficed to have a \emph{side-decision algorithm} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement such an algorithm in linear time on the number of constraints~\cite{megiddo1989ball}.
 
-His technique could be described as follows: Start by pairing the functions arbitrarily, and then consider the set of separating planes defined by these pairs.
+Using this side-decision algorithm, he shows how to solve the optimization problem. A variant of his technique could be described as follows: Start by pairing the functions arbitrarily, and then consider the set of separating planes defined by these pairs.
 Then for some constant $r$, compute a $1/r$-cutting in $\mathbb{R}^3$ of the separating planes.
-An $1/r$-cutting is a partition of the plane into $O(r^2)$ convex cells such that each intersects at most $n/r$ separating planes.
+An $1/r$-cutting is a partition of the plane into $O(r^2)$ convex cells of constant size such that each intersects at most $n/r$ separating planes.
 A cutting of planes can be computed in $O(n)$ time in $\mathbb{R}^3$ for any $r = O(1)$~\cite{matousekCuttings}.
 After computing the cutting, we determine in which of the cells the optimum lies by performing $O(1)$ calls to the side-decision algorithm. 
 Because at least $(r-1)n/r$ separating planes do not intersect this constant size cell, for each of them we can discard one of the constraints as it becomes redundant. Repeating this algorithm recursively we obtain a linear running time.
@@ -488,31 +520,32 @@ In this paper, we follow a similar approach, but our set of separating planes ne
 Note that each apexed triangle that intersects $q^*$ has its endpoints either outside of $q^*$ or on its boundary, i.e., each chord bounding an apexed triangle splits $q^*$ into two convex regions.
 
 \subsection{Optimization problem in a convex domain}
-In this section we describe our algorithm to solve the following optimization problem:
-Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
-$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}$$
+In this section we describe our algorithm to solve the optimization problem (P2):
+
+\textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
+$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
 
 To this end, we start by pairing the apexed triangles arbitrarily to obtain $m/2$ pairs.
-By identifying the plane where $P$ lies with the plane $Z_0 = \{(x,y,z): z = 0\}$, we can embed eac apexed triangle in $\mathbb{R}^3$.
+By identifying the plane where $P$ lies with the plane $Z_0 = \{(x,y,z): z = 0\}$, we can embed each apexed triangle in $\mathbb{R}^3$.
 A \emph{plane-set} is a set consisting of at most five planes in $\mathbb{R}^3$.
 For each pair $(\triangle_i, \triangle_j)$ we define a plane-set as follows: 
-For each chord bounding either $\triangle_i$ or $\triangle_j$, consider the line extending this chord and the vertical extrusion of this line in $\mathbb{R}^3$, that is the vertical plane containing this chord orthogonal to $Z_0$. Moreover, consider the separating plane $\gamma_{i,j}$. The set containing these planes is the plane-set of the pair $(\triangle_i, \triangle_j)$.
+For each chord bounding either $\triangle_i$ or $\triangle_j$, consider the line extending this chord and the vertical extrusion of this line in $\mathbb{R}^3$, that is the plane containing this chord orthogonal to $Z_0$. Moreover, consider the separating plane~$\gamma_{i,j}$. The set containing these planes is the plane-set of the pair $(\triangle_i, \triangle_j)$.
 
 Let $\Gamma$ be the union of all the plane-sets defined by the $m/2$ pairs of apexed triangles. Thus, $\Gamma$ is a set that consists of $O(m)$ planes. Compute an $1/r$-cutting of $\Gamma$ in $O(m)$ time for some constant $r$ to be specified later.
 Because $r$ is constant, this $1/r$-cutting splits the space into $O(1)$ convex cells, each bounded by a constant number of planes~\cite{matousekCuttings}. 
 By using a side-decision algorithm (to be specified later), we can determine the cell $Q$ of the cutting that contains the solution. Because $Q$ is the cell of a $1/r$-cutting of $\Gamma$, we know that at most $|\Gamma|/r$ planes of $\Gamma$ intersect $Q$. In particular, at most $|\Gamma|/r$ plane-sets intersect $Q$ and hence, at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$. 
 
 Let $(\triangle_i, \triangle_j)$ be a pair such that its plane-set does not intersect $Q$. 
-Let $Q'$ be the projection of $Q$ on the plane $Z_0$. Because the plane-set of this pair doesn't intersect $Q$, we know that $Q'$ intersects neither the boundary of $\triangle_i$ nor that of $\triangle_j$.
+Let $Q'$ be the projection of $Q$ on the plane $Z_0$. Because the plane-set of this pair does not intersect $Q$, we know that $Q'$ intersects neither the boundary of $\triangle_i$ nor that of $\triangle_j$.
 Two cases arise:
 
 \textbf{Case 1.} If either $\triangle_i$ or $\triangle_j$ does not intersect $Q'$, then we know that their apex function is redundant and we can drop the constraint associated with this apexed triangle.
 
 \textbf{Case 2.} If $Q'\subset \triangle_i\cap \triangle_j$, then we need to decide which constrain to drop. 
 To this end, we consider the separating plane $\gamma_{i,j}$. Notice that inside the vertical extrusion of $\triangle_i\cap \triangle_j$ (and hence in $Q$), the plane $\gamma_{i,j}$ has the property that if we know its side containing the solution, then one of the constraints can be dropped. Since $\gamma_{i,j}$ does not intersect $Q$ as $\gamma_{i,j}$ belongs to the plane-set of $(\triangle_i, \triangle_j)$, we can decide which side of $\gamma_{i,j}$ contains the optimum and drop one of the constraints.
-\vspace{.1in}
+\vspace{.05in}
 
-Regardless of the case if the plane-set of a pair $(\triangle_i, \triangle_j)$ does not intersect $Q$, then we can drop one of the constraints. Since at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$, we can drop at least $(r-1)|\Gamma|/r$ constraints.
+Regardless of the case if the plane-set of a pair $(\triangle_i, \triangle_j)$ does not intersect $Q$, then we can drop one of its constraints. Since at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$, we can drop at least $(r-1)|\Gamma|/r$ constraints.
 Because $m/2 \geq |\Gamma| $ as each plane-set contains at least one plane, by choosing $r = 2$, we are able to drop at least $|\Gamma|/2 \geq m/4$ constraints.
 Consequently, after $O(m)$ time, we are able to drop $m/4$ apexed triangles.
 By repeating this process recursively, we end up with a constant size problem in which we can compute the upper envelope of the functions explicitly and find the minimum using exhaustive search. 
