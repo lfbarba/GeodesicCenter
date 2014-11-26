@@ -95,15 +95,15 @@ We call $C$ and $\partial P(\ff{a}, \ff{b})$ the \emph{top} and \emph{bottom} ch
 
 We say that the hourglass $H_C$ is \emph{open} if its walls are vertex disjoint. 
 We say $C$ is a \emph{transition chain} if $\ff{p_0} \neq \ff{p_k}$ and neither $\ff{p_0}$ nor $\ff{p_k}$ are interior vertices of $C$. 
-In particular, an edge $ab$ of $\partial P$ is a \emph{transition edge} if $ab$ is a transition chain.
+In particular, if an edge $ab$ of $\partial P$ is a transition chain, we say that it is a \emph{transition edge}.
 
 \begin{lemma}\label{lemma:Transition hourglasses are open}
 [Rephrase of Lemma~3.1.3 of~\cite{aronov1993furthest}] 
 If $C$ is a transition chain of $\partial P$, then the hourglass $H_C$ is an open hourglass.
 \end{lemma}
 
-Given a transition chain $C$ of $\partial P$, we say that the hourglass $H_C$ is the \emph{transition hourglass} of $C$. 
-By Lemma~\ref{lemma:Transition hourglasses are open}, each transition hourglass is open.
+Note that by Lemma~\ref{lemma:Transition hourglasses are open}, the hourglass of each transition chain is open.
+In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chain are edge disjoint.
 
 The following results are similar or have already been proved by Suri~\cite{suri1989computing} and Aronov et al.~\cite{aronov1993furthest}. We provide a sketch of the proof of some of them for completeness.
 
@@ -148,7 +148,7 @@ Let $\p{s_i}{t_i}$ be the wall of $S_i$ that contains $st$ such that $s_i$ and $
 Because  $C_j$ lies in between $C_i$ and $C_k$, Lemma~\ref{lemma:Ordering Lemma} implies that the bottom chain of $C_j$ appears between the bottom chains of $C_i$ and $C_k$. Therefore, $C_j$ lies between $s_i$ and $s_k$ and the bottom chain of $H_{C_j}$ lies between $t_i$ and $t_k$. 
 That is, for each $x\in C_j$ and each $y$ in the bottom chain of $H_{C_j}$, the geodesic path $\p{x}{y}$ is ``sandwiched'' by the paths $\p{s_i}{t_i}$ and $\p{s_k}{t_k}$.
 Thus, $\p{x}{y}$ contains $st$.
-However, this implies that the hourglass $H_{C_j}$ is not open---a contradiction that comes from assuming that $st$ lies in the  wall of three transition hourglasses, when this wall is traversed from the top chain to the bottom chain. 
+However, this implies that the hourglass $H_{C_j}$ is not open---a contradiction that comes from assuming that $st$ lies in the  wall of three open hourglasses, when this wall is traversed from the top chain to the bottom chain. 
 Analogous arguments can be used to bound the total number of walls that contain the edge $st$ (when traversed in any direction) to $O(1)$.
 \end{proof}
 
@@ -159,13 +159,13 @@ Let $x,y$ be two vertices such that $\p{x}{y}$ separates $C$ from $B_C$.
 If $T_x$ and $T_y$ are the shortest path trees of $x$ and $y$ in $P$, then for each $u\in C$ and each $v\in B_C$, all edges of $\p{u}{v}$, expect perhaps one, belong to $T_x\cup T_y$.
 \end{lemma}
 
-\begin{lemma}\label{lemma:Bounding complexity of transition hourglasses}
-Let $C_1, \ldots, C_k$ be a set disjoint transition chains of $\partial P$. 
-Then $$\sum_{i=1}^k |H_{C_i}| = O(n).$$
+\begin{lemma}\label{lemma:Bounding complexity of hourglasses}
+Let $P$ be a simple polygon with $n$ vertices.
+Given $k$ disjoint transition chains $C_1, \ldots, C_k$  of $\partial P$, it holds that  $$\sum_{i=1}^k |H_{C_i}| = O(n).$$
 \end{lemma}
 \begin{proof}
 
-Because the given transition chains are disjoint, the bottom chains of their respective transition hourglasses are also disjoint by Lemma~\ref{lemma:Ordering Lemma}. Therefore, the sum of the complexities of all the top and bottom chains of these hourglasses amounts to $O(n)$. 
+Because the given transition chains are disjoint, the bottom chains of their respective hourglasses are also disjoint by Lemma~\ref{lemma:Ordering Lemma}. Therefore, the sum of the complexities of all the top and bottom chains of these hourglasses amounts to $O(n)$. 
 To bound the complexity of their walls, note that
 Lemma~\ref{lemma:Edges appear a constant number of times} implies that no chord is used more that a constant number of times. Thus, if the total number of chords used by all these hourglasses is $O(n)$, then our result follows. 
 
@@ -190,7 +190,7 @@ This funnel $\fn{v}{C}$ is also known as the geodesic convex hull of $C$ and $v$
 
 Given two points $x,y\in P$, the (geodesic) \emph{bisector} of $x$ and $y$ is the set of points contained in $P$ that are equidistant from $x$ and $y$. This bisector is a curve, contained in $P$, that consists of circular arcs and hyperbolic arcs. Moreover, this curve intersects $\partial P$ only at its endpoints~\cite[Lemma 3.22]{aronov1989geodesic}.
 
-\begin{lemma}\label{lemma:Funnel contains Voronoi region}
+\begin{lemma}\label{lemma:Funnel contains Voronoi cell}
 Let $v$ be a vertex of $P$ and let $C$ be a transition chain such that $C$ contains $R(v)\cap \partial P$ and $v$ is not contained in $C$.
 Then, $R(v)$ is contained in the funnel $\fn{v}{C}$
 \end{lemma}
@@ -236,18 +236,21 @@ In other words, the Voronoi cell $R(v)$ restricted to $\partial P$ is contained 
 \section{Building hourglasses}
 
 Let $E$ be the set of transition edges of $\partial P$.
-We would like to construct the corresponding hourglass of each transition edge of $E$.
-By Lemma~\ref{lemma:Bounding complexity of transition hourglasses}, we know that $\sum_{ab\in E} |H_{ab}| = O(n)$.
+Given a transition edge $ab\in E$, we say that $H_{ab}$ is a \emph{transition hourglass}.
+In order to construct the triangle cover of $P$, 
+we need to construct the transition hourglass of each transition edge of $E$.
+
+By Lemma~\ref{lemma:Bounding complexity of hourglasses}, we know that $\sum_{ab\in E} |H_{ab}| = O(n)$.
 Therefore, an output sensitive algorithm would suffice for this task. 
 However, we have no knowledge of the existence of such an algorithm. 
 The algorithm proposed in this section achieves this task at the expense of adding an $O(\log^*n)$ factor to the running time.
 
-To construct these hourglasses, we use the shortest-path data structure of Guibas and Hershberger which can be constructed in $O(n)$ time~\cite{guibasShortestPathQueries}. 
+To construct these transition hourglasses, we use the shortest-path data structure of Guibas and Hershberger which can be constructed in $O(n)$ time~\cite{guibasShortestPathQueries}. 
 Given two points $p,q\in P$, this structure allows us to compute the path $\p{p}{q}$ in $O(\log n + t)$ time, where $t$ is the number of vertices in $\p{p}{q}$. 
 While constructing these paths using this structure can take $\Omega(n \log n)$ time, we overcome this issue by splitting the problem into subproblems whose total complexity amounts to $O(n)$.
  
-To construct the transition hourglasses, we start by choosing $k = n/ \log n$ vertices along $\partial P$, say $v_0, v_1, \ldots, v_{k-1}$, chosen by walking along $\partial P$ in clockwise order and choosing a vertex each time we skip $\log n$ transition edges. 
-In other words, we decompose the boundary of $P$ into $k$ transition chains $C_0, \ldots, C_{k-1}$, each of length at most $\log n$, such that $v_i$ and $v_{i+1}$ are the endpoints of $C_i$ (index taken mod $k$).
+We start by choosing $k = n/ \log n$ vertices along $\partial P$, say $v_0, v_1, \ldots, v_{k-1}$, chosen by walking along $\partial P$ in clockwise order and choosing a vertex each time we skip $\log n$ transition edges. 
+In other words, we decompose the boundary of $P$ into $k$ transition chains $C_0, \ldots, C_{k-1}$, each of length at most $\log n$, such that $v_i$ and $v_{i+1}$ are the endpoints of $C_i$ (index taken modulo~$k$).
 
 We now compute the $k$ transition hourglasses of these transition chains.
 To this end, for each $0\leq i\leq k-1$, we compute the path $\p{v_i}{ \ff{v_{i+1}}}$ and the path $\p{v_{i+1}}{ \ff{v_i}}$. 
@@ -261,21 +264,21 @@ We now look at each $H_i$ independently and recursively split $H_i$ into smaller
 Let $E_i$ be the number of transition edges in the top chain of $H_i$ and let $m_i = |H_i|$. 
 We start by computing the shortest-path data structure for $H_i$ in $O(m_i)$ time.
 Recall that $|E_i| \leq \log n$ by the way we constructed each $H_i$.
-Note that the hourglass of each transition edge of $E_i$ is contained in $H_i$. 
-Because each of these hourglasses is open, we know that $\sum_{ab\in E_i} |H_{ab}| = O(m_i)$. 
+Note that the transition hourglass of each transition edge of $E_i$ is contained in $H_i$. 
+Because each of these hourglasses is open, we know that $\sum_{ab\in E_i} |H_{ab}| = O(m_i)$ by Lemma~\ref{lemma:Bounding complexity of hourglasses}. 
 
-Two cases arise: if (1) $|E_i| \leq m_i / \log m_i$, then computing the $|E_i|$ hourglasses defined by the transition edges of $E_i$ takes $O(|E_i| \log m_i + \sum_{ab\in E_i} |H_{ab}|) = O(m_i)$ time. 
-If we are in this case, then we compute each of the hourglasses and finish the recursion.
+Two cases arise: if (1) $|E_i| \leq m_i / \log m_i$, then computing the $|E_i|$ transition hourglasses defined by the transition edges of $E_i$ takes $O(|E_i| \log m_i + \sum_{ab\in E_i} |H_{ab}|) = O(m_i)$ time. 
+If we are in this case, then we compute each of the transition hourglasses and finish the recursion.
 Otherwise, we know that (2) $m_i / \log m_i\leq |E_i|$, and because $|E_i| \leq \log n$, we conclude that $m_i \leq \log^2 n$.
 Therefore, by splitting the top chain of $H_i$ into $m_i/\log m_i$ chains of length at most $\log m_i$, and repeating the process described above, we can construct at most $m_i / \log m_i$ hourglasses, whose upper chains have at most $\log m_i = O(\log \log n)$ vertices. 
-Moreover, because the boundary of each of these hourglasses is contained in the boundary of a hourglass of an edge of $E_i$, we conclude their total complexity amounts to $O(m_i)$.
+Because these $m_i / \log m_i$ hourglasses are contained in $H_i$, their total complexity amounts to $O(m_i)$ by Lemma~\ref{lemma:Bounding complexity of hourglasses}.
 Using the shortest-path data structure of $H_i$, we can compute these $m_i\log m_i$ hourglasses in $O(m_i)$ time.
 Since $\sum_{i = 0} ^{k-1} m_i = O(n)$, the total complexity of this step in all hourglasses is at most $O(n)$.
 
 Because the length of the top chain of each hourglasses degreases by taking the logarithmic function, after $O(\log^*n)$ rounds we will be able to compute all the hourglasses for the edges of $E$. We obtain the following result.
 
 \begin{lemma}\label{lemma: Hourglass partition}
-If $E$ is the set of transition edges of $P$, then we can construct the hourglass of each edge $E$ in total $O(n \log^* n)$ time.
+If $E$ is the set of transition edges of $P$, then we can construct the transition hourglass of each edge $E$ in total $O(n \log^* n)$ time.
 \end{lemma}
 
 \section{Covering the polygon with apexed triangles}
@@ -286,9 +289,9 @@ $$g_\triangle(x) = \left\{ \begin{array}{lll}
 \end{array}\right.$$
 
 In this section, we show how to find a set of $O(n)$ apexed triangles of $P$ such that the upper envelope of their apex functions coincides with $\F{P}{x}$.
-To this end, we first decompose the transition hourglasses into apex triangles that encode all the geodesic distance information inside them. Finally, for each marked vertex $v\in M$, we we construct a funnel that contains the Voronoi region of $v$.  We then decompose this funnel into apex triangles that encode the distance from $v$.
+To this end, we first decompose the transition hourglasses into apex triangles that encode all the geodesic distance information inside them. Then, for each marked vertex $v\in M$, we construct a funnel that contains the Voronoi cell of $v$.  We then decompose this funnel into apex triangles that encode the distance from $v$.
 
-\subsection{Inside the hourglass}
+\subsection{Inside the transition hourglass}
 Let $ab$ be a transition edge of $P$  such that $b$ is the clockwise neighbor of $a$ along $\partial P$.
 Let $B_{ab}$ denote the bottom chain of $H_{ab}$.
 As noticed above, a point on $\partial P$ can be farthest from a vertex in $B_{ab}$ only if it lies in the open segment $ab$.
@@ -299,7 +302,7 @@ We claim that not only this Voronoi cell is inside $H_{ab}$ when restricted to t
 Let $v$ be a vertex of $B_{ab}$. If $R(v)\neq \emptyset$, then $R(v) \subset H_{ab}$.
 \end{lemma}
 \begin{proof}
-Because $R(v)\cap \partial P \subset ab$, by Lemma~\ref{lemma:Funnel contains Voronoi region}, we know that $R(v)\subset \fn{v}{ab}$. Because $H_{ab}$ is geodesically convex, we conclude that $R(v)\subset \fn{v}{ab}\subset H_{ab}$.
+Because $R(v)\cap \partial P \subset ab$, by Lemma~\ref{lemma:Funnel contains Voronoi cell}, we know that $R(v)\subset \fn{v}{ab}$. Because $H_{ab}$ is geodesically convex, we conclude that $R(v)\subset \fn{v}{ab}\subset H_{ab}$.
 \end{proof}
 %%%
 
@@ -394,7 +397,7 @@ Because $v = \ff{u_1} = \ff{u_{k-1}}$, we know that $v$ is a vertex of both $H_{
 Thus, since $\p{v}{ u_1}\subset H_{u_0u_1}$ while $\p{v}{u_k}\subset H_{u_{k-1}u_k}$, we can compute both $\p{v}{ u_1}$ and $\p{v}{u_k}$ in $O( |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$ time.
 Consequently, the funnel $\fn{v}{C_v}$ can be constructed in $O(k + |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$. 
 
-Because a vertex on $\partial P$ has a unique farthest neighbor by our general position assumption, and since the total sum of the complexities of the transition hourglasses is $O(n)$ by Lemma~\ref{lemma:Bounding complexity of transition hourglasses}, we can compute the funnel of each vertex of $M$ in total $O(n)$ time. 
+Because a vertex on $\partial P$ has a unique farthest neighbor by our general position assumption, and since the total sum of the complexities of the transition hourglasses is $O(n)$ by Lemma~\ref{lemma:Bounding complexity of hourglasses}, we can compute the funnel of each vertex of $M$ in total $O(n)$ time. 
 
 Since the complexity of the walls of these funnels is bounded by the complexity of the transition hourglasses used to compute them, we get that $$\sum_{v\in M} |\fn{v}{C_v}|  = O\left(n + \sum_{ab\in E} |H_{ab}|\right) = O(n).$$
 
@@ -402,7 +405,7 @@ Since the complexity of the walls of these funnels is bounded by the complexity 
 Let $x$ be a point in $P$. If $v = \ff{x}$, then $x\in \fn{v}{C_v}$.
 \end{lemma}
 \begin{proof}
-Because $\ff{u_0} \neq \ff{u_k}$, we know that $C_v$ is a transition chain. Moreover, $C_v$ contains $R(v)\cap \partial P$ by definition. Therefore, by Lemma~\ref{lemma:Funnel contains Voronoi region}, we know that $R(v)\subset \fn{v}{C_v}$.
+Because $\ff{u_0} \neq \ff{u_k}$, we know that $C_v$ is a transition chain. Moreover, $C_v$ contains $R(v)\cap \partial P$ by definition. Therefore, by Lemma~\ref{lemma:Funnel contains Voronoi cell}, we know that $R(v)\subset \fn{v}{C_v}$.
 Since $v = \ff{x}$, we know that $x\in R(v)$ and hence that $x \in \fn{v}{C_v}$. 
 \end{proof}
 
@@ -448,20 +451,39 @@ Note that processing either Case 1 or 2 of the algorithm takes constant time. Th
 In this section, we describe a procedure that finds either the geodesic center of $P$, or a convex trapezoid that contains the geodesic center.
 The idea of the proof is to consider the chords of the apexed triangles computed in previous sections and use a cutting of them that splits $P$ into $O(1)$ cells. Then, we test on which cell the geodesic center lies and recurse on that cell as a new subproblem having smaller complexity. To decrease the complexity of the problem, we consider only the apexed triangles intersecting this cell in the next iteration. Using the properties of the cutting, we are able to prove that the size of the subproblem decreases by a constant fraction which leads to a linear running time. This algorithm has however two stopping conditions, one is to reach a subproblem of constant size, and a second one is to find a convex trapezoid containing the geodesic center. In the latter case, we are not able to proceed with the prune and search. Nevertheless, by restricting the search space to a convex object, we are able to perform standard optimization techniques to find the geodesic center.
 
+
 Let $\tau$ be the set all apexed triangles computed in previous sections. 
 
 \begin{lemma}\label{lemma:Size of tau}
-Each point of $P$ is in at least one apexed triangle of $\tau$. Moreover $|\tau| = O(n)$.
+The set $\tau$ consists of $O(n)$ apexed triangles.
 \end{lemma}
 \begin{proof}
-Let $x$ be a point in $P$. If $\ff{x}$ is a marked vertex, then by Lemma~\ref{lemma:Farthest points from marked are in funnel} we know that $x\in \fn{\ff{x}}{C_{\ff{x}}}$. Moreover, by Lemma~\ref{lemma:Triangles inside funnels}, we know that there is an apexed triangle that cover $x$.
-Otherwise, if $\ff{x}$ is not marked, then it belongs to the lower chain of some transition hourglass. 
-Therefore, by Lemma~\ref{lemma:Triangles inside hourglasses} there is a triangle covering it.
-
 To bound the complexity of $\tau$, recall that $E$ denotes the set of transition edges of $P$.
-Because $\sum_{ab\in E} H_{ab} = O(n)$ by Lemma~\ref{lemma:Bounding complexity of transition hourglasses} and since there are $O(|H_{ab}|)$ apexed triangles in each transition hourglass $H_{ab}$, we conclude that there $O(n)$ apexed triangles constructed using Lemma~\ref{lemma:Bounding complexity of transition hourglasses}.
+Because $\sum_{ab\in E} H_{ab} = O(n)$ by Lemma~\ref{lemma:Bounding complexity of hourglasses} and since there are $O(|H_{ab}|)$ apexed triangles in each transition hourglass $H_{ab}$, we conclude that there $O(n)$ apexed triangles constructed using Lemma~\ref{lemma:Bounding complexity of hourglasses}.
 
 Furthermore, we know that $\sum_{v\in M} |\fn{v}{C_v}| = O(n)$. Because each funnel $\fn{v}{C_v}$ is subdivided into $O(|\fn{v}{C_v}|)$ apexed triangles by Lemma~\ref{lemma:Triangles inside funnels}, we conclude that at most $O(n)$ apexed triangles area constructed inside funnels of marked vertices. Consequently $|\tau| = O(n)$.
+\end{proof}
+
+
+
+
+Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau$, i.e., $$\phi(x) = \max\{g(x) : g(x)\text{ is the apex function of some apexed triangle of }\tau\}.$$
+The following result shows that the $O(n)$ apexed triangle of $\tau$ not only cover $P$, but their apex functions suffice to reconstruct the function $\F{P}{x}$.
+
+\begin{lemma}\label{lemma:Optimization problem same as geodesic center}
+The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, i.e., for each $p\in P$, $\phi(p) = \F{P}{p}$.
+\end{lemma}
+\begin{proof}
+Let $p$ be a point in $P$, we want to prove that $\phi(p) = \F{P}{p}$. 
+Two cases arise: 
+\textbf{Case 1.} If $\ff{p}$ is a marked vertex, then Lemma~\ref{lemma:Farthest points from marked are in funnel} implies that $p\in \fn{\ff{p}}{C_{\ff{p}}}$. Therefore
+by Lemma~\ref{lemma:Triangles inside funnels} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $p\in \triangle$ and $g(p) = \g{p}{\ff{p}} = \F{P}{p}$.
+
+\textbf{Case 2.} If $\ff{p}$ is not marked, then it belongs to the bottom chain of some transition hourglass. In this case by Lemma~\ref{lemma:Triangles inside hourglasses} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $p\in \triangle$ and $g(p) = \F{P}{p}$.
+
+Regardless of the case, there is an apexed triangle $\triangle$ that contains $p$ such that its apex function $g(p) = \F{P}{p}$.
+Since each apex function represent the geodesic distance from some vertex of $P$, we know that $\phi(p) \leq \F{P}{p}$. Moreover, since $g(x)$ is an apex function, we know that $g(p) \leq \phi(p)$.
+Because $g(p) = \F{P}{p}$ and since $g(p) \leq \phi(p) \leq  \F{P}{p}$, we conclude that $\phi(p) = \F{P}{p}$ proving our claim.
 \end{proof}
 
 
@@ -526,7 +548,7 @@ Moreover, because each vertex of $q^*$ is in at least one apexed triangle of $\t
 Thus, by choosing $\varepsilon = 1/12$, we guarantee that both the size of the $P$-cell $q^*$ and the number of apexed triangles in $\tau_{q^*}$ are at most $m/2$.
 
 By recursing on $q^*$, we guarantee that after $O(\log m)$ iterations, we will find either a convex trapezoid contained in $R$ that contains the center, or we reduce the size of $\tau_R$ to a constant in which case the optimum of $\F{P}{x}$ can be found using an exhaustive search in $O(1)$ time. Since we halve the the size of the $P$-cell and the number of apexed triangles in each iteration, the total running time of this algorithm is given by the recurrence $T(m) = T(m/2) + O(m)$ which solves to $T(m) = O(m)$. 
-Because $|\tau| = O(n)$, the total running time of this algorithm on $P$ is $O(n)$.
+Because $|\tau| = O(n)$ by Lemma~\ref{lemma:Size of tau}, the total running time of this algorithm on $P$ is $O(n)$.
 
 \begin{lemma}\label{lemma:Finding the convex trapezoid}
 In $O(n)$ time we can find either the geodesic center of $P$ or a convex trapezoid containing this geodesic center.
@@ -534,42 +556,24 @@ In $O(n)$ time we can find either the geodesic center of $P$ or a convex trapezo
 
 
 \section{Solving the problem restricted to a convex trapezoid}
-In the previous section we show how to find either the geodesic center of $P$, or a convex trapezoid $q^*$contained in $P$ that contains this center. The important thing to notice is that, as in the case of chords, the upper envelope of the apex functions restricted to $q^*$ is a convex function, which allow us to do prune and search using cuttings.
+In the previous section we show how to find either the geodesic center of $P$, or a convex trapezoid $q^*$contained in $P$ that contains this center. 
+Recall that $\phi(x)$ denotes the upper envelope of the apex functions of every triangle in $\tau$.
+The important thing to notice is that, as in the case of chords, the function $\phi(x)$ restricted to $q^*$ is a convex function, which allows us to do prune and search using cuttings.
 
-Formally, we have $m = O(n)$ apex triangles $\tau^* = \{\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}\}$ each with an apex function restricted to this triangle of the form $g_i(x) = |x a_i| + \kappa_i$, where $\kappa_i = \g{a_i, w_i}$ is a constant, $a_i$ and $w_i$ are the apex and the definer of $\triangle_i$, respectively.
+Let $\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}$ be the set of $m= O(n)$ apexed triangles of $\tau$ that intersect $q^*$. Let $g_i(x) = |x a_i| + \kappa_i$ be the apex function of $\triangle_i$, where $a_i$ and $w_i$ are the apex and the definer of $\triangle_i$, respectively, and $\kappa_i = \g{a_i, w_i}$ is a constant.
 
-At this point, we claim that our problem can be reduced to the following optimization problem in $\mathbb{R}^3$:
+Recall that the geodesic center of $P$ is the point in $P$ that minimizes the function $\F{P}{x}$.
+By Lemma~\ref{lemma:Optimization problem same as geodesic center}, $\phi(x) = \F{P}{x}$. 
+Therefore, the problem of finding the point that minimizes $\F{P}{x}$ can be reduced to the following optimization problem in $\mathbb{R}^3$:
 
 \textbf{(P1).} Find a point $(x,r)\in \mathbb{R}^3$ minimizing $r$ subject to $x\in q^*$ and
-$$\text{$g_i(x) = |x a_i| + \kappa_i \leq r$ if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
+$$\text{$g_i(x) = |x a_i| + \kappa_i \leq r$, if $x\in \Delta_{i}$ for $1\leq i \leq m$}.$$
 
-\begin{lemma}\label{lemma:Optimization problem same as geodesic center}
-Let $p\in \mathbb{R}^2$ and $r\in \mathbb{R}$ such that $(p,r)$ is the solution to the optimization problem (P1). Then $p$ is the geodesic center of $P$.
-\end{lemma}
-\begin{proof}
-Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau^*$.
-We claim that $\phi(x)$ coincides with the function $\F{P}{x}$.
-If this claim is true, then the optimum of both functions is the same and hence, $p$ is the geodesic center of $P$.
-
-To prove our claim, let $y$ be a point in $P$, we want to prove that $\phi(y) = \F{P}{y}$. 
-Two cases arise: 
-
-\textbf{Case 1.} If $\ff{y}$ is a marked vertex, then Lemma~\ref{lemma:Farthest points from marked are in funnel} implies that $y\in \fn{\ff{y}}{C_{\ff{y}}}$. Therefore
-by Lemma~\ref{lemma:Triangles inside funnels} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $y\in \triangle$ and $g(y) = \g{y}{\ff{y}} = \F{P}{y}$.
-
-\textbf{Case 2.} If $\ff{y}$ is not marked, then it belongs to the bottom chain of some transition hourglass. In this case by Lemma~\ref{lemma:Triangles inside hourglasses} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $y\in \triangle$ and $g(y) = \F{P}{y}$.
-
-Regardless of the case, there is an apexed triangle $\triangle$ that contains $y$ such that its apex function $g(y) = \F{P}{y}$.
-Since each apex function represent the geodesic distance from some vertex of $P$, we know that $\phi(y) \leq \F{P}{y}$. Moreover, since $g(x)$ is an apex function, we know that $g(y) \leq \phi(y)$.
-Because $g(y) = \F{P}{y}$ and since $g(y) \leq \phi(y) \leq  \F{P}{y}$, we conclude that $\phi(y) = \F{P}{y}$ proving our claim.
-\end{proof}
-
-By Lemma~\ref{lemma:Optimization problem same as geodesic center}, we need only to find the solution to (P1) to find the geodesic center of $P$.
-
-This optimization is similar to that studied by Megiddo in~\cite{megiddo1989ball}. 
+Thus, we need only to find the solution to (P1) to find the geodesic center of $P$.
+A similar optimization was studied by Megiddo in~\cite{megiddo1989ball}. 
 The main difference being that we have apex functions, defined only in their corresponding apexed triangles, instead of functions defined in the entire plane. 
 
-We use some observations noted by Megiddo in order to simplify the description of (P1).
+We use some remarks described by Megiddo in order to simplify the description of (P1).
 To simplify the formulas, we square the equations:
 $$g_i(x) = \|x\|^2 + 2x\cdot a_i + \|a_i\|^2  = |x a_i|^2 \leq (r - \kappa_i)^2 = r^2 - 2r\kappa_i + \kappa_i^2$$ 
 And finally for each $1\leq i\leq m$, we define the function $h_i(x, r)$ as follows:
@@ -578,7 +582,7 @@ $$h_i(x, r) = \|x\|^2 + 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2
 Therefore, our optimization problem can be reformulated as:
 
 \textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
-$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
+$$h_i(x, r) \leq 0, \text{ if $x\in \Delta_{i}$ for $1\leq i \leq m$}.$$%\text{ and } r > \max\{\kappa_i\}
 
 Although the functions $h_i(x,r)$ are not linear, they all have the same non-linear terms. Therefore, for $i\neq j$, we get that
 $h_i(x,r) = h_j(x, r)$ defines a \emph{separating plane}
@@ -590,10 +594,10 @@ If the solution $(x, r)$ to our optimization problem is known to lie to one side
 In Megiddo's problem, it sufficed to have a \emph{side-decision algorithm} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement such an algorithm in linear time on the number of constraints~\cite{megiddo1989ball}.
 
 Using this side-decision algorithm, he shows how to solve the optimization problem. A variant of his technique could be described as follows: Start by pairing the functions arbitrarily, and then consider the set of separating planes defined by these pairs.
-Then for some constant $r$, compute a $1/r$-cutting in $\mathbb{R}^3$ of the separating planes.
+For some constant $r$, compute a $1/r$-cutting in $\mathbb{R}^3$ of the separating planes.
 An $1/r$-cutting is a partition of the plane into $O(r^2)$ convex cells of constant size such that each intersects at most $n/r$ separating planes.
 A cutting of planes can be computed in $O(n)$ time in $\mathbb{R}^3$ for any $r = O(1)$~\cite{matousekCuttings}.
-After computing the cutting, we determine in which of the cells the optimum lies by performing $O(1)$ calls to the side-decision algorithm. 
+After computing the cutting, determine in which of the cells the optimum lies by performing $O(1)$ calls to the side-decision algorithm. 
 Because at least $(r-1)n/r$ separating planes do not intersect this constant size cell, for each of them we can discard one of the constraints as it becomes redundant. Repeating this algorithm recursively we obtain a linear running time.
 
 In this paper, we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only partially defined.
@@ -602,7 +606,7 @@ Note that each apexed triangle that intersects $q^*$ has its endpoints either ou
 \subsection{Optimization problem in a convex domain}
 In this section we describe our algorithm to solve the optimization problem (P2). 
 %\textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in q^*$ and 
-%$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{a_i}$ for $1\leq i \leq m$}.$$
+%$$h_i(x, r) \leq 0 \text{ and } r > \max\{\kappa_i\}\ (1\leq i\leq m), \text{if $x\in \Delta_{i}$ for $1\leq i \leq m$}.$$
 To this end, we start by pairing the apexed triangles arbitrarily to obtain $m/2$ pairs.
 By identifying the plane where $P$ lies with the plane $Z_0 = \{(x,y,z): z = 0\}$, we can embed each apexed triangle in $\mathbb{R}^3$.
 A \emph{plane-set} is a set consisting of at most five planes in $\mathbb{R}^3$.
@@ -628,14 +632,24 @@ Because $|\Gamma| \geq m/2$ as each plane-set contains at least one plane, by ch
 Consequently, after $O(m)$ time, we are able to drop $m/4$ apexed triangles.
 By repeating this process recursively, we end up with a constant size problem in which we can compute the upper envelope of the functions explicitly and find the minimum using exhaustive search. 
 Thus, the running time of this algorithm is bounded by the recurrence $T(m) = T(3m/4) + O(m)$ which solves to $O(m)$. 
-Because $m = O(n)$, we obtain the following result.
+Because $m = O(n)$, we can find the solution to (P2) in $O(n)$ time.
+
+The last detail is the implementation of the side-decision algorithm. 
+Given a plane $\gamma$, we want to decide on which side lies the optimum of (P2).
+To this end, we solve (P2) restricted to~$\gamma$, i.e., with the additional constraint of $(x,r)\in \gamma$. 
+This approach was used by Megiddo~\cite{megiddo1989ball}, the idea is to recurse by reducing the dimension of the problem.
+Another approach is to find this using the algorithm described by Pollack et al.~\cite[Section~3]{pollackComputingCenter}. 
+
+Once the optimum of (P2) restricted to $\gamma$ is known, we can follow the same approach used by Megiddo~\cite{megiddo1989ball} to find the side of $\gamma$ containing the global optimum. 
+Intuitively, we find the apex functions that define the optimum restricted to $\gamma$. Since $\phi(x) = \F{P}{x}$ is locally defined by this functions, we can decide on which side the optimum lie using convexity.
+We obtain the following result.
 
 \begin{theorem}
 Let $q^*$ be a convex trapezoid contained in $P$ such that $q^*$ contains the geodesic center of $P$. Given the set of all apexed triangles of $\tau$ that intersect $q^*$, we can compute the geodesic center of $P$ in $O(n)$ time.
 \end{theorem}
 
 \begin{corollary}
-Given a simple polygon $P$ with $n$ vertices, we can compute its geodesic center in $O(n \log ^* n)$.
+Given a simple polygon $P$ with $n$ vertices, we can compute its geodesic center in $O(n \log ^* n)$ time.
 \end{corollary}
 
 \section{Conclusions}

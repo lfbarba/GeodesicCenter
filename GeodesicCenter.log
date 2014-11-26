@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 NOV 2014 13:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 NOV 2014 15:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1072,57 +1072,56 @@ File: img/MarkedVertices.pdf Graphic file (type pdf)
 Package pdftex.def Info: img/MarkedVertices.pdf used on input line 225.
 (pdftex.def)             Requested size: 398.33858pt x 168.47246pt.
  [5] [6 <./img/MarkedVertices.pdf>] [7]
-<img/HourglassCover.pdf, id=196, 578.80302pt x 244.15044pt>
+<img/HourglassCover.pdf, id=198, 578.80302pt x 244.15044pt>
 File: img/HourglassCover.pdf Graphic file (type pdf)
 
 <use img/HourglassCover.pdf>
-Package pdftex.def Info: img/HourglassCover.pdf used on input line 326.
+Package pdftex.def Info: img/HourglassCover.pdf used on input line 329.
 (pdftex.def)             Requested size: 398.33858pt x 168.03183pt.
  [8 <./img/HourglassCover.pdf>]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 357.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 360.
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 357.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 360.
 
  [9]
-<img/FunnelCover.pdf, id=224, 595.72832pt x 406.67552pt>
+<img/FunnelCover.pdf, id=226, 595.72832pt x 406.67552pt>
 File: img/FunnelCover.pdf Graphic file (type pdf)
 
 <use img/FunnelCover.pdf>
-Package pdftex.def Info: img/FunnelCover.pdf used on input line 426.
+Package pdftex.def Info: img/FunnelCover.pdf used on input line 429.
 (pdftex.def)             Requested size: 398.33858pt x 271.9251pt.
- [10] [11 <./img/FunnelCover.pdf>]
-<img/CuttingOfChords.pdf, id=254, 568.45572pt x 194.67651pt>
+ [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./img/FunnelCover.pdf>] [12]
+<img/CuttingOfChords.pdf, id=262, 568.45572pt x 194.67651pt>
 File: img/CuttingOfChords.pdf Graphic file (type pdf)
 
 <use img/CuttingOfChords.pdf>
-Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 496.
+Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 518.
 (pdftex.def)             Requested size: 398.33858pt x 136.42114pt.
- [12] [13 <./img/CuttingOfChords.pdf>] [14]
-[15] (./GeodesicCenter.bbl [16]) 
+ [13 <./img/CuttingOfChords.pdf>] [14] [15]
+[16] (./GeodesicCenter.bbl) 
 AED: lastpage setting LastPage
 [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 647.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 647.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 661.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 661.
  (./GeodesicCenter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 647.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 647.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 661.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 661.
 Package rerunfilecheck Info: File `GeodesicCenter.out' has not changed.
-(rerunfilecheck)             Checksum: 13C0758FD5E23159A9337EA256CE1965;838.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 647.
+(rerunfilecheck)             Checksum: CD3EAC8C5FB57B09A0E852C36A75441B;849.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 661.
  ) 
 Here is how much of TeX's memory you used:
- 12494 strings out of 493117
- 188877 string characters out of 6135433
+ 12492 strings out of 493117
+ 188846 string characters out of 6135433
  313763 words of memory out of 5000000
  15436 multiletter control sequences out of 15000+600000
- 133552 words of font info for 188 fonts, out of 8000000 for 9000
+ 133516 words of font info for 187 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,17n,40p,999b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,17n,40p,999b,437s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
 cal/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/20
 14/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2014/texmf-d
@@ -1145,10 +1144,10 @@ c/lm/lmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtk10
 .pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
 am10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on GeodesicCenter.pdf (17 pages, 829042 bytes).
+Output written on GeodesicCenter.pdf (17 pages, 829468 bytes).
 PDF statistics:
- 398 PDF objects out of 1000 (max. 8388607)
- 336 compressed objects within 4 object streams
+ 401 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
  68 named destinations out of 1000 (max. 500000)
  33431 words of extra memory for PDF output out of 35830 (max. 10000000)
 
