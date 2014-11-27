@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: GeodesicCenter.aux
 The style file: abbrv.bst
 Database file #1: Geodesic.bib
-You've used 12 entries,
+You've used 23 entries,
             2118 wiz_defined-function locations,
-            574 strings with 5740 characters,
-and the built_in function-call counts, 4513 in all, are:
-= -- 484
-> -- 145
-< -- 5
-+ -- 59
-- -- 46
-* -- 304
-:= -- 703
-add.period$ -- 41
-call.type$ -- 12
-change.case$ -- 59
+            637 strings with 7214 characters,
+and the built_in function-call counts, 8396 in all, are:
+= -- 869
+> -- 297
+< -- 11
++ -- 123
+- -- 94
+* -- 552
+:= -- 1316
+add.period$ -- 74
+call.type$ -- 23
+change.case$ -- 114
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 186
-empty$ -- 385
-format.name$ -- 46
-if$ -- 986
+cite$ -- 23
+duplicate$ -- 354
+empty$ -- 711
+format.name$ -- 94
+if$ -- 1828
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 12
-newline$ -- 63
-num.names$ -- 24
-pop$ -- 59
+int.to.str$ -- 23
+missing$ -- 21
+newline$ -- 118
+num.names$ -- 48
+pop$ -- 120
 preamble$ -- 1
-purify$ -- 47
+purify$ -- 92
 quote$ -- 0
-skip$ -- 132
+skip$ -- 259
 stack$ -- 0
-substring$ -- 375
-swap$ -- 55
-text.length$ -- 5
+substring$ -- 643
+swap$ -- 106
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 48
+type$ -- 92
 warning$ -- 0
-while$ -- 53
-width$ -- 14
-write$ -- 140
+while$ -- 93
+width$ -- 25
+write$ -- 261

@@ -2,13 +2,47 @@
 
 \bibitem{aronov1989geodesic}
 B.~Aronov.
-\newblock On the geodesic voronoi diagram of point sites in a simple polygon.
+\newblock On the geodesic {V}oronoi diagram of point sites in a simple polygon.
 \newblock {\em Algorithmica}, 4(1-4):109--140, 1989.
 
 \bibitem{aronov1993furthest}
 B.~Aronov, S.~Fortune, and G.~Wilfong.
-\newblock The furthest-site geodesic voronoi diagram.
+\newblock The furthest-site geodesic {V}oronoi diagram.
 \newblock {\em Discrete \& Computational Geometry}, 9(1):217--255, 1993.
+
+\bibitem{at-cgcsp-85}
+T.~Asano and G.~Toussaint.
+\newblock Computing the geodesic center of a simple polygon.
+\newblock Technical Report SOCS-85.32, McGill University, 1985.
+
+\bibitem{bko-gdpd-13}
+S.~W. Bae, M.~Korman, and Y.~Okamoto.
+\newblock The geodesic diameter of polygonal domains.
+\newblock {\em Discrete Comput. Geom.}, 50(2):306--329, 2013.
+
+\bibitem{bko-cgcpd-14}
+S.~W. Bae, M.~Korman, and Y.~Okamoto.
+\newblock Computing the geodesic centers of a polygonal domain.
+\newblock In {\em Proc. 26th Canadian Conf. on Comput. Geom.}, 2014.
+
+\bibitem{bkow-clgdcsplt-13}
+S.~W. Bae, M.~Korman, Y.~Okamoto, and H.~Wang.
+\newblock Computing the ${L}_1$ geodesic diameter and center of a simple
+  polygon in linear time.
+\newblock In {\em Proc. 11th Latin American Theor. Infor. Sympos.}, pages
+  120--131, 2014.
+
+\bibitem{c-tpca-82}
+B.~Chazelle.
+\newblock A theorem on polygon cutting with applications.
+\newblock In {\em Proc. 23rd Annu. Sympos. Found. Comput. Sci. (FOCS'82)},
+  pages 339--349, 1982.
+
+\bibitem{dls-aclcsp-92}
+H.~Djidjev, A.~Lingas, and J.-R. Sack.
+\newblock An {$O(n\log n)$} algorithm for computing the link center of a simple
+  polygon.
+\newblock {\em Discrete Comput. Geom.}, 8:131--152, 1992.
 
 \bibitem{guibasShortestPathTree}
 L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
@@ -27,6 +61,12 @@ J.~Hershberger and S.~Suri.
 \newblock Matrix searching with the shortest path metric.
 \newblock In {\em Proceedings of the twenty-fifth annual ACM symposium on
   Theory of computing}, pages 485--494. ACM, 1993.
+
+\bibitem{k-ealdp-89}
+Y.~Ke.
+\newblock An efficient algorithm for link-distance problems.
+\newblock In {\em Proc. 5th Annu. Sympos. Comput. Geom. (SoCG'89)}, pages
+  69--78, 1989.
 
 \bibitem{lee1984euclidean}
 D.-T. Lee and F.~P. Preparata.
@@ -47,20 +87,43 @@ J.~Matou\v{s}ek.
 
 \bibitem{megiddo1982linear}
 N.~Megiddo.
-\newblock Linear-time algorithms for linear programming in r3 and related
-  problems.
-\newblock In {\em Foundations of Computer Science, 1982. FOCS'08. 23rd Annual
-  Symposium on}, pages 329--338. IEEE, 1982.
+\newblock Linear-time algorithms for linear programming in $\mathbb{R}^3$ and
+  related problems.
+\newblock {\em SIAM Journal on Computing}, 12(4):759--776, 1983.
 
 \bibitem{megiddo1989ball}
 N.~Megiddo.
 \newblock On the ball spanned by balls.
 \newblock {\em Discrete \& Computational Geometry}, 4(1):605--610, 1989.
 
+\bibitem{m-gspno-00}
+J.~S.~B. Mitchell.
+\newblock Geometric shortest paths and network optimization.
+\newblock In J.-R. Sack and J.~Urrutia, editors, {\em Handbook of Computational
+  Geometry}, pages 633--701. Elsevier, 2000.
+
+\bibitem{ns-crldp-91}
+B.~Nilsson and S.~Schuierer.
+\newblock Computing the rectilinear link diameter of a polygon.
+\newblock In {\em Proc. Int. Workshop on Computational Geometry-Methods,
+  Algorithms and Applications (CG'91)}, volume 553 of {\em LNCS}, pages
+  203--215, 1991.
+
+\bibitem{ns-oarlcrp-96}
+B.~Nilsson and S.~Schuierer.
+\newblock An optimal algorithm for the rectilinear link center of a rectilinear
+  polygon.
+\newblock {\em Comput. Geom.: Theory and Appl.}, 6:169--194, 1996.
+
 \bibitem{pollackComputingCenter}
 R.~Pollack, M.~Sharir, and G.~Rote.
 \newblock Computing the geodesic center of a simple polygon.
 \newblock {\em Discrete \& Computational Geometry}, 4(1):611--626, 1989.
+
+\bibitem{suri-mlpprp-87}
+S.~Suri.
+\newblock {\em Minimum Link Paths in Polygons and Related Problems}.
+\newblock PhD thesis, Johns Hopkins Univ., 1987.
 
 \bibitem{suri1989computing}
 S.~Suri.

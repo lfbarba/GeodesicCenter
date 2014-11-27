@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 NOV 2014 15:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 NOV 2014 14:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -828,14 +828,32 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@authors=\count131
 \c@affil=\count132
 ))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count133
+\output=\toks38
+\linenoprevgraf=\count134
+\linenumbersep=\dimen143
+\linenumberwidth=\dimen144
+\c@linenumber=\count135
+\c@pagewiselinenumber=\count136
+\c@LN@truepage=\count137
+\c@internallinenumber=\count138
+\c@internallinenumbers=\count139
+\quotelinenumbersep=\dimen145
+\bframerule=\dimen146
+\bframesep=\dimen147
+\bframebox=\box32
+LaTeX Info: Redefining \\ on input line 3056.
+)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
-\MT@toks=\toks38
-\MT@count=\count133
+\MT@toks=\toks39
+\MT@count=\count140
 LaTeX Info: Redefining \textls on input line 766.
-\MT@outer@kern=\dimen143
+\MT@outer@kern=\dimen148
 LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
-\MT@listname@count=\count134
+\MT@listname@count=\count141
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -852,45 +870,45 @@ File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
 (./GeodesicCenter.aux)
 \openout1 = `GeodesicCenter.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 46.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 49.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 46.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 49.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count135
-\scratchdimen=\dimen144
-\scratchbox=\box32
-\nofMPsegments=\count136
-\nofMParguments=\count137
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count138
-\MPscratchDim=\dimen145
-\MPnumerator=\count139
-\makeMPintoPDFobject=\count140
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count142
+\scratchdimen=\dimen149
+\scratchbox=\box33
+\nofMPsegments=\count143
+\nofMParguments=\count144
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count145
+\MPscratchDim=\dimen150
+\MPnumerator=\count146
+\makeMPintoPDFobject=\count147
+\everyMPtoPDFconversion=\toks41
 ) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -906,16 +924,16 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count141
+\c@lstlisting=\count148
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             macros/latex/contrib/pageslts/ 
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 46.
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring OFF on input line 46.
+(lastpage)             ! on input line 49.
+\AtBeginShipoutBox=\box34
+Package hyperref Info: Link coloring OFF on input line 49.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -923,11 +941,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count142
+\c@section@level=\count149
 )
-LaTeX Info: Redefining \ref on input line 46.
-LaTeX Info: Redefining \pageref on input line 46.
-LaTeX Info: Redefining \nameref on input line 46.
+LaTeX Info: Redefining \ref on input line 49.
+LaTeX Info: Redefining \pageref on input line 49.
+LaTeX Info: Redefining \nameref on input line 49.
 
 (./GeodesicCenter.out) (./GeodesicCenter.out)
 \@outlinefile=\write4
@@ -937,7 +955,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \microtypecontext on input line 46.
+LaTeX Info: Redefining \microtypecontext on input line 49.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -952,7 +970,7 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 48.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 51.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -961,35 +979,35 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 48.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 51.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 48.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 51.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 48.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 51.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 48.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 51.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 48.
+(Font)              <10> on input line 51.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 48.
+(Font)              <7> on input line 51.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 48.
-LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+(Font)              <5> on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 51.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -997,7 +1015,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2014/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1006,148 +1024,160 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 48.
+(Font)              <12> on input line 51.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 48.
+(Font)              <8> on input line 51.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 48.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 48.
+(Font)              <6> on input line 51.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 51.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9.5> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 48.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 51.
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 \openout3 = `GeodesicCenter.vtc'.
 
-LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 51.
+LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 54.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9.5> on input line 51.
+(Font)              <9.5> on input line 54.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6.64996> on input line 51.
+(Font)              <6.64996> on input line 54.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <4.75> on input line 51.
+(Font)              <4.75> on input line 54.
 
-Underfull \vbox (badness 1226) has occurred while \output is active []
-
-
-<cc-by.pdf, id=56, 88.33pt x 31.11626pt>
+<cc-by.pdf, id=71, 88.33pt x 31.11626pt>
 File: cc-by.pdf Graphic file (type pdf)
  <use cc-by.pdf>
-Package pdftex.def Info: cc-by.pdf used on input line 80.
+Package pdftex.def Info: cc-by.pdf used on input line 104.
 (pdftex.def)             Requested size: 39.74274pt x 14.0pt.
 
-<lipics-logo-bw.pdf, id=59, 591.44762pt x 144.42657pt>
+<lipics-logo-bw.pdf, id=74, 591.44762pt x 144.42657pt>
 File: lipics-logo-bw.pdf Graphic file (type pdf)
 
 <use lipics-logo-bw.pdf>
-Package pdftex.def Info: lipics-logo-bw.pdf used on input line 80.
+Package pdftex.def Info: lipics-logo-bw.pdf used on input line 104.
 (pdftex.def)             Requested size: 64.00354pt x 14.0pt.
  [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./cc-by
-.pdf> <./lipics-logo-bw.pdf>]
-<img/TransitionChains.pdf, id=93, 531.4229pt x 266.79756pt>
+.pdf> <./lipics-logo-bw.pdf>] [2]
+Underfull \vbox (badness 5359) has occurred while \output is active []
+
+ [3]
+<img/TransitionChains.pdf, id=153, 409.15862pt x 213.95834pt>
 File: img/TransitionChains.pdf Graphic file (type pdf)
 
 <use img/TransitionChains.pdf>
-Package pdftex.def Info: img/TransitionChains.pdf used on input line 91.
-(pdftex.def)             Requested size: 398.33858pt x 199.98775pt.
- [2 <./img/TransitionChains.pdf>]
-<img/OrderAndFunnel.pdf, id=121, 594.01225pt x 304.38327pt>
+Package pdftex.def Info: img/TransitionChains.pdf used on input line 166.
+(pdftex.def)             Requested size: 398.33858pt x 208.30002pt.
+ [4 <./img/TransitionChains.pdf>]
+<img/OrderAndFunnel.pdf, id=185, 440.34514pt x 223.88142pt>
 File: img/OrderAndFunnel.pdf Graphic file (type pdf)
 
 <use img/OrderAndFunnel.pdf>
-Package pdftex.def Info: img/OrderAndFunnel.pdf used on input line 117.
-(pdftex.def)             Requested size: 398.33858pt x 204.11687pt.
- [3 <./img/OrderAndFunnel.pdf>] [4]
-<img/MarkedVertices.pdf, id=159, 593.86981pt x 251.16104pt>
+Package pdftex.def Info: img/OrderAndFunnel.pdf used on input line 191.
+(pdftex.def)             Requested size: 398.33858pt x 202.52309pt.
+ [5 <./img/OrderAndFunnel.pdf>]
+
+LaTeX Warning: Reference `' on page 6 undefined on input line 253.
+
+[6] [7] <img/MarkedVertices.pdf, id=240, 462.18561pt x 158.92174pt>
 File: img/MarkedVertices.pdf Graphic file (type pdf)
 
 <use img/MarkedVertices.pdf>
-Package pdftex.def Info: img/MarkedVertices.pdf used on input line 225.
-(pdftex.def)             Requested size: 398.33858pt x 168.47246pt.
- [5] [6 <./img/MarkedVertices.pdf>] [7]
-<img/HourglassCover.pdf, id=198, 578.80302pt x 244.15044pt>
+Package pdftex.def Info: img/MarkedVertices.pdf used on input line 330.
+(pdftex.def)             Requested size: 398.33858pt x 136.97556pt.
+ [8 <./img/MarkedVertices.pdf>] [9]
+<img/HourglassCover.pdf, id=270, 477.27519pt x 200.33244pt>
 File: img/HourglassCover.pdf Graphic file (type pdf)
 
 <use img/HourglassCover.pdf>
-Package pdftex.def Info: img/HourglassCover.pdf used on input line 329.
-(pdftex.def)             Requested size: 398.33858pt x 168.03183pt.
- [8 <./img/HourglassCover.pdf>]
+Package pdftex.def Info: img/HourglassCover.pdf used on input line 423.
+(pdftex.def)             Requested size: 398.33858pt x 167.20514pt.
+ [10 <./img/HourglassCover.pdf>]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 360.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 453.
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 360.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 453.
 
- [9]
-<img/FunnelCover.pdf, id=226, 595.72832pt x 406.67552pt>
+ [11]
+<img/FunnelCover.pdf, id=313, 491.30049pt x 366.74718pt>
 File: img/FunnelCover.pdf Graphic file (type pdf)
 
 <use img/FunnelCover.pdf>
-Package pdftex.def Info: img/FunnelCover.pdf used on input line 429.
-(pdftex.def)             Requested size: 398.33858pt x 271.9251pt.
- [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./img/FunnelCover.pdf>] [12]
-<img/CuttingOfChords.pdf, id=262, 568.45572pt x 194.67651pt>
+Package pdftex.def Info: img/FunnelCover.pdf used on input line 527.
+(pdftex.def)             Requested size: 398.33858pt x 297.36017pt.
+ [12] [13 <./img/FunnelCover.pdf>] [14]
+<img/CuttingOfChords.pdf, id=360, 538.41153pt x 165.61874pt>
 File: img/CuttingOfChords.pdf Graphic file (type pdf)
 
 <use img/CuttingOfChords.pdf>
-Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 518.
-(pdftex.def)             Requested size: 398.33858pt x 136.42114pt.
- [13 <./img/CuttingOfChords.pdf>] [14] [15]
-[16] (./GeodesicCenter.bbl) 
+Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 616.
+(pdftex.def)             Requested size: 398.33858pt x 122.53067pt.
+ [15 <./img/CuttingOfChords.pdf>] [16] [17]
+[18] (./GeodesicCenter.bbl [19]) 
 AED: lastpage setting LastPage
-[17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 661.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 661.
+[20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 759.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 759.
  (./GeodesicCenter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 661.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 661.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 759.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 759.
 Package rerunfilecheck Info: File `GeodesicCenter.out' has not changed.
-(rerunfilecheck)             Checksum: CD3EAC8C5FB57B09A0E852C36A75441B;849.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 661.
+(rerunfilecheck)             Checksum: BECDD49419978334E598FE4C075B9966;1023.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 759.
  ) 
 Here is how much of TeX's memory you used:
- 12492 strings out of 493117
- 188846 string characters out of 6135433
- 313763 words of memory out of 5000000
- 15436 multiletter control sequences out of 15000+600000
- 133516 words of font info for 187 fonts, out of 8000000 for 9000
+ 12761 strings out of 493117
+ 192838 string characters out of 6135433
+ 319716 words of memory out of 5000000
+ 15657 multiletter control sequences out of 15000+600000
+ 137601 words of font info for 201 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,17n,40p,999b,437s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,17n,40p,999b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
 cal/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/20
 14/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2014/texmf-d
 ist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/
-dvips/lm/lm-mathit.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/l
-m/lmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.p
-fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr
-5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/lm/lmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/lm/lmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtk10
-.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
-am10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbol
-s/msbm10.pfb>
-Output written on GeodesicCenter.pdf (17 pages, 829468 bytes).
+dvips/lm/lm-mathit.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/lm/lmmi5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/lm/lmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr10.p
+fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2014/texmf-dist/fonts/
+type1/public/lm/lmssbo10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/lm/lmssbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/
+lmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy5.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on GeodesicCenter.pdf (20 pages, 571682 bytes).
 PDF statistics:
- 401 PDF objects out of 1000 (max. 8388607)
- 339 compressed objects within 4 object streams
- 68 named destinations out of 1000 (max. 500000)
- 33431 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 438 compressed objects within 5 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 33967 words of extra memory for PDF output out of 35830 (max. 10000000)
 
