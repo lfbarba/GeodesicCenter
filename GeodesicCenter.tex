@@ -52,10 +52,8 @@
 
 \begin{abstract}
 Let $P$ be a simple polygon with $n$ vertices. 
-The geodesic center of $P$ is the point inside $P$ that minimizes the geodesic distance to its farthest neighbor. 
-The best known algorithm to compute the geodesic center of $P$ runs in $O(n \log n)$ time and was presented in 1989. 
-Since then, improving this running time has been a longstanding open problem.
-In this paper, we show how to compute the geodesic center of $P$ in $O(n)$ time.
+Given two points in $P$, its geodesic distance is the length of the shortest path that connects them among all paths that stay within $P$. The  geodesic center of $P$ is the unique point in $P$ that minimizes the largest geodesic distance to all other points of $P$. In 1989, Pollack, Sharir and Rote [Disc. \& Comput. Geom. 89] showed an $O(n\log n)$-time algorithm to compute the geodesic center of $P$. Since then, a longstanding question, posed also by Mitchell [Handbook of Computational Geometry, 2000],  has been whether this running time can be improved. 
+In this paper, we affirmatively answer this question and present a linear time algorithm to solve this problem.
 \end{abstract}
 
 
@@ -163,7 +161,7 @@ We call $C$ and $\partial P(\ff{p_0}, \ff{p_k})$ the \emph{top} and \emph{bottom
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=1\textwidth]{img/TransitionChains.pdf}
+\includegraphics{img/TransitionChains.pdf}
 \caption{\small }
 \label{fig:Transition chains and hourglasses}
 \end{figure}
@@ -188,8 +186,8 @@ Let $C_1, C_2, C_3$ be three edge disjoint transition chains of $\partial P$ tha
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=1\textwidth]{img/OrderAndFunnel.pdf}
-%[width=1\textwidth]
+\includegraphics{img/OrderAndFunnel.pdf}
+
 \caption{\small }
 \label{fig:Order Lemma And Funnels}
 \end{figure}
@@ -235,28 +233,51 @@ Analogous arguments can be used to bound the total number of walls that contain 
 
 \begin{lemma}\label{lemma:Suri's lemma}
 Let $x, u, y, v$ be four vertices of $P$ that appear in this cyclic order in a clockwise traversal of $\partial P$.
-Given the shortest-path trees $T_x$ and $T_y$ of $x$ and $y$ in $P$, 
+Given the shortest-path trees $T_x$ and $T_y$ of $x$ and $y$ in $P$, respectively, such that $T_x$ and $T_y$ can answer lowest common ancestor (LCA) queries in $O(1)$ time, 
 we can compute the path $\p{u}{v}$ in $O(|\p{u}{v}|)$ time. 
 Moreover, all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 \end{lemma}
 \begin{proof}
-Assume that $T_x$ and $T_y$ are rooted at $x$ and $y$, respectively.
-Let $w, v_1$ and $v_2$ be three vertices of $P$ and let $w = x_1, \ldots, x_k = v_1$ be the vertices along the path $\p{u}{y}$ in order. The \emph{$v_1$-$v_2$-splitting point} of $w$ is the vertex $x_i$ with the largest index such that $x_i$ is also in the path $\p{w}{v_2}$.
+Let $X$ (\emph{resp.} $Y$) be the set containing the LCA in $T_x$ (\emph{resp.} $T_y$) of $u,y$, and of $v,y$ (\emph{resp.} $u,x$ and $x,y$).
+Note that $X$ and $Y$ can be computed in $O(1)$ time.
+Moreover, using LCA queries, we can decide their order along the path $\p{x}{y}$ when ordered from $x$ to $y$. Two cases arise: 
 
-Let $u'$  and $v'$ be the $x$-$y$-splitting points of $u$ and $v$, respectively.
-Let $x'$ and $y'$ be the $u$-$v$-splitting points of $x$ and $y$, respectively.
-Let $P'$ be the simple polygon bounded by the geodesic paths $\p{u'}{y'}, \p{y'}{v'}, \p{v'}{x'}$ and $\p{x'}{u'}$.
+\textbf{Case 1.} If there is a vertex  $x^*\in X$ lying after a vertex $y^*\in Y$ in the order imprinted in $\p{x}{y}$, 
+then the path $\p{u}{v}$ contains the path $\p{x^*}{y^*}$. 
+In this case, the reader can verify that the path from $u$ to $v$ is contained in $T_x\cup T_y$. 
+Moreover, it be computed in time proportional to its length by consider a couple of cases depending on which vertices defined $x^*$ and $y^*$; see Figure~\ref{fig:Output Sensitive Algorithm}.
+
+\textbf{Case 2.} In this case both vertices of $X$ appear before the vertices of $Y$ along $\p{x}{y}$.
+Let $x'$ (\emph{resp.} $y'$) be the vertex of $X$ (\emph{resp.} $Y$) closest to $x$ (\emph{resp.} $y$). 
+
+Let $u'$ be the last vertex of $\p{u}{x}$ that is also in $\p{u}{y}$.
+Note that $u'$ can be constructed by walking from $u'$ towards $x$ $y$ until the path towards $y$ diverges. 
+Thus, $u'$ can be computed in $O(|\p{u}{u'}|)$ time. 
+Define $v'$ analogously and compute it in $O(|\p{v}{v'}|)$ time.
+
+Let $P'$ be the polygon bounded by the geodesic paths $\p{x'}{u'}, \p{u'}{y'}, \p{y'}{v'}$ and  $\p{v'}{x'}$.
+Because the vertices of $X$ appear before those of $Y$ along $\p{x}{y}$, $P'$ is a simple polygon; see Figure~\ref{fig:Output Sensitive Algorithm}.
+
 Note that the path $\p{u}{y}$ is the union of three paths $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
-Because $\p{u}{u'}$ (and analogously $\p{v'}{v}$) can be computed in time $O(|\p{u}{u'}|)$ by moving up in both trees $T_x$ and $T_y$ until the edges to follow are different, we need only to compute $\p{u'}{v'}$ in time proportional to its length.
+Because $\p{u}{u'}$ and  $\p{v'}{v}$ can be computed in time proportional to its length, it suffices to compute $\p{u'}{v'}$ in $O(|$\p{u'}{v'}$|)$ time.
 
-Note that $P'$ is a pseudo-quadrilateral, i.e., it is a polygon with only four convex vertices $x',u', y'$ and $v'$ connected by chains of reflex vertices. 
-Notice that there could be degenerate cases where $P'$ is a pseudo triangle or a degenerate polygon if $u'$ (or $v'$) coincides with $x'$ or $y'$; see Figure~\ref{}. 
+Note that $P'$ is a simple polygon with only four convex vertices $x',u', y'$ and $v'$ connected by chains of reflex vertices. 
 Regardless of the case, the shortest path from $x'$ to $y'$ can have at most one diagonal edge connecting distinct reflex chains of $P'$. Since the rest of the points in $\p{u'}{v'}$ lie on the boundary of $P'$ and from the fact that each edge of $P'$ is an edge of $T_x\cup T_y$, we conclude all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 
 We want to find the common tangent between the reflex paths $\p{u'}{x'}$ and $\p{v'}{y'}$, or the common tangent of $\p{u'}{y'}$ and $\p{v'}{x'}$ as one of them belongs to the shortest path $\p{u'}{v'}$.
 Assume that the desired tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$. 
 Since this paths consist only of reflex vertices, the problem can be reduced to finding the common tangent of two convex polygons. By slightly modifying the trivial linear time algorithm, we can make it run in $O(|\p{u'}{v'}|)$ time. 
+
+Since we do not know if the tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$, we process the chains $\p{u'}{y'}$ and $\p{v'}{x'}$ in parallel and stop when finding the desired tangent. Consequently, we can compute the path $\p{u}{v}$ in time proportional to ints length. 
 \end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=1\textwidth]{img/OutputSensitive.pdf}
+
+\caption{\small }
+\label{fig:Output Sensitive Algorithm}
+\end{figure}
 
 
 \begin{lemma}\label{lemma:Bounding complexity of hourglasses}
@@ -327,8 +348,8 @@ Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ ap
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=1\textwidth]{img/MarkedVertices.pdf}
-%[width=1\textwidth]
+\includegraphics{img/MarkedVertices.pdf}
+
 \caption{\small }
 \label{fig:Marked vertices decomposition}
 \end{figure}
@@ -420,8 +441,8 @@ Therefore, for each visible vertex $v$, we obtain a triangle $\triangle_v$ as sh
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=1\textwidth]{img/HourglassCover.pdf}
-%[width=1\textwidth]
+\includegraphics{img/HourglassCover.pdf}
+
 \caption{\small }
 \label{fig:Hourglass Cover}
 \end{figure}
@@ -524,8 +545,8 @@ We now modify the tree $T_v$ by removing the edge $w_1w_2$ and adding the edge $
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=1\textwidth]{img/FunnelCover.pdf}
-%[width=1\textwidth]
+\includegraphics{img/FunnelCover.pdf}
+
 \caption{\small }
 \label{fig:Funnel Cover}
 \end{figure}
@@ -613,8 +634,8 @@ Since only $O(1)$ ray-shootings are performed, this can be done in additional $O
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=1\textwidth]{img/CuttingOfChords.pdf}
-%[width=1\textwidth]
+\includegraphics{img/CuttingOfChords.pdf}
+
 \caption{\small }
 \label{fig:Cutting of Chords}
 \end{figure}
