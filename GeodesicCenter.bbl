@@ -44,6 +44,12 @@ H.~Djidjev, A.~Lingas, and J.-R. Sack.
   polygon.
 \newblock {\em Discrete Comput. Geom.}, 8:131--152, 1992.
 
+\bibitem{edelsbrunner1990simulation}
+H.~Edelsbrunner and E.~P. M{\"u}cke.
+\newblock Simulation of simplicity: a technique to cope with degenerate cases
+  in geometric algorithms.
+\newblock {\em ACM Transactions on Graphics (TOG)}, 9(1):66--104, 1990.
+
 \bibitem{guibasShortestPathTree}
 L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
 \newblock Linear-time algorithms for visibility and shortest path problems
@@ -84,12 +90,6 @@ J.~Matou\v{s}ek.
 \newblock Construction of epsilon nets.
 \newblock In {\em Proceedings of the 5th Annual Symposium on Computational
   Geometry}, pages 1--10, New York, 1989. ACM.
-
-\bibitem{megiddo1982linear}
-N.~Megiddo.
-\newblock Linear-time algorithms for linear programming in $\mathbb{R}^3$ and
-  related problems.
-\newblock {\em SIAM Journal on Computing}, 12(4):759--776, 1983.
 
 \bibitem{megiddo1989ball}
 N.~Megiddo.

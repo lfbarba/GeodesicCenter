@@ -5,42 +5,42 @@ The style file: abbrv.bst
 Database file #1: Geodesic.bib
 You've used 23 entries,
             2118 wiz_defined-function locations,
-            637 strings with 7214 characters,
-and the built_in function-call counts, 8396 in all, are:
-= -- 869
-> -- 297
+            636 strings with 7281 characters,
+and the built_in function-call counts, 8433 in all, are:
+= -- 874
+> -- 303
 < -- 11
-+ -- 123
-- -- 94
-* -- 552
-:= -- 1316
++ -- 125
+- -- 96
+* -- 556
+:= -- 1322
 add.period$ -- 74
 call.type$ -- 23
-change.case$ -- 114
+change.case$ -- 115
 chr.to.int$ -- 0
 cite$ -- 23
 duplicate$ -- 354
-empty$ -- 711
-format.name$ -- 94
-if$ -- 1828
+empty$ -- 710
+format.name$ -- 96
+if$ -- 1833
 int.to.chr$ -- 0
 int.to.str$ -- 23
 missing$ -- 21
 newline$ -- 118
 num.names$ -- 48
-pop$ -- 120
+pop$ -- 121
 preamble$ -- 1
-purify$ -- 92
+purify$ -- 93
 quote$ -- 0
-skip$ -- 259
+skip$ -- 260
 stack$ -- 0
-substring$ -- 643
+substring$ -- 644
 swap$ -- 106
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 92
 warning$ -- 0
-while$ -- 93
+while$ -- 94
 width$ -- 25
 write$ -- 261
