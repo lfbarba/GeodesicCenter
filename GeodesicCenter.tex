@@ -15,7 +15,7 @@
 \title{A linear-time algorithm for the geodesic center of a simple polygon}
 \titlerunning{A linear-time algorithm for the geodesic center of a simple polygon} %optional, in case that the title is too long; the running title should fit into the top page column
 
-\author[1]{Some Authors}
+\author[1]{Some Authors \thanks{Grants}}
 
 \affil[1]{Dummy University Computing Laboratory\\
   Address, Country\\
@@ -81,6 +81,8 @@ We can assume this \emph{general position} using simulation of simplicity~\cite{
 
 Let $\F{P}{x}$ be the function that, for each $x\in P$, maps to the distance to a farthest neighbor of $x$ (i.e., $\F{P}{x} = \g{x}{\ff{x}}$).
 A point $\cp\in P$ that minimizes $\F{P}{x}$ is called the \emph{geodesic center} of $P$. Similarly, a point $s\in P$ that maximizes $\F{P}{x}$ (together with its farthest neighbor) is called a \emph{geodesic diametral pair} and their distance is known as the \emph{geodesic diameter}. Asano and Toussaint~\cite{at-cgcsp-85} showed that the geodesic center is unique (whereas it is easy to see that several geodesic diametral pairs may exist).
+
+In this paper, we show how to compute the geodesic center of $P$ in $O(n)$ time.
 
 \subsection{Previous Work}
 Since the early 80s the problem of computing the geodesic center (and its counterpart, the geodesic diameter) has received a lot of attention from the computational geometry community. Chazelle~\cite{c-tpca-82} gave the first algorithm for computing the geodesic diameter (which runs in $O(n^2)$ time using linear space). Afterwards, Suri~\cite{suri1989computing} reduced it to $O(n\log n)$-time without increasing the space constraints. Finally, Hershberger and Suri~\cite{hershberger1993matrix} presented a fast matrix search technique one of whose applications was a linear-time algorithm for computing the diameter.

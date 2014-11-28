@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 NOV 2014 16:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 NOV 2014 16:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1042,6 +1042,19 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             See the microtype manual for details.
 \openout3 = `GeodesicCenter.vtc'.
 
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 63.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8.5> on input line 63.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5.94997> on input line 63.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <4.25> on input line 63.
+LaTeX Font Info:    Calculating math sizes for size <5.94997> on input line 63.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <4.16495> on input line 63.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <2.97498> on input line 63.
 LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 66.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9.5> on input line 66.
@@ -1053,102 +1066,94 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 <cc-by.pdf, id=70, 88.33pt x 31.11626pt>
 File: cc-by.pdf Graphic file (type pdf)
  <use cc-by.pdf>
-Package pdftex.def Info: cc-by.pdf used on input line 87.
+Package pdftex.def Info: cc-by.pdf used on input line 89.
 (pdftex.def)             Requested size: 39.74274pt x 14.0pt.
 
 <lipics-logo-bw.pdf, id=73, 591.44762pt x 144.42657pt>
 File: lipics-logo-bw.pdf Graphic file (type pdf)
 
 <use lipics-logo-bw.pdf>
-Package pdftex.def Info: lipics-logo-bw.pdf used on input line 87.
+Package pdftex.def Info: lipics-logo-bw.pdf used on input line 89.
 (pdftex.def)             Requested size: 64.00354pt x 14.0pt.
  [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./cc-by
 .pdf> <./lipics-logo-bw.pdf>] [2]
-<img/TransitionChains.pdf, id=147, 331.46053pt x 105.993pt>
+<img/TransitionChains.pdf, id=149, 331.46053pt x 105.993pt>
 File: img/TransitionChains.pdf Graphic file (type pdf)
 
 <use img/TransitionChains.pdf>
-Package pdftex.def Info: img/TransitionChains.pdf used on input line 158.
+Package pdftex.def Info: img/TransitionChains.pdf used on input line 160.
 (pdftex.def)             Requested size: 331.45972pt x 105.99272pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 159.
+(Font)              <9> on input line 161.
  [3]
-<img/OrderAndFunnel.pdf, id=162, 354.43709pt x 116.55545pt>
+<img/OrderAndFunnel.pdf, id=163, 354.43709pt x 116.55545pt>
 File: img/OrderAndFunnel.pdf Graphic file (type pdf)
 
 <use img/OrderAndFunnel.pdf>
-Package pdftex.def Info: img/OrderAndFunnel.pdf used on input line 183.
+Package pdftex.def Info: img/OrderAndFunnel.pdf used on input line 185.
 (pdftex.def)             Requested size: 354.4362pt x 116.55515pt.
  [4 <./img/TransitionChains.pdf> <./img/OrderAndFunnel.pdf>] [5] <img/OutputSen
-sitive.pdf, id=220, 368.66113pt x 188.75217pt>
+sitive.pdf, id=222, 368.66113pt x 188.75217pt>
 File: img/OutputSensitive.pdf Graphic file (type pdf)
 
 <use img/OutputSensitive.pdf>
-Package pdftex.def Info: img/OutputSensitive.pdf used on input line 268.
+Package pdftex.def Info: img/OutputSensitive.pdf used on input line 270.
 (pdftex.def)             Requested size: 368.66023pt x 188.7517pt.
  [6 <./img/OutputSensitive.pdf>] [7]
-<img/MarkedVertices.pdf, id=261, 379.66733pt x 118.6051pt>
+<img/MarkedVertices.pdf, id=263, 379.66733pt x 118.6051pt>
 File: img/MarkedVertices.pdf Graphic file (type pdf)
 
 <use img/MarkedVertices.pdf>
-Package pdftex.def Info: img/MarkedVertices.pdf used on input line 346.
+Package pdftex.def Info: img/MarkedVertices.pdf used on input line 348.
 (pdftex.def)             Requested size: 379.6664pt x 118.6048pt.
  [8 <./img/MarkedVertices.pdf>] [9]
-<img/HourglassCover.pdf, id=291, 368.45564pt x 125.97565pt>
+<img/HourglassCover.pdf, id=292, 368.45564pt x 125.97565pt>
 File: img/HourglassCover.pdf Graphic file (type pdf)
 
 <use img/HourglassCover.pdf>
-Package pdftex.def Info: img/HourglassCover.pdf used on input line 440.
+Package pdftex.def Info: img/HourglassCover.pdf used on input line 442.
 (pdftex.def)             Requested size: 368.45474pt x 125.97533pt.
  [10 <./img/HourglassCover.pdf>]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 470.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 472.
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 470.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 472.
 
  [11]
-<img/FunnelCover.pdf, id=328, 377.07973pt x 265.59927pt>
+<img/FunnelCover.pdf, id=330, 377.07973pt x 265.59927pt>
 File: img/FunnelCover.pdf Graphic file (type pdf)
 
 <use img/FunnelCover.pdf>
-Package pdftex.def Info: img/FunnelCover.pdf used on input line 544.
+Package pdftex.def Info: img/FunnelCover.pdf used on input line 546.
 (pdftex.def)             Requested size: 377.0788pt x 265.59862pt.
  [12] [13 <./img/FunnelCover.pdf>] [14]
-<img/CuttingOfChords.pdf, id=371, 368.8761pt x 115.01068pt>
+<img/CuttingOfChords.pdf, id=373, 368.8761pt x 115.01068pt>
 File: img/CuttingOfChords.pdf Graphic file (type pdf)
 
 <use img/CuttingOfChords.pdf>
-Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 638.
+Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 640.
 (pdftex.def)             Requested size: 368.8752pt x 115.01039pt.
  [15 <./img/CuttingOfChords.pdf>] [16] [17]
-(./GeodesicCenter.bbl
-Underfull \vbox (badness 3849) has occurred while \output is active []
-
- [18]
-[19]) 
+[18] (./GeodesicCenter.bbl [19]) 
 AED: lastpage setting LastPage
 [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 783.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 783.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 785.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 785.
  (./GeodesicCenter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 783.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 783.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 785.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 785.
 Package rerunfilecheck Info: File `GeodesicCenter.out' has not changed.
 (rerunfilecheck)             Checksum: 985B466136DD7625138C44E26883D1BD;974.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 783.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 785.
  ) 
 Here is how much of TeX's memory you used:
- 12812 strings out of 493117
- 193559 string characters out of 6135433
- 321632 words of memory out of 5000000
- 15687 multiletter control sequences out of 15000+600000
- 145876 words of font info for 216 fonts, out of 8000000 for 9000
+ 12896 strings out of 493117
+ 195207 string characters out of 6135433
+ 321677 words of memory out of 5000000
+ 15761 multiletter control sequences out of 15000+600000
+ 178650 words of font info for 249 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,17n,40p,1081b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
@@ -1161,34 +1166,35 @@ sfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pf
-b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/lm/lmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmm
-i7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></us
-r/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/lm/lmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
-0.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr
-/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/lm/lmsy6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/lm/lmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy9.
-pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
-b>
-Output written on GeodesicCenter.pdf (20 pages, 640659 bytes).
+m/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbsy10.p
+fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbsy5.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/lm/lmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/
+lmmi5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/lm/lmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/
+lmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr9.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/lm/lmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lms
+y6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on GeodesicCenter.pdf (20 pages, 646186 bytes).
 PDF statistics:
- 540 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
+ 548 PDF objects out of 1000 (max. 8388607)
+ 458 compressed objects within 5 object streams
  85 named destinations out of 1000 (max. 500000)
- 36524 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 42668 words of extra memory for PDF output out of 42996 (max. 10000000)
 
