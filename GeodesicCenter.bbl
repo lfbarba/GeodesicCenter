@@ -18,31 +18,29 @@ T.~Asano and G.~Toussaint.
 \bibitem{bko-gdpd-13}
 S.~W. Bae, M.~Korman, and Y.~Okamoto.
 \newblock The geodesic diameter of polygonal domains.
-\newblock {\em Discrete Comput. Geom.}, 50(2):306--329, 2013.
+\newblock {\em Discrete \& Computational Geometry}, 50(2):306--329, 2013.
 
 \bibitem{bko-cgcpd-14}
 S.~W. Bae, M.~Korman, and Y.~Okamoto.
 \newblock Computing the geodesic centers of a polygonal domain.
-\newblock In {\em Proc. 26th Canadian Conf. on Comput. Geom.}, 2014.
+\newblock In {\em Proceedings of CCCG}, 2014.
 
 \bibitem{bkow-clgdcsplt-13}
 S.~W. Bae, M.~Korman, Y.~Okamoto, and H.~Wang.
 \newblock Computing the ${L}_1$ geodesic diameter and center of a simple
   polygon in linear time.
-\newblock In {\em Proc. 11th Latin American Theor. Infor. Sympos.}, pages
-  120--131, 2014.
+\newblock In {\em Proceedings of LATIN}, pages 120--131, 2014.
 
 \bibitem{c-tpca-82}
 B.~Chazelle.
 \newblock A theorem on polygon cutting with applications.
-\newblock In {\em Proc. 23rd Annu. Sympos. Found. Comput. Sci. (FOCS'82)},
-  pages 339--349, 1982.
+\newblock In {\em Proceedings of FOCS}, pages 339--349, 1982.
 
 \bibitem{dls-aclcsp-92}
 H.~Djidjev, A.~Lingas, and J.-R. Sack.
 \newblock An {$O(n\log n)$} algorithm for computing the link center of a simple
   polygon.
-\newblock {\em Discrete Comput. Geom.}, 8:131--152, 1992.
+\newblock {\em Discrete \& Computational Geometry}, 8:131--152, 1992.
 
 \bibitem{edelsbrunner1990simulation}
 H.~Edelsbrunner and E.~P. M{\"u}cke.
@@ -59,20 +57,22 @@ L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
 \bibitem{guibasShortestPathQueries}
 L.~J. Guibas and J.~Hershberger.
 \newblock Optimal shortest path queries in a simple polygon.
-\newblock In {\em Proceedings of the third annual symposium on Computational
-  geometry}, pages 50--63. ACM, 1987.
+\newblock In {\em Proceedings of STOC}, pages 50--63. ACM, 1987.
+
+\bibitem{harel1984fast}
+D.~Harel and R.~E. Tarjan.
+\newblock Fast algorithms for finding nearest common ancestors.
+\newblock {\em SIAM Journal on Computing}, 13(2):338--355, 1984.
 
 \bibitem{hershberger1993matrix}
 J.~Hershberger and S.~Suri.
 \newblock Matrix searching with the shortest path metric.
-\newblock In {\em Proceedings of the twenty-fifth annual ACM symposium on
-  Theory of computing}, pages 485--494. ACM, 1993.
+\newblock In {\em Proceedings of STOC}, pages 485--494. ACM, 1993.
 
 \bibitem{k-ealdp-89}
 Y.~Ke.
 \newblock An efficient algorithm for link-distance problems.
-\newblock In {\em Proc. 5th Annu. Sympos. Comput. Geom. (SoCG'89)}, pages
-  69--78, 1989.
+\newblock In {\em Proceedings of SoCG}, pages 69--78, 1989.
 
 \bibitem{lee1984euclidean}
 D.-T. Lee and F.~P. Preparata.
@@ -82,14 +82,12 @@ D.-T. Lee and F.~P. Preparata.
 \bibitem{matousekCuttings}
 J.~Matou{\v{s}}ek.
 \newblock Approximations and optimal geometric divide-and-conquer.
-\newblock In {\em Proceedings of the twenty-third annual ACM symposium on
-  Theory of computing}, pages 505--511. ACM, 1991.
+\newblock In {\em Proceedings of STOC}, pages 505--511. ACM, 1991.
 
 \bibitem{ConstructionEpsilonNets}
 J.~Matou\v{s}ek.
 \newblock Construction of epsilon nets.
-\newblock In {\em Proceedings of the 5th Annual Symposium on Computational
-  Geometry}, pages 1--10, New York, 1989. ACM.
+\newblock In {\em Proceedings of SoCG}, pages 1--10, New York, 1989. ACM.
 
 \bibitem{megiddo1989ball}
 N.~Megiddo.
@@ -105,15 +103,15 @@ J.~S.~B. Mitchell.
 \bibitem{ns-crldp-91}
 B.~Nilsson and S.~Schuierer.
 \newblock Computing the rectilinear link diameter of a polygon.
-\newblock In {\em Proc. Int. Workshop on Computational Geometry-Methods,
-  Algorithms and Applications (CG'91)}, volume 553 of {\em LNCS}, pages
-  203--215, 1991.
+\newblock In {\em Proceedings of CG}, volume 553 of {\em LNCS}, pages 203--215,
+  1991.
 
 \bibitem{ns-oarlcrp-96}
 B.~Nilsson and S.~Schuierer.
 \newblock An optimal algorithm for the rectilinear link center of a rectilinear
   polygon.
-\newblock {\em Comput. Geom.: Theory and Appl.}, 6:169--194, 1996.
+\newblock {\em Computational Geometry: Theory and Applications}, 6:169--194,
+  1996.
 
 \bibitem{pollackComputingCenter}
 R.~Pollack, M.~Sharir, and G.~Rote.
