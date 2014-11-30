@@ -89,7 +89,7 @@ In this paper, we affirmatively answer this question and present a linear time a
 Let $P$ be a simple polygon with $n$ vertices. 
 Given two points $x,y\in P$, the \emph{geodesic path} $\p{x}{y}$ is the shortest-path contained in $P$ connecting $x$ with $y$. Notice that if the straight-line segment connecting $x$ with $y$ is contained in $P$, then $\p{x}{y}$ is a straight-line segment. Otherwise, $\p{x}{y}$ is a polygonal chain containing only reflex vertices of $P$ other than its endpoints. (For more information on geodesic paths refer to~\cite{m-gspno-00}).
 
-The \emph{geodesic distance} between $x$ and $y$, denoted by $\g{x}{y}$, is the sum of the Euclidean lengths of each segment in $\p{x}{y}$. Throughout this paper, when referring to the distance between two points in $P$, we refer to the geodesic distance between them. Given a point $x\in P$, the (geodesic) \emph{farthest neighbor} of $x$, is the point $\f{P}{x}$ (or simply $\ff{x}$) of $P$ whose geodesic distance to $x$ is maximized. 
+The \emph{geodesic distance} between $x$ and $y$, denoted by $\g{x}{y}$, is the sum of the Euclidean lengths of each segment in $\p{x}{y}$. Throughout this paper, when referring to the distance between two points in $P$, we refer to the geodesic distance between them. Given a point $x\in P$, a (geodesic) \emph{farthest neighbor} of $x$, is a point $\f{P}{x}$ (or simply $\ff{x}$) of $P$ whose geodesic distance to $x$ is maximized. 
 To ease the description, we assume that each vertex of $P$ has a unique farthest neighbor. 
 We can assume this \emph{general position} using simulation of simplicity~\cite{edelsbrunner1990simulation}.
 
@@ -113,7 +113,7 @@ To guide the reader, we provide a rough sketch of our algorithm.
 
 The $O(n \log n)$-time algorithm proposed by Pollack et al.~\cite{pollackComputingCenter} could be summarized as follows: 
 Given a chord $C$ of $P$ that splits the polygon into two sub-polygons, they describe a linear time \emph{chord-oracle} that decides which sub-polygon contains $\cp$. Using this oracle together with the set of chords of a triangulation of $P$, they narrow the search of $P$ to a triangle in which optimization techniques can be used to find $\cp$.
-Their approach however, does not allow them to reduce the complexity of the problem on each iteration and hence it runs in $\Theta(n\log n)$ time. We overcome this issue using the following approach.
+Their approach however, does not allow them to reduce the complexity of the problem in each iteration and hence it runs in $\Theta(n\log n)$ time. We overcome this issue using the following approach.
 
 Our algorithm computes a set of $O(n)$ functions of constant description, 
 each defined in a triangular domain contained in $P$,
@@ -140,7 +140,6 @@ cuttings in $\mathbb{R}^3$ to find the geodesic center in linear time.
 
 As mentioned above, the main idea of the algorithm is to compute a set of triangles whose union covers $P$ such that:
 (1) each triangle has a distance function defined in it and (2) their upper envelope $\phi(x)$ coincides with $\F{P}{x}$.
-
 More formally, for each point $x\in P$, there is one triangle containing $x$ and a function $g$ defined in this triangle, such that $g(x) = \F{P}{x}$. Intuitively, we compute a set of functions that ``shatter'' $\F{P}{x}$ into small pieces. 
 To compute these triangles and their corresponding functions, we proceed as follows.
 
@@ -150,9 +149,9 @@ each grouping the vertices of $P$ that share the same farthest neighbor.
 We say that a vertex is \emph{marked} if it is represented by a chain in this partition of the boundary (not all vertices are marked). 
 Further, this partition induces \emph{transition edges} whose endpoints have different farthest neighbors. 
 
-In Section~\ref{Section: Building hourglasses}, we consider each transition edge $ab$ of $\partial P$ independently and compute its \emph{hourglass}. The hourglass $H_{ab}$ of $ab$ is the geodesic convex hull of $a,b, \ff{a}$ and $\ff{b}$; recall that $\ff{a}$ and $\ff{b}$ denote the farthest neighbors of $a$ and $b$, respectively . 
-Inspired in a result by Suri~\cite{suri1989computing}, we show that the sum of the complexities of each hourglass defined on a transition edge is $O(n)$. 
-In addition, we provide a new technique to compute these hourglasses in linear time.
+In Section~\ref{Section: Building hourglasses}, we consider each transition edge $ab$ of $\partial P$ independently and compute its \emph{hourglass}. The hourglass $H_{ab}$ of $ab$ is the geodesic convex hull of the segment $ab$ and the chain contained in $\partial P$ connecting $\ff{a}$ and $\ff{b}$; recall that $\ff{a}$ and $\ff{b}$ denote the farthest neighbors of $a$ and $b$, respectively . 
+Inspired by a result of Suri~\cite{suri1989computing}, we show that the sum of the complexities of each hourglass defined on a transition edge is $O(n)$. 
+In addition, we provide a new technique to compute each of these hourglasses in linear time.
 
 In Section~\ref{Section:Computing apexed triangles} we show how to compute the triangles and their respective functions.
 We distinguish two cases: (1) Inside each hourglass $H_{ab}$ of a transition edge, we use a technique introduced by Aronov et al.~\cite{aronov1993furthest} that uses the shortest-path trees of $a$ and $b$ in $H_{ab}$ to decompose $H_{ab}$ into $O(|H_{ab}|)$ triangles with their respective functions. 
@@ -172,7 +171,9 @@ We call $C$ and $\partial P(\ff{p_0}, \ff{p_k})$ the \emph{top} and \emph{bottom
 \begin{figure}[tb]
 \centering
 \includegraphics{img/TransitionChains.pdf}
-\caption{\small A chain $C$ and its open hourglass $H_C$ are depicted.}
+\caption{\small Given two edge disjoint transition chains, their hourglasses are open and
+the bottom chains of their hourglasses are also edge disjoint. 
+Moreover, these bottom chains appear in the same cyclic order as the top chains along $\partial P$.}
 \label{fig:Transition chains and hourglasses}
 \end{figure}
 
@@ -187,24 +188,17 @@ If $C$ is a transition chain of $\partial P$, then the hourglass $H_C$ is an ope
 Note that by Lemma~\ref{lemma:Transition hourglasses are open}, the hourglass of each transition chain is open.
 In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chain are edge disjoint.
 
-The following results are similar or have already been proved by Suri~\cite{suri1989computing} and Aronov et al.~\cite{aronov1993furthest}. We provide a sketch of the proof of some of them for completeness.
-
-The following lemma is depicted in Figure~\ref{fig:Order Lemma And Funnels} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.
+The following lemma is depicted in Figure~\ref{fig:Transition chains and hourglasses} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.
 \begin{lemma}\label{lemma:Ordering Lemma}
 Let $C_1, C_2, C_3$ be three edge disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then, the bottom chains of $H_{C_1}, H_{C_2}$ and $H_{C_3}$ are also edge disjoint and appear in this order when traversing clockwise the boundary of~$P$.
 \end{lemma}
 
-\begin{figure}[tb]
-\centering
-\includegraphics{img/OrderAndFunnel.pdf}
-\caption{\small $(a)$ Given three edge disjoint chains $C_1, C_2$ and $C_3$, the bottom chains of their hourglasses are also edge disjoint. Moreover, their cyclic order along $\partial P$ matches that of $C_1,C_2$ and $C_3$.
-$(b)$ The funnel $\fn{v}{C}$ of a vertex $v$ and a chain $C$ contained in $\partial P$ are depicted.}
-\label{fig:Order Lemma And Funnels}
-\end{figure}
-
+Let $\gamma$ be a  geodesic path joining two points on the boundary of $P$.
+We say that $\gamma$ \emph{separates} two points $x_1$ and $x_2$ of $\partial P$ if the points of $X=\{x_1, x_2\}$ and the endpoints of $\gamma$ alternate along the boundary of $P$.
+Given a hourglass $H$, we say that $\gamma$ \emph{separates} $H$ if it separates the points of its top chain from those of its  bottom chain.
 
 \begin{lemma}\label{lemma:Split paths}
-Let $C_1, \ldots, C_r$ be edge disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then there is a set of $t = O(1)$ geodesic paths $\gamma_1, \ldots, \gamma_t$ such that for each $1\leq i\leq r$ there exists $1\leq j\leq t$ such that $\gamma_j$ separates the top and bottom chains of $H_{C_i}$.
+Let $C_1, \ldots, C_r$ be edge disjoint transition chains of $\partial P$. Then, there is a set of $t = O(1)$ geodesic paths $\gamma_1, \ldots, \gamma_t$ with endpoints on $\partial P$ such that for each $1\leq i\leq r$ there exists $1\leq j\leq t$ such that $\gamma_j$ separates $H_{C_i}$.
 Moreover, this set can be computed in $O(n)$ time.
 \end{lemma}
 \begin{proof}
@@ -248,7 +242,7 @@ we can compute the path $\p{u}{v}$ in $O(|\p{u}{v}|)$ time.
 Moreover, all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 \end{lemma}
 \begin{proof}
-Let $X$ (\emph{resp.} $Y$) be the set containing the LCA in $T_x$ (\emph{resp.} $T_y$) of $u,y$, and of $v,y$ (\emph{resp.} $u,x$ and $x,y$). Clearly $X$ and $Y$ can be computed in $O(1)$ time by hypothesis, and the points of $X \cup Y$ are traversed in the path $\p{x}{y}$. Moreover, using LCA queries, we can decide their order along the path $\p{x}{y}$ when traveling from $x$ to $y$. (Both $X$ and $Y$ could consist of a single vertex in some degenerate situations). Two cases arise: 
+Let $X$ (\emph{resp.} $Y$) be the set containing the LCA in $T_x$ (\emph{resp.} $T_y$) of $u,y$, and of $v,y$ (\emph{resp.} $u,x$ and $x,y$). Note that the points of $X\cup Y$ lie on the path $\p{x}{y}$ and can be computed in $O(1)$ time by hypothesis. Moreover, using LCA queries, we can decide their order along the path $\p{x}{y}$ when traversing it from $x$ to $y$. (Both $X$ and $Y$ could consist of a single vertex in some degenerate situations). Two cases arise: 
 
 \textbf{Case 1.} If there is a vertex  $x^*\in X$ lying after a vertex $y^*\in Y$ along $\p{x}{y}$, 
 then the path $\p{u}{v}$ contains the path $\p{y^*}{x^*}$. 
@@ -299,7 +293,7 @@ Because the given transition chains are disjoint, the bottom chains of their res
 To bound the complexity of their walls, note that
 Lemma~\ref{lemma:Edges appear a constant number of times} implies that no chord is used more than a constant number of times. Thus, it suffices to show that the total number of chords used by all these hourglasses is $O(n)$.
 
-To prove this, we use Lemma~\ref{lemma:Split paths} to construct $O(1)$ \emph{split chains} $\gamma_1, \ldots, \gamma_t$ such that for each $1\leq i\leq k$, there is a split chain $\gamma_j$ that separates the top and bottom chain of $H_{C_i}$.
+To prove this, we use Lemma~\ref{lemma:Split paths} to construct $O(1)$ \emph{split chains} $\gamma_1, \ldots, \gamma_t$ such that for each $1\leq i\leq k$, there is a split chain $\gamma_j$ that separates the top and bottom chains of $H_{C_i}$.
 For each $1\leq j\leq t$, let $$\mathcal H^j = \{H_{C_i} : \text{the top and bottom chain of $H_{C_i}$ are separated by }\gamma_j\}.$$
 Since the complexity of the shortest-path trees of the endpoints of $\gamma_j$ is $O(n)$~\cite{guibasShortestPathTree},
 and from the fact that the chains $C_1, \ldots, C_k$ are disjoint,  Lemma~\ref{lemma:Suri's lemma} implies that
@@ -311,7 +305,7 @@ Since we have only $O(1)$ split chains, our result follows.
 \subsection{Funnels}
 
 Let $C = (p_0, \ldots, p_k)$ be a chain of the boundary of $P$ and let $v$ be a vertex of $P$ not in $C$.
-The \emph{funnel} of $v$ to $C$, denoted by $\fn{v}{C}$, is the simple polygon bounded by $C$, $\p{p_k}{v}$ and $\p{v}{p_0}$; see Figure~\ref{fig:Order Lemma And Funnels}. 
+The \emph{funnel} of $v$ to $C$, denoted by $\fn{v}{C}$, is the simple polygon bounded by $C$, $\p{p_k}{v}$ and $\p{v}{p_0}$; see Figure~\ref{fig:Marked vertices decomposition} $(a)$. 
 Note that the paths $\p{v}{p_k}$ and $\p{v}{p_0}$ may coincide for a while before splitting into disjoint chains. 
 See Lee and Preparata~\cite{lee1984euclidean} or Guibas et al.~\cite{guibasShortestPathTree} for more details on funnels.
 
@@ -348,20 +342,22 @@ Which implies that $b$ is farther from $v$ than from $\ff{b}$---a contradiction 
 
 \section{Decomposing the boundary}\label{Section:Decomposing the boundary}
 In this section, we compute the farthest neighbor of each vertex of $P$. 
-Note that the farthest neighbor of each vertex of $P$ is always a convex vertex of $P$~\cite{at-cgcsp-85}.
+Note that the farthest neighbor of each vertex of $P$ is always a convex vertex of $P$~\cite{at-cgcsp-85} and is unique by our general position assumption.
 
 Using a result from Hershberger and Suri~\cite{hershberger1993matrix}, in $O(n)$ time we can compute the farthest neighbor of each vertex of $P$.
 We then mark the vertices of $P$ that are farthest neighbors of at least one vertex of $P$.
 Let $M$ denote the set of marked vertices of $P$ which can be computed in $O(n)$ time.
 In other words, $M$ contains all vertices of $P$ whose Voronoi region contains at least one vertex of $P$.
 
-Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ appear contiguously along $\partial P$~\cite{aronov1993furthest}. Therefore, after computing all this farthest neighbors, we effectively split the boundary into subchains, each associated with a different vertex of $M$; see Figure~\ref{fig:Marked vertices decomposition}.
+Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ appear contiguously along $\partial P$~\cite{aronov1993furthest}. Therefore, after computing all this farthest neighbors, we effectively split the boundary into subchains, each associated with a different vertex of $M$; see Figure~\ref{fig:Marked vertices decomposition} $(b)$.
 
 \begin{figure}[tb]
 \centering
 \includegraphics{img/MarkedVertices.pdf}
 
-\caption{\small Each vertex of the boundary of $P$ is assigned with a farthest neighbor which is then marked. 
+\caption{\small 
+$a)$ The funnel $\fn{v}{C}$ of a vertex $v$ and a chain $C$ contained in $\partial P$ are depicted.
+$b)$ Each vertex of the boundary of $P$ is assigned with a farthest neighbor which is then marked. 
 The boundary is then decomposed into vertex disjoint chains, each associated with a marked vertex, joined by transition edges (blue) whose endpoints have different farthest neighbors.}
 \label{fig:Marked vertices decomposition}
 \end{figure}
@@ -384,7 +380,6 @@ By Lemma~\ref{lemma:Bounding complexity of hourglasses}, we know that $\sum_{ab\
 Therefore, an output sensitive algorithm would suffice for this task. 
 In this section, we present an algorithm that computes each transition hourglass of $P$ in $O(n)$ time.
 
-Given a transition hourglass $H_{ab}$, we say that a geodesic path \emph{separates} $H_{ab}$ if it separates its top and bottom chains.
 By Lemma~\ref{lemma:Split paths} we can compute a set of $O(1)$ separating paths such that for each transition edge $ab$, the transition hourglass $H_{ab}$ is separated by some path in this set.
 
 Let $\gamma$ be a separating path whose endpoints are $x$ and $y$. 
@@ -555,7 +550,7 @@ We claim that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C_v}
 Otherwise, there would be a vertex $u$ visible from $w_2$ inside the wedge with apex $w_2$ spanned by $w_1$ and $w_3$.
 Note that the first edge of the path $\p{u}{v}$ is the edge $uw_2$. Therefore, $uw_2$ belongs to the shortest-path $T_v$ contradicting the Eulerian order in which the vertices of this tree are visited as $u$ should be visited before $w_3$. Thus, $s$ and $w_1$ lie on the same edge and $s$ can be computed in $O(1)$ time.
 At this point, we construct the apexed triangle $\triangle(w_1, w_2, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
-In this case we modify tree $T_v$ by removing the edge $w_1w_2$ and replacing the edge $w_3w_2$ by the edge $w_3s$; see Figure~\ref{fig:Funnel Cover}.
+In this case we modify tree $T_v$ by removing the edge $w_1w_2$ and replacing the edge $w_3w_2$ by the edge $w_3s$; see Figure~\ref{fig:Funnel Cover} $(b)$.
 
 
 \textbf{Case 2.} If $w_1, w_2, w_3$ makes a left turn, then if $w_1$ and $w_3$ are adjacent, we construct an apexed triangle $\triangle(w_1, w_2, w_3)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
@@ -563,7 +558,7 @@ Otherwise, let $s$ be the first point of the boundary of $\fn{v}{C_v}$ hit by th
 
 By the same argument as above, we can show that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C_v}$. Therefore, we can compute $s$ in $O(1)$ time. 
 We then construct an apexed triangle $\triangle(w_1, w_2, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
-We modify the tree $T_v$ by removing the edge $w_1w_2$ and adding the edge $w_3s$; see Figure~\ref{fig:Funnel Cover} for an illustration.
+We modify the tree $T_v$ by removing the edge $w_1w_2$ and adding the edge $w_3s$; see Figure~\ref{fig:Funnel Cover} $(c)$.
 
 \begin{figure}[tb]
 \centering
@@ -584,7 +579,7 @@ To bound the running time and complexity we proceed as follows.
 We can compute the shortest-path tree $T_v$ from $v$ in $O(|\fn{v}{C_v}|)$ time~\cite{guibasShortestPathTree}.
 Note that processing either Case 1 or 2 of the algorithm takes constant time. Therefore, we are only interested in the number of times these steps are performed.\mati{If we agree on the change in description before the analysis becomes much simpler. Overall, each step reduces the number of vertices by one.} \luis{We cannot reduce the number of vertices every time, look above} Further note that we are removing a leaf of the tree in each iteration. In Case 2, the number of leaves strictly decreases, while in Case 1 a new leaf is added if $w_1$ is not adjacent to $w_3$. However, the number of leaves that can be added is at most the number of edges of $T_v$. 
 Note that the edges added by either Case 1 or 2 are chords of the polygon and hence cannot generate further leaves. 
-Because $|T_v| = O(|\fn{v}{C_v}|)$, we conclude that either Case 1 or 2 is only executed $O(|\fn{v}{C_v}|)$ times yielding the bound in the number of produced apexed triangles and in the running time.
+Because $|T_v| = O(|\fn{v}{C_v}|)$, we conclude that both Case 1 and 2 are only executed $O(|\fn{v}{C_v}|)$ times yielding the bound in the number of produced apexed triangles and in the running time.
 \end{proof}
 
 \section{Prune and search}\label{section:Prune and search}
@@ -624,8 +619,8 @@ by Lemma~\ref{lemma:Triangles inside funnels} there is an apexed triangle $\tria
 \textbf{Case 2.} If $\ff{p}$ is not marked, then it belongs to the bottom chain of some transition hourglass. Thus, by Lemma~\ref{lemma:Triangles inside hourglasses} there is an apexed triangle $\triangle$ with apex function $g(x)$ such that $p\in \triangle$ and $g(p) = \F{P}{p}$.
 
 Regardless of the case, there is an apexed triangle $\triangle$ that contains $p$ such that its apex function $g(p) = \F{P}{p}$.
-Since each apex function represents the geodesic distance from some vertex of $P$, we know that $\phi(p) \leq \F{P}{p}$. By construction, we also have $g(p) \leq \phi(p)$.
-Because $g(p) = \F{P}{p}$ and since $g(p) \leq \phi(p) \leq  \F{P}{p}$, we conclude that $\phi(p) = \F{P}{p}$ proving our claim.
+Since each apex function represents the geodesic distance from some vertex of $P$, we know that $\phi(p) \leq \F{P}{p}$, and by construction, $g(p) \leq \phi(p)$.
+Since $g(p) = \F{P}{p}$ and as $g(p) \leq \phi(p) \leq  \F{P}{p}$, we conclude that $\phi(p) = \F{P}{p}$.
 \end{proof}
 
 Given a chord $C$ of $P$ a \emph{half-polygon} of $P$ is either of the two simple polygons in which $C$ splits $P$.
