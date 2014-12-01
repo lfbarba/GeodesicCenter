@@ -70,8 +70,8 @@ was supported by the NRF grant 2011-0030044 (SRC-GAIA) funded by the Korea gover
 
 \newcommand{\luis}[2][says]{}
 %\newcommand{\luis}[2][says]{\niceremarkblue{Luis}{#1}{#2}}
-%\newcommand{\mati}[2][says]{}
-\newcommand{\mati}[2][says]{\niceremark{Mati}{#1}{#2}}
+\newcommand{\mati}[2][says]{}
+%\newcommand{\mati}[2][says]{\niceremark{Mati}{#1}{#2}}
 
 
 
@@ -179,8 +179,7 @@ If $C$ is a transition chain of $\partial P$, then the hourglass $H_C$ is an ope
 Note that by Lemma~\ref{lemma:Transition hourglasses are open}, the hourglass of each transition chain is open.
 In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chain are edge disjoint.
 
-The following lemma is depicted in Figure~\ref{fig:Transition chains and hourglasses} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.\mati{The figure only has 2 chains but 3 are mentioned in hte lemma! One of the two must be modified!}
-
+The following lemma is depicted in Figure~\ref{fig:Transition chains and hourglasses} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.
 \begin{lemma}\label{lemma:Ordering Lemma}
 Let $C_1, C_2, C_3$ be three edge disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then, the bottom chains of $H_{C_1}, H_{C_2}$ and $H_{C_3}$ are also edge disjoint and appear in this order when traversing clockwise the boundary of~$P$.
 \end{lemma}
@@ -613,7 +612,7 @@ Consider the range space $(\mathcal C, \varphi_\mathcal C)$ defined by $\mathcal
 Because the VC-dimension of this range space is finite, we can compute an $\varepsilon$-net $N$ of $(\mathcal C, \varphi_\mathcal C)$ in $O(n/\varepsilon)=O(n)$ time~\cite{ConstructionEpsilonNets}. 
 The size of $N$ is $O(\frac{1}{\varepsilon} \log \frac{1}{\varepsilon}) = O(1)$ and its main property is that any \tcell that does not intersect a chord of $N$ will intersect at most $\varepsilon |\mathcal C|$ chords of $\mathcal C$. 
 
-Observe that $N$ partitions $R$ into $O(1)$ sub-polygons (not necessarily \tcells). We further refine this partition by performing a \tcell decomposition\mati{To avoid confusion with the term \tcell defined above we should use another word}. That is, we shoot vertical rays up and down from each endpoint of $N$, and from the intersection point of  any two segments of $N$, see Figure~\ref{fig:Cutting of Chords}. Overall, this partitions $R$ into $O(1)$ \tcells such that each  either $(i)$  is a convex polygon contained in $P$ of at most four vertices, or otherwise $(ii)$ contains some chain of $\partial P$. 
+Observe that $N$ partitions $R$ into $O(1)$ sub-polygons (not necessarily \tcells). We further refine this partition by performing a \tcell decomposition. That is, we shoot vertical rays up and down from each endpoint of $N$, and from the intersection point of  any two segments of $N$, see Figure~\ref{fig:Cutting of Chords}. Overall, this partitions $R$ into $O(1)$ \tcells such that each  either $(i)$  is a convex polygon contained in $P$ of at most four vertices, or otherwise $(ii)$ contains some chain of $\partial P$. 
 Since $|N| = O(1)$, the whole decomposition can be computed in $O(\m)$ time (the intersections between segments of $N$ are done in constant time, and for the ray shooting operations we walk along the boundary of $R$ once).
 
 \begin{figure}[tb]
@@ -626,14 +625,14 @@ Since $|N| = O(1)$, the whole decomposition can be computed in $O(\m)$ time (the
 
 In order to determine which \tcell contains the geodesic center of $P$, 
 we extend each edge of a \tcell to a chord $C$. 
-This can be done with two ray-shooting queries (each of which takes $O(\m)$ time). \mati{If this is more preprocessing...why don't we add this to the previous paragraph?}
+This can be done with two ray-shooting queries (each of which takes $O(\m)$ time).
 We then use the chord-oracle from Pollack et al.~\cite[Section~3]{pollackComputingCenter} to decide which side of $C$ contains $\cp$.
 The only requirement of this technique is that the function $\F{P}{x}$ coincides with the upper envelope of the apex functions when restricted to $C$.
 Which is true by Lemma~\ref{lemma:Optimization problem same as geodesic center} and from the fact that $\tau_R$ consists of all the apexed triangles of $\tau$ that intersect~$R$.
 
 Because the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter} runs in linear time on the number of functions defined on $C$, we can decide in total $O(\m)$ time on which side of $C$ the geodesic center of $P$ lies. 
 Since our decomposition into \tcells has constant complexity, 
-we need to perform $O(1)$ calls to the oracle before determining the \tcell $\reg$ that contains the geodesic center of $P$. \mati{It is strange that up to now we denoted \tcells by R. Now we use $\reg$...shouldn't we unify this?}
+we need to perform $O(1)$ calls to the oracle before determining the \tcell $\reg$ that contains the geodesic center of $P$. 
 
 The chord-oracle computes the minimum of $\F{P}{x}$ restricted to the chord before determining the side containing the minimum. In particular, if $\cp$ lies on any chord bounding $\reg$, then the chord-oracle will find it. 
 Therefore, we can assume that $\cp$ lies in the interior of $\reg$. Moreover, since $N$ is a $\varepsilon$-net, we know that at most $\varepsilon |\mathcal C|$ chords of $\mathcal C$ will intersect $\reg$.
