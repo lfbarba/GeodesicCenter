@@ -46,7 +46,7 @@ H.~Djidjev, A.~Lingas, and J.-R. Sack.
 H.~Edelsbrunner and E.~P. M{\"u}cke.
 \newblock Simulation of simplicity: a technique to cope with degenerate cases
   in geometric algorithms.
-\newblock {\em ACM Transactions on Graphics (TOG)}, 9(1):66--104, 1990.
+\newblock {\em ACM Transactions on Graphics}, 9(1):66--104, 1990.
 
 \bibitem{guibasShortestPathTree}
 L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
@@ -103,8 +103,7 @@ J.~S.~B. Mitchell.
 \bibitem{ns-crldp-91}
 B.~Nilsson and S.~Schuierer.
 \newblock Computing the rectilinear link diameter of a polygon.
-\newblock In {\em Proceedings of CG}, volume 553 of {\em LNCS}, pages 203--215,
-  1991.
+\newblock In {\em Proceedings of CG}, pages 203--215, 1991.
 
 \bibitem{ns-oarlcrp-96}
 B.~Nilsson and S.~Schuierer.
