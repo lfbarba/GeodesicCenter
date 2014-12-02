@@ -177,7 +177,7 @@ If $C$ is a transition chain of $\partial P$, then the hourglass $H_C$ is an ope
 \end{lemma}
 
 Note that by Lemma~\ref{lemma:Transition hourglasses are open}, the hourglass of each transition chain is open.
-In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chain are edge disjoint.
+In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chains are edge disjoint.
 
 The following lemma is depicted in Figure~\ref{fig:Transition chains and hourglasses} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.
 \begin{lemma}\label{lemma:Ordering Lemma}
@@ -251,7 +251,7 @@ Recall that the farthest neighbor of each vertex of $P$ is always a convex verte
 We mark the vertices of $P$ that are farthest neighbors of at least one vertex of $P$. Let $M$ denote the set of marked vertices of $P$ (clearly this set can be computed in $O(n)$ time after applying the result of Hershberger and Suri).
 In other words, $M$ contains all vertices of $P$ whose Voronoi region contains at least one vertex of $P$.
 
-Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ appear contiguously along $\partial P$~\cite{aronov1993furthest}. Therefore, after computing all this farthest neighbors, we effectively split the boundary into subchains, each associated with a different vertex of $M$; see Figure~\ref{fig:Marked vertices decomposition} $(b)$.
+Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ appear contiguously along $\partial P$~\cite{aronov1993furthest}. Therefore, after computing all these farthest neighbors, we effectively split the boundary into subchains, each associated with a different vertex of $M$; see Figure~\ref{fig:Marked vertices decomposition} $(b)$.
 
 \begin{figure}[tb]
 \centering
@@ -266,7 +266,7 @@ The boundary is then decomposed into vertex disjoint chains, each associated wit
 
 Let $a$ and $b$ be the endpoints of a transition edge of $\partial P$ such that $a$ appears before $b$ in the clockwise order along $\partial P$. Because $ab$ is a transition edge, we know that $\ff{a}\neq \ff{b}$.
 Recall that we have computed $\ff{a}$ and $\ff{b}$ in the previous step and note that $\ff{a}$ appears also before $\ff{b}$ along this clockwise order. 
-For every vertex $v$ that lies between $\ff{a}$ and $\ff{b}$ in the bottom chain of $H_{ab}$, we know that there cannot be vertex $u$ of $P$ such that $\ff{u} = v$.
+For every vertex $v$ that lies between $\ff{a}$ and $\ff{b}$ in the bottom chain of $H_{ab}$, we know that there cannot be a vertex $u$ of $P$ such that $\ff{u} = v$.
 As proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}, 
 if there is a point $x$ on $\partial P$ whose farthest neighbor is $v$, then $x$ must lie on the open segment $(a,b)$. 
 In other words, the Voronoi region $R(v)$ restricted to $\partial P$ is contained in~$(a,b)$.
@@ -276,7 +276,7 @@ In other words, the Voronoi region $R(v)$ restricted to $\partial P$ is containe
 Let $E$ be the set of transition edges of $\partial P$.
 Given a transition edge $ab\in E$, we say that $H_{ab}$ is a \emph{transition hourglass}.
 In order to construct the triangle cover of $P$, we construct the transition hourglass of each transition edge of $E$. By Lemma~\ref{lemma:Bounding complexity of hourglasses}, we know that $\sum_{ab\in E} |H_{ab}| = O(n)$. Therefore, our aim is to compute the cover in time proportional to the size of $H_{ab}$. %an output sensitive algorithm would suffice for this task. 
-%In this section, we present an algorithm that computes each transition hourglass of $P$ in $O(n)$ time.
+%In this section, we present an algorithm that computes all transition hourglasses of $P$ in $O(n)$ time.
 
 By Lemma~\ref{lemma:Split paths} we can compute a set of $O(1)$ separating paths such that for each transition edge $ab$, the transition hourglass $H_{ab}$ is separated by one (or more) paths in this set. For each endpoint of the $O(1)$ separating paths we compute its shortest-path tree~\cite{guibasShortestPathTree}. In addition, we preprocess these trees in linear time to support LCA queries~\cite{harel1984fast}. Both computations need linear time per endpoint and use $O(n)$ space. Since we do this process for a constant number of endpoints, overall this preprocessing takes $O(n)$ time. 
 
@@ -324,7 +324,7 @@ Let $v$ be a vertex of $B_{ab}$. If $R(v)\neq \emptyset$, then $R(v) \subset H_{
 
 Our objective is to compute $O(|H_{ab}|)$ apexed triangles that cover $H_{ab}$, each with its distance function, such that the upper envelope of these apex functions coincides with $\F{P}{x}$ restricted to $H_{ab}$ where it ``matters''.
 
-The same approach was already carried on by Pollack et al. in~\cite[Section 3]{pollackComputingCenter}. 
+The same approach was already used by Pollack et al. in~\cite[Section 3]{pollackComputingCenter}. 
 Given a segment contained in the interior of $P$, they show 
 how to compute a linear number of apexed triangles such that $\F{P}{x}$ coincides with the upper envelope of the corresponding apex functions in the given segment.
 
@@ -443,7 +443,7 @@ Let $\tau$ be the set all apexed triangles computed in previous sections. Lemmas
 The set $\tau$ consists of $O(n)$ apexed triangles.
 \end{corollary}
 
-Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau$ (i.e., $\phi(x) = \max\{g(x) : g(x)\in\tau\}$). The following result is a direct consequence of Lemmas~\ref{lemma:Triangles inside hourglasses} and \ref{lemma:Triangles inside funnels}, and shows that the $O(n)$ apexed triangles of $\tau$ not only cover $P$, but their apex functions suffice to reconstruct the function $\F{P}{x}$.
+Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau$ (i.e., $\phi(x) = \max\{g_i(x) : g_i(x)\in\tau, x\in \triangle_i\}$). The following result is a direct consequence of Lemmas~\ref{lemma:Triangles inside hourglasses} and \ref{lemma:Triangles inside funnels}, and shows that the $O(n)$ apexed triangles of $\tau$ not only cover $P$, but their apex functions suffice to reconstruct the function $\F{P}{x}$.
 
 \begin{lemma}\label{lemma:Optimization problem same as geodesic center}
 The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, i.e., for each $p\in P$, $\phi(p) = \F{P}{p}$.
@@ -457,7 +457,7 @@ The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, 
 %Regardless of the case, there is an apexed triangle $\triangle$ that contains $p$ such that its apex function $g(p) = \F{P}{p}$. Since each apex function represents the geodesic distance from some vertex of $P$, we know that $\phi(p) \leq \F{P}{p}$. By construction, we also have $g(p) \leq \phi(p)$. Because $g(p) = \F{P}{p}$ and since $g(p) \leq \phi(p) \leq  \F{P}{p}$, we conclude that $\phi(p) = \F{P}{p}$ proving our claim. 
 %\end{proof}
 
-Given a chord $C$ of $P$ a \emph{half-polygon} of $P$ is either of the two simple polygons in which $C$ splits $P$.
+Given a chord $C$ of $P$ a \emph{half-polygon} of $P$ is one of the two simple polygons in which $C$ splits $P$.
 A \emph{\tcell} of $P$ is a simple polygon obtained as the intersection of at most four half-polygons.
 Because a \tcell is the intersection of geodesically convex sets, it is also geodesically convex.
 
@@ -586,7 +586,7 @@ A \emph{plane-set} is a set consisting of at most five planes in $\mathbb{R}^3$.
 For each pair of apexed triangles $(\triangle_i, \triangle_j)$ we define a plane-set as follows: 
 For each chord bounding either $\triangle_i$ or $\triangle_j$, consider the line extending this chord and the vertical extrusion of this line in $\mathbb{R}^3$, i.e.,  the plane containing this chord orthogonal to $Z_0$. Moreover, consider the separating plane~$\gamma_{i,j}$. The set containing these planes is the plane-set of the pair $(\triangle_i, \triangle_j)$.
 
-Let $\Gamma$ be the union of all the plane-sets defined by the $m/2$ pairs of apexed triangles. Thus, $\Gamma$ is a set that consists of $O(m)$ planes. Compute an $1/r$-cutting of $\Gamma$ in $O(m)$ time for some constant $r$ to be specified later.
+Let $\Gamma$ be the union of all the plane-sets defined by the $m/2$ pairs of apexed triangles. Thus, $\Gamma$ is a set that consists of $O(m)$ planes. Compute a $1/r$-cutting of $\Gamma$ in $O(m)$ time for some constant $r$ to be specified later.
 Because $r$ is constant, this $1/r$-cutting splits the space into $O(1)$ convex regions, each bounded by a constant number of planes~\cite{matousekCuttings}. 
 By using a side-decision algorithm (to be specified later), we can determine the region $Q$ of the cutting that contains the solution to (P2). Because $Q$ is the region of a $1/r$-cutting of $\Gamma$, we know that at most $|\Gamma|/r$ planes of $\Gamma$ intersect $Q$. In particular, at most $|\Gamma|/r$ plane-sets intersect $Q$ and hence, at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$. 
 
