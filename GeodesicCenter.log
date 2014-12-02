@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 DEC 2014 18:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 DEC 2014 19:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1125,12 +1125,12 @@ File: img/FunnelCoverShort.pdf Graphic file (type pdf)
 Package pdftex.def Info: img/FunnelCoverShort.pdf used on input line 537.
 (pdftex.def)             Requested size: 369.15927pt x 124.85715pt.
  [12] [13 <./img/FunnelCoverShort.pdf>]
-<img/CuttingOfChords.pdf, id=369, 376.18343pt x 98.85834pt>
+<img/CuttingOfChords.pdf, id=369, 376.18343pt x 98.85933pt>
 File: img/CuttingOfChords.pdf Graphic file (type pdf)
 
 <use img/CuttingOfChords.pdf>
 Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 620.
-(pdftex.def)             Requested size: 376.18251pt x 98.85808pt.
+(pdftex.def)             Requested size: 376.18251pt x 98.85907pt.
  [14 <./img/CuttingOfChords.pdf>] [15] [16]
 [17] (./GeodesicCenter.bbl [18]) 
 AED: lastpage setting LastPage
@@ -1190,10 +1190,10 @@ texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/201
 4/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on GeodesicCenter.pdf (19 pages, 664233 bytes).
+Output written on GeodesicCenter.pdf (19 pages, 664467 bytes).
 PDF statistics:
- 547 PDF objects out of 1000 (max. 8388607)
- 458 compressed objects within 5 object streams
+ 549 PDF objects out of 1000 (max. 8388607)
+ 460 compressed objects within 5 object streams
  83 named destinations out of 1000 (max. 500000)
  42655 words of extra memory for PDF output out of 42996 (max. 10000000)
 
