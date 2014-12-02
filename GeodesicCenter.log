@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 DEC 2014 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 DEC 2014 19:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1112,12 +1112,12 @@ File: img/FunnelCoverShort.pdf Graphic file (type pdf)
 Package pdftex.def Info: img/FunnelCoverShort.pdf used on input line 419.
 (pdftex.def)             Requested size: 369.15927pt x 124.85715pt.
  [10 <./img/FunnelCoverShort.pdf>]
-<img/CuttingOfChords.pdf, id=331, 376.18343pt x 98.85834pt>
+<img/CuttingOfChords.pdf, id=331, 376.18343pt x 98.85933pt>
 File: img/CuttingOfChords.pdf Graphic file (type pdf)
 
 <use img/CuttingOfChords.pdf>
 Package pdftex.def Info: img/CuttingOfChords.pdf used on input line 487.
-(pdftex.def)             Requested size: 376.18251pt x 98.85808pt.
+(pdftex.def)             Requested size: 376.18251pt x 98.85907pt.
  [11 <./img/CuttingOfChords.pdf>] [12] [13]
 (./GeodesicCenter.bbl
 Underfull \vbox (badness 1019) has occurred while \output is active []
@@ -1133,16 +1133,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 639.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 639.
 Package rerunfilecheck Info: File `GeodesicCenter.out' has not changed.
 (rerunfilecheck)             Checksum: 49B401E7686BFC3F54877AFF0E26A44A;919.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 639.
  ) 
 Here is how much of TeX's memory you used:
  12885 strings out of 493117
  195102 string characters out of 6135433
- 321110 words of memory out of 5000000
+ 322110 words of memory out of 5000000
  15769 multiletter control sequences out of 15000+600000
  172596 words of font info for 243 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1159,33 +1155,34 @@ ts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbsy10.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbsy5.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2014/texmf-di
-st/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
-pe1/public/lm/lmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi5.
-pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/lm/lmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/lm/lmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr7.p
-fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/loc
-al/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-public/lm/lmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/l
-msy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on GeodesicCenter.pdf (15 pages, 595649 bytes).
+0.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbsy10.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbsy5.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2014/texmf-dist
+/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/lm/lmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/l
+m/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi5.pf
+b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
+type1/public/lm/lmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/lm/lmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr7.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/lm/lmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lms
+y7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on GeodesicCenter.pdf (15 pages, 603005 bytes).
 PDF statistics:
- 497 PDF objects out of 1000 (max. 8388607)
- 418 compressed objects within 5 object streams
+ 502 PDF objects out of 1000 (max. 8388607)
+ 422 compressed objects within 5 object streams
  76 named destinations out of 1000 (max. 500000)
  40090 words of extra memory for PDF output out of 42996 (max. 10000000)
 
