@@ -20,7 +20,7 @@
 was supported by the NRF grant 2011-0030044 (SRC-GAIA) funded by the Korea government (MSIP).}}
 \author[1,2]{Luis Barba}
 \author[1]{Prosenjit Bose}
-\author[1]{Jean-Lou de Carufel}
+\author[1]{Jean-Lou De Carufel}
 \author[4,5]{Matias Korman}
 \author[3]{Eunjin Oh}
 
@@ -39,7 +39,7 @@ was supported by the NRF grant 2011-0030044 (SRC-GAIA) funded by the Korea gover
 \affil[5]{JST, ERATO, Kawarabayashi Large Graph Project.}
   
   
-\authorrunning{Ahn, Barba, Bose, de Carufel, Korman and Oh} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
+\authorrunning{Ahn, Barba, Bose, De Carufel, Korman and Oh} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
 
 
 \newcommand{\n}[1]{\ensuremath{n_{\scriptscriptstyle M}(#1)}}
@@ -162,7 +162,7 @@ We call $C$ and $\partial P(\ff{p_0}, \ff{p_k})$ the \emph{top} and \emph{bottom
 \begin{figure}[tb]
 \centering
 \includegraphics{img/TransitionChains.pdf}
-\caption{\small Given two edge disjoint transition chains, their hourglasses are open and
+\caption{\small Given three edge disjoint transition chains, their hourglasses are open and
 the bottom chains of their hourglasses are also edge disjoint. 
 Moreover, these bottom chains appear in the same cyclic order as the top chains along $\partial P$.}
 \label{fig:Transition chains and hourglasses}
@@ -476,7 +476,7 @@ Finally, let $\varphi_\mathcal C = \{\mathcal C_t : t\in \varphi\}$ be the famil
 
 Let $\varepsilon >0$ (the exact value of $\varepsilon$ will be specified later).
 Consider the range space $(\mathcal C, \varphi_\mathcal C)$ defined by $\mathcal C$ and $\varphi_\mathcal C$. 
-Because the VC-dimension of this range space is finite, we can compute an $\varepsilon$-net $N$ of $(\mathcal C, \varphi_\mathcal C)$ in $O(n/\varepsilon)=O(n)$ time~\cite{ConstructionEpsilonNets}. 
+Because the VC-dimension of this range space is finite, we can compute an $\varepsilon$-net $N$ of $(\mathcal C, \varphi_\mathcal C)$ in $O(n)$ time~\cite{ConstructionEpsilonNets}. 
 The size of $N$ is $O(\frac{1}{\varepsilon} \log \frac{1}{\varepsilon}) = O(1)$ and its main property is that any \tcell that does not intersect a chord of $N$ will intersect at most $\varepsilon |\mathcal C|$ chords of $\mathcal C$. 
 
 Observe that $N$ partitions $R$ into $O(1)$ sub-polygons (not necessarily \tcells). We further refine this partition by performing a \tcell decomposition. That is, we shoot vertical rays up and down from each endpoint of $N$, and from the intersection point of  any two segments of $N$, see Figure~\ref{fig:Cutting of Chords}. Overall, this partitions $R$ into $O(1)$ \tcells such that each  either $(i)$  is a convex polygon contained in $P$ of at most four vertices, or otherwise $(ii)$ contains some chain of $\partial P$. 
