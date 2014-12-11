@@ -691,23 +691,23 @@ Therefore, our optimization problem can be reformulated as:
 \textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in \reg$ and 
 $$h_i(x, r) \leq 0, \text{ if $x\in \triangle_{i}$ for $1\leq i \leq m$}.$$%\text{ and } r > \max\{\kappa_i\}
 
-\mati{In here we somehow have ignored the regions in which each $g_i$ is defined. Shouldn't we add it as well? or they are now defined in the whole plane? if so, we must justify why this is ok.}\luis{No, we haven't note that there is an  if $x\in \triangle_{i}$}.
+\mati{In here we somehow have ignored the regions in which each $g_i$ is defined. Shouldn't we add it as well? or they are now defined in the whole plane? if so, we must justify why this is ok.}\luis{No, we haven't note that there is an  if $x\in \triangle_{i}$}
 Although the functions $h_i(x,r)$ are not linear, they all have the same non-linear terms. Therefore, for $i\neq j$, we get that
 $h_i(x,r) = h_j(x, r)$ defines a \emph{separating plane}\mati{I woudl say that it is not a linear plane, but a 2-dimensional differential variety. right?}\luis{This is a plane, a normal plane in $\mathbb{R}^3$}
 $$\gamma_{i,j} = \{(x, r) \in \mathbb{R}^3:  2( \kappa_i - \kappa_j) r - 2 (a_i - a_j) \cdot x + \|a_i\|^2 - \|a_j\|^2 - \kappa_i^2 + \kappa_j^2 = 0\}$$
 
-As noted by Meggido\mati{maybe we can cite the lemma/theorem that states this?}\luis{There is non, is an observation done in the same way as ours}, this separating plane has the following property:
-If the solution $(x, r)$ to our optimization problem is known to lie to one side of $\gamma_{i,j}$, then we know that one of the constraints is redundant. 
+As noted by Megiddo~\cite{megiddo1989ball}, this separating plane has the following property:
+If the solution $(x, r)$ to (P2) is known to lie to one side of $\gamma_{i,j}$, then we know that one of the constraints is redundant. 
 
-In Megiddo's problem, it sufficed to have a \emph{side-decision oracle} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle in a way that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
+Megiddo's optimization problem~\cite{megiddo1989ball} is similar to (P2), each constraint is however defined in the entire domain instead of on a triangle. To solve his problem, it sufficed to have a \emph{side-decision oracle} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle in a way that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
 
-Once we have such an oracle, we can proceed with the prune and search similar to the one introduced in Section~\ref{section:Prune and search}: pair the functions arbitrarily, and consider the set of $m/2$ separating planes defined by these pairs. For some constant $r$, compute a $1/r$-cutting in $\mathbb{R}^3$ of the separating planes.
+Once we have such an oracle, Megiddo's problem can be solved using a prune and search similar to that introduced in Section~\ref{section:Prune and search}: pair the functions arbitrarily, and consider the set of $m/2$ separating planes defined by these pairs. For some constant $r$, compute a $1/r$-cutting in $\mathbb{R}^3$ of the separating planes.
 A $1/r$-cutting is a partition of the plane into $O(r^2)$ convex regions each of which is of constant size and intersects at most $m/2r$ separating planes.
 A cutting of planes can be computed in linear time in $\mathbb{R}^3$ for any $r = O(1)$~\cite{matousekCuttings}.
 After computing the cutting, determine in which of the regions the minimum lies by performing $O(1)$ calls to the side-decision oracle. 
 Because at least $(r-1)m/2r$ separating planes do not intersect this constant size region, for each of them we can discard one of the constraints as it becomes redundant. Repeating this algorithm recursively we obtain a linear running time.
 
-In this paper, we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only defined in a triangular domain.
+To solve (P2) we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only defined in a triangular domain.
 Note that the vertices of each apexed triangle that intersect $\reg$ have their endpoints either outside of $\reg$ or on its boundary.
 
 \subsection{Optimization problem in a convex domain}
