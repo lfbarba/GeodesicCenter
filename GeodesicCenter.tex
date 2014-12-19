@@ -448,7 +448,10 @@ Similarly we define a symmetric function $d_r(v)$ using the children of type (3)
 For each $1\leq i\leq k-1$, extend the segment $u_iv$ past $v$ until it intersects $ab$ at a point $s_i$. Let $s_0$ and $s_k$ be the intersections of the extensions of $vv_a$ and $vv_b$ with the segment $ab$.
 We define then $k$ triangles contained in $\triangle_v$ as follows. 
 For each $0\leq i\leq k-1$, consider the triangle $\triangle(s_i, v, s_{i+1})$ whose associated apexed (left) function is 
-$$f_i(x) = |xv| + \max_{j>i}\{c(v), |vu_j| + d_l(u_j)\}.$$
+$$f_i(x) = \left\{ \begin{array}{lll}
+|xv| + \max_{j>i}\{c(v), |vu_j| + d_l(u_j)\} && \text{if $x\in \triangle(s_i, v, s_{i+1})$}\\
+-\infty&&\text{otherwise}
+\end{array}\right.$$
 In a symmetric manner, we define a set of apexed triangles induced by the type (3) children of~$v$ and their respective apexed (right) functions.
 
 Let $g_1, \ldots, g_r$ and $\triangle_1, \ldots, \triangle_r$ respectively be an enumeration of all the generated apex functions and triangles such that $g_i$ is defined in the triangle $\triangle_i$. Because each function is determined uniquely by a pair of adjacent vertices in $T_a$ or in $T_b$, and since these trees have $O(|H_{ab}|)$ vertices, we conclude that $r = O(|H_{ab}|)$. 
@@ -522,14 +525,27 @@ Start an Eulerian tour from $v$ walking in a clockwise order of the edges. Let L
 We claim that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C_v}$. Otherwise, there would be a vertex $u$ visible from $w_2$ inside the wedge with apex $w_2$ spanned by $w_1$ and $w_3$.
 Note that the first edge of the path $\p{u}{v}$ is the edge $uw_2$. Therefore, $uw_2$ belongs to the shortest-path $T_v$ contradicting the Eulerian order in which the vertices of this tree are visited as $u$ should be visited before $w_3$. Thus, $s$ and $w_1$ lie on the same edge and $s$ can be computed in $O(1)$ time.
 
-At this point, we construct the apexed triangle $\triangle(w_2, w_1, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$. We modify tree $T_v$ by removing the edge $w_1w_2$ and replacing the edge $w_3w_2$ by the edge $w_3s$; see Figure~\ref{fig:Funnel Cover}.
+At this point, we construct the apexed triangle $\triangle(w_2, w_1, s)$ apexed at $w_2$ with apex function 
+$$g(x) = \left\{ \begin{array}{lll}
+ |x w_2| + \g{w_2}{v} && \text{if }x\in \triangle(w_2, w_1, s)\\
+-\infty&&\text{otherwise}
+\end{array}\right.$$
+We modify tree $T_v$ by removing the edge $w_1w_2$ and replacing the edge $w_3w_2$ by the edge $w_3s$; see Figure~\ref{fig:Funnel Cover}.
 
 
 \textbf{Case 2:} $w_1, w_2, w_3$ makes a left turn and $w_1$ and $w_3$ are adjacent, 
-then if $w_1$ and $w_3$ lie on the same edge of $\partial P$, we construct an apexed triangle $\triangle(w_2, w_1, w_3)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
+then if $w_1$ and $w_3$ lie on the same edge of $\partial P$, we construct an apexed triangle $\triangle(w_2, w_1, w_3)$ apexed at $w_2$ with apex function 
+$$g(x) = \left\{ \begin{array}{lll}
+|x w_2| + \g{w_2}{v} && \text{if }x\in \triangle(w_2, w_1, w_3)\\
+-\infty&&\text{otherwise}
+\end{array}\right.$$
 Otherwise, let $s$ be the first point of the boundary of $\fn{v}{C_v}$ hit by the ray shooting from $w_3$ in the direction opposite to $w_2$.
 
-By the same argument as above, we can show that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C_v}$ (and thus, we can compute $s$ in $O(1)$ time). We construct an apexed triangle $\triangle(w_2, w_1, s)$ apexed at $w_2$ with apex function $g(x) = |x w_2| + \g{w_2}{v}$.
+By the same argument as above, we can show that $w_1$ and $s$ lie on the same edge of the boundary of $\fn{v}{C_v}$ (and thus, we can compute $s$ in $O(1)$ time). We construct an apexed triangle $\triangle(w_2, w_1, s)$ apexed at $w_2$ with apex function 
+$$g(x) = \left\{ \begin{array}{lll}
+|x w_2| + \g{w_2}{v} && \text{if }x\in \triangle(w_2, w_1, s)\\
+-\infty&&\text{otherwise}
+\end{array}\right..$$
 We modify the tree $T_v$ by removing the edge $w_1w_2$ and adding the edge $w_3s$; see Figure~\ref{fig:Funnel Cover} for an illustration.
 
 \begin{figure}[tb]
@@ -567,8 +583,7 @@ Because $|T_v| = O(|\fn{v}{C_v}|)$, we conclude that both Case 1 and 2 are only 
 With the tools introduced in the previous sections, we can proceed to give the prune and search algorithm to compute the geodesic center. 
 The idea of the algorithm is to partition $P$ into $O(1)$ cells, determine on which cell of $P$ the center lies and recurse on that cell as a new subproblem with smaller complexity.
 
-Naturally, we can discard all apexed triangles that do not intersect the new cell containing the center. Using the properties of the cutting, we can show that both the complexity of the cell containing the center, and the number of apexed triangles that intersect it decrease by a constant fraction in each iteration of the algorithm. T
-his process is then repeated until either of the two objects has constant descriptive size. 
+Naturally, we can discard all apexed triangles that do not intersect the new cell containing the center. Using the properties of the cutting, we can show that both the complexity of the cell containing the center, and the number of apexed triangles that intersect it decrease by a constant fraction in each iteration of the algorithm. This process is then repeated until either of the two objects has constant descriptive size. 
 
 Let $\tau$ be the set all apexed triangles computed in previous sections. Lemmas~\ref{lemma:Bounding complexity of hourglasses} and~\ref{lemma:Triangles inside funnels} directly provide a bound on the complexity of $\tau$.
 
@@ -576,7 +591,7 @@ Let $\tau$ be the set all apexed triangles computed in previous sections. Lemmas
 The set $\tau$ consists of $O(n)$ apexed triangles.
 \end{corollary}
 
-Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau$ (i.e., $\phi(x) = \max\{g_i(x) : g_i(x)\in\tau, x\in \triangle_i\}$). The following result is a direct consequence of Lemmas~\ref{lemma:Triangles inside hourglasses} and \ref{lemma:Triangles inside funnels}, and shows that the $O(n)$ apexed triangles of $\tau$ not only cover $P$, but their apex functions suffice to reconstruct the function $\F{P}{x}$.
+Let $\phi(x)$ be the upper envelope of the apex functions of every triangle in $\tau$ (i.e., $\phi(x) = \max\{g_i(x) : g_i(x)\in\tau\}$). The following result is a direct consequence of Lemmas~\ref{lemma:Triangles inside hourglasses} and \ref{lemma:Triangles inside funnels}, and shows that the $O(n)$ apexed triangles of $\tau$ not only cover $P$, but their apex functions suffice to reconstruct the function $\F{P}{x}$.
 
 \begin{lemma}\label{lemma:Optimization problem same as geodesic center}
 The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, i.e., for each $p\in P$, $\phi(p) = \F{P}{p}$.
@@ -667,39 +682,49 @@ Recall that $\phi(x)$ denotes the upper envelope of the apex functions of the tr
 The key observation is that, as it happened with chords, the function $\phi(x)$ restricted to $\reg$ is convex. 
 %Thus, rather than further restricting the search to sub-\tcells within $\reg$, we will do a prune and search on the triangles~in~$\tau$.
 
-Let $\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}$ be the set of $m= O(n)$ apexed triangles of $\tau$ that intersect $\reg$. Let $g_i(x) = |x a_i| + \kappa_i$ be the apex function of $\triangle_i$, where $a_i$ and $w_i$ are the apex and the definer of $\triangle_i$, respectively, and $\kappa_i = \g{a_i, w_i}$ is a constant.
+Let $\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}$ be the set of $m= O(n)$ apexed triangles of $\tau$ that intersect $\reg$. 
+Let $g_i(x)$  be the apex function of $\triangle_i$ such that 
+$$g(x) = \left\{ \begin{array}{lll}
+|x a_i| + \kappa_i && \text{if }x\in \triangle_i\\
+-\infty&&\text{otherwise}
+\end{array}\right. ,$$
+where $a_i$ and $w_i$ are the apex and the definer of $\triangle_i$, respectively, and $\kappa_i = \g{a_i}{w_i}$ is a constant.
 
 %Recall that the geodesic center minimizes the function $\F{P}{x}$.
 By Lemma~\ref{lemma:Optimization problem same as geodesic center}, $\phi(x) = \F{P}{x}$. 
 Therefore, the problem of finding the center is equivalent to the following optimization problem in $\mathbb{R}^3$:
 
 \textbf{(P1).} Find a point $(x,r)\in \mathbb{R}^3$ minimizing $r$ subject to $x\in \reg$ and
-$$\text{$g_i(x) = |x a_i| + \kappa_i \leq r$, if $x\in \triangle_{i}$ for $1\leq i \leq m$}.$$
+$$\text{$g_i(x) \leq r$, for $1\leq i \leq m$}.$$
 
 Thus, we need only to find the solution to (P1) to find the geodesic center of $P$.
-A similar optimization was studied by Megiddo in~\cite{megiddo1989ball}. 
-The main difference being that we have apex functions, defined only in their corresponding apexed triangles, instead of functions defined in the entire plane. \mati{actually, the definition of Section 5 is defined in the entire plane....but it is not continuous. Should we change that definition in here?}\luis{I don't understand this comment}
+We use some remarks described by Megiddo in order to simplify the description of (P1)~\cite{megiddo1989ball}.
 
-We use some remarks described by Megiddo in order to simplify the description of (P1).
-To simplify the formulas, we square the equations:
+To simplify the formulas, we square the equation $|x a_i| \leq r - \kappa_i$:
 $$\|x\|^2 - 2x\cdot a_i + \|a_i\|^2  = |x a_i|^2 \leq (r - \kappa_i)^2 = r^2 - 2r\kappa_i + \kappa_i^2.$$ 
 And finally for each $1\leq i\leq m$, we define the function $h_i(x, r)$ as follows:
-$$h_i(x, r) = \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2 \leq 0$$
+$$h_i(x, r) = \left\{ \begin{array}{lll}
+ \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2 && \text{if }x\in \triangle_i\\
+-\infty&&\text{otherwise}
+\end{array}\right. $$
+%$$h_i(x, r) = \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2 \leq 0$$
 
 Therefore, our optimization problem can be reformulated as:
 
 \textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in \reg$ and 
-$$h_i(x, r) \leq 0, \text{ if $x\in \triangle_{i}$ for $1\leq i \leq m$}.$$%\text{ and } r > \max\{\kappa_i\}
+$$h_i(x, r) \leq 0 \text{ and  $r > \max\{\kappa_i\}$, for $1\leq i \leq m$}.$$
 
-\mati{In here we somehow have ignored the regions in which each $g_i$ is defined. Shouldn't we add it as well? or they are now defined in the whole plane? if so, we must justify why this is ok.}\luis{No, we haven't note that there is an  if $x\in \triangle_{i}$}
-Although the functions $h_i(x,r)$ are not linear, they all have the same non-linear terms. Therefore, for $i\neq j$, we get that
-$h_i(x,r) = h_j(x, r)$ defines a \emph{separating plane}\mati{I woudl say that it is not a linear plane, but a 2-dimensional differential variety. right?}\luis{This is a plane, a normal plane in $\mathbb{R}^3$}
+Let $h_i'(x,r) = \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2$ be a function defined in the entire plane and let (P2$'$) be an optimization problem analogous to (P2) where every instance of $h_i(x,r)$ is replaced by $h_i'(x,r)$.
+The optimization (P2$'$) was studied by Megiddo in~\cite{megiddo1989ball}. We provide some of the intuition used by Megiddo to solve this problem.
+
+Although the functions $h_i'(x,r)$ are not linear inside $\triangle_i$, they all have the same non-linear terms. Therefore, for $i\neq j$, we get that
+$h_i'(x,r) = h_j'(x, r)$ defines a \emph{separating plane}
 $$\gamma_{i,j} = \{(x, r) \in \mathbb{R}^3:  2( \kappa_i - \kappa_j) r - 2 (a_i - a_j) \cdot x + \|a_i\|^2 - \|a_j\|^2 - \kappa_i^2 + \kappa_j^2 = 0\}$$
 
 As noted by Megiddo~\cite{megiddo1989ball}, this separating plane has the following property:
-If the solution $(x, r)$ to (P2) is known to lie to one side of $\gamma_{i,j}$, then we know that one of the constraints is redundant. 
+If the solution $(x, r)$ to (P2$'$) is known to lie to one side of $\gamma_{i,j}$, then we know that one of the constraints is redundant. 
 
-Megiddo's optimization problem~\cite{megiddo1989ball} is similar to (P2), each constraint is however defined in the entire domain instead of on a triangle. To solve his problem, it sufficed to have a \emph{side-decision oracle} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle in a way that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
+Thus, to solve (P2$'$) it sufficed to have a \emph{side-decision oracle} to determine on which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle in a way that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
 
 Once we have such an oracle, Megiddo's problem can be solved using a prune and search similar to that introduced in Section~\ref{section:Prune and search}: pair the functions arbitrarily, and consider the set of $m/2$ separating planes defined by these pairs. For some constant $r$, compute a $1/r$-cutting in $\mathbb{R}^3$ of the separating planes.
 A $1/r$-cutting is a partition of the plane into $O(r^2)$ convex regions each of which is of constant size and intersects at most $m/2r$ separating planes.
@@ -707,7 +732,7 @@ A cutting of planes can be computed in linear time in $\mathbb{R}^3$ for any $r 
 After computing the cutting, determine in which of the regions the minimum lies by performing $O(1)$ calls to the side-decision oracle. 
 Because at least $(r-1)m/2r$ separating planes do not intersect this constant size region, for each of them we can discard one of the constraints as it becomes redundant. Repeating this algorithm recursively we obtain a linear running time.
 
-To solve (P2) we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only defined in a triangular domain.
+To solve (P2) we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only defined in the same way as in (P2$'$) in a triangular domain.
 Note that the vertices of each apexed triangle that intersect $\reg$ have their endpoints either outside of $\reg$ or on its boundary.
 
 \subsection{Optimization problem in a convex domain}
@@ -722,7 +747,7 @@ For each chord bounding either $\triangle_i$ or $\triangle_j$, consider the line
 
 Let $\Gamma$ be the union of all the plane-sets defined by the $m/2$ pairs of apexed triangles. Thus, $\Gamma$ is a set that consists of $O(m)$ planes. Compute an $1/r$-cutting of $\Gamma$ in $O(m)$ time for some constant $r$ to be specified later.
 Because $r$ is constant, this $1/r$-cutting splits the space into $O(1)$ convex regions, each bounded by a constant number of planes~\cite{matousekCuttings}. 
-By using a side-decision algorithm (to be specified later), we can determine the region $Q$ of the cutting that contains the solution to (P2). Because $Q$ is the region of a $1/r$-cutting of $\Gamma$, we know that at most $|\Gamma|/r$ planes of $\Gamma$ intersect $Q$. In particular, at most $|\Gamma|/r$ plane-sets intersect $Q$ and hence, at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$. 
+Using a side-decision algorithm (to be specified later), we can determine the region $Q$ of the cutting that contains the solution to (P2). Because $Q$ is the region of a $1/r$-cutting of $\Gamma$, we know that at most $|\Gamma|/r$ planes of $\Gamma$ intersect $Q$. In particular, at most $|\Gamma|/r$ plane-sets intersect $Q$ and hence, at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$. 
 
 Let $(\triangle_i, \triangle_j)$ be a pair such that its plane-set does not intersect $Q$. 
 Let $Q'$ be the projection of $Q$ on the plane $Z_0$. Because the plane-set of this pair does not intersect $Q$, we know that $Q'$ intersects neither the boundary of $\triangle_i$ nor that of $\triangle_j$.
@@ -734,7 +759,7 @@ Two cases arise:
 To this end, we consider the separating plane $\gamma_{i,j}$. Notice that inside the vertical extrusion of $\triangle_i\cap \triangle_j$ (and hence in $Q$), the plane $\gamma_{i,j}$ has the property that if we know its side containing the solution, then one of the constraints can be dropped. Since $\gamma_{i,j}$ does not intersect $Q$ as $\gamma_{i,j}$ belongs to the plane-set of $(\triangle_i, \triangle_j)$, we can decide which side of $\gamma_{i,j}$ contains the solution to (P2) and drop one of the constraints.
 \vspace{.05in}
 
-Regardless of the case if the plane-set of a pair $(\triangle_i, \triangle_j)$ does not intersect $Q$, then we can drop one of its constraints. Since at least $(r-1)|\Gamma|/r$ plane-sets do not intersect $Q$, we can drop at least $(r-1)|\Gamma|/r$ constraints.
+Regardless of the case if the plane-set of a pair $(\triangle_i, \triangle_j)$ does not intersect $Q$, then we can drop one of its constraints. Since at least $(r-1)|\Gamma|/r$ plane-sets do not intersect~$Q$, we can drop at least $(r-1)|\Gamma|/r$ constraints.
 Because $|\Gamma| \geq m/2$ as each plane-set contains at least one plane, by choosing $r = 2$, we are able to drop at least $|\Gamma|/2 \geq m/4$ constraints.
 Consequently, after $O(m)$ time, we are able to drop $m/4$ apexed triangles.
 By repeating this process recursively, we end up with a constant size problem in which we can compute the upper envelope of the functions explicitly and find the solution to (P2) using exhaustive search. 
@@ -742,7 +767,7 @@ Thus, the running time of this algorithm is bounded by the recurrence $T(m) = T(
 Because $m = O(n)$, we can find the solution to (P2) in $O(n)$ time.
 
 The last detail is the implementation of the side-decision algorithm. 
-Given a plane $\gamma$, we want to decide on which side lies the solution to (P2).
+Given a plane~$\gamma$, we want to decide on which side lies the solution to (P2).
 To this end, we solve (P2) restricted to~$\gamma$, i.e., with the additional constraint of $(x,r)\in \gamma$. 
 This approach was used by Megiddo~\cite{megiddo1989ball}, the idea is to recurse by reducing the dimension of the problem.
 Another approach is to use a slight modification of the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter}. 
@@ -750,7 +775,7 @@ Another approach is to use a slight modification of the chord-oracle described b
 Once the solution to (P2) restricted to $\gamma$ is known, we can follow the same idea used by Megiddo~\cite{megiddo1989ball} to find the side of $\gamma$ containing the global solution to (P2). 
 Intuitively, we find the apex functions that define the minimum restricted to $\gamma$. 
 Since $\phi(x) = \F{P}{x}$ is locally defined by this functions, 
-we can decide on which side the minimum lie using convexity.
+we can decide on which side the minimum lies using convexity.
 We obtain the following result.
 
 \begin{lemma}
