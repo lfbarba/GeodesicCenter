@@ -36,6 +36,11 @@ B.~Chazelle.
 \newblock A theorem on polygon cutting with applications.
 \newblock In {\em Proceedings of FOCS}, pages 339--349, 1982.
 
+\bibitem{chazelle1991triangulating}
+B.~Chazelle.
+\newblock Triangulating a simple polygon in linear time.
+\newblock {\em Discrete \& Computational Geometry}, 6(1):485--524, 1991.
+
 \bibitem{dls-aclcsp-92}
 H.~Djidjev, A.~Lingas, and J.-R. Sack.
 \newblock An {$O(n\log n)$} algorithm for computing the link center of a simple
@@ -57,7 +62,7 @@ L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
 \bibitem{guibasShortestPathQueries}
 L.~J. Guibas and J.~Hershberger.
 \newblock Optimal shortest path queries in a simple polygon.
-\newblock In {\em Proceedings of STOC}, pages 50--63. ACM, 1987.
+\newblock {\em Journal of computer and system sciences}, 39(2):126--152, 1989.
 
 \bibitem{harel1984fast}
 D.~Harel and R.~E. Tarjan.
@@ -66,8 +71,8 @@ D.~Harel and R.~E. Tarjan.
 
 \bibitem{hershberger1993matrix}
 J.~Hershberger and S.~Suri.
-\newblock Matrix searching with the shortest path metric.
-\newblock In {\em Proceedings of STOC}, pages 485--494. ACM, 1993.
+\newblock Matrix searching with the shortest-path metric.
+\newblock {\em SIAM Journal on Computing}, 26(6):1612--1634, 1997.
 
 \bibitem{k-ealdp-89}
 Y.~Ke.
@@ -82,7 +87,7 @@ D.-T. Lee and F.~P. Preparata.
 \bibitem{matousekCuttings}
 J.~Matou{\v{s}}ek.
 \newblock Approximations and optimal geometric divide-and-conquer.
-\newblock In {\em Proceedings of STOC}, pages 505--511. ACM, 1991.
+\newblock {\em Journal of Computer and System Sciences}, 50(2):203--208, 1995.
 
 \bibitem{ConstructionEpsilonNets}
 J.~Matou\v{s}ek.
