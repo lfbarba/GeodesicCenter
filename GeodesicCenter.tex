@@ -566,10 +566,10 @@ The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, 
 %\end{proof}
 
 Given a chord $C$ of $P$ a \emph{half-polygon} of $P$ is one of the two simple polygons in which $C$ splits $P$.
-A \emph{\tcell} of $P$ is a simple polygon obtained as the intersection of at most four half-polygons.
-Because a \tcell is the intersection of geodesically convex sets, it is also geodesically convex. 
+A \emph{$k$-cell} of $P$ is a simple polygon obtained as the intersection of at most $k$ half-polygons.
+Because a $k$-cell is the intersection of geodesically convex sets, it is also geodesically convex. 
 
-The recursive algorithm described in this section takes as input a \tcell (initially equal to $P$) containing the geodesic center of $P$ and the set of apexed triangles of $\tau$ that intersect~$R$. In each iteration, it produces a new \tcell of smaller complexity contained that intersects just a fraction of the apexed triangles and contains the geodesic center of $P$. By recursing on this new cell, the complexity of the problem is reduced in each iteration.
+The recursive algorithm described in this section takes as input a \tcell (initially equal to $P$) containing the geodesic center of $P$ and the set of apexed triangles of $\tau$ that intersect~$R$. In each iteration, it produces a new \tcell of smaller complexity that intersects just a fraction of the apexed triangles and contains the geodesic center of $P$. By recursing on this new cell, the complexity of the problem is reduced in each iteration.
 
 Let $R$ be a \tcell of $P$ containing the geodesic center of $P$ and let $\tau_R$ be the set of apexed triangles of $\tau$ that intersect~$R$. 
 Let $\m = \max\{|R|, |\tau_R|\}$, where $|R|$ denotes the combinatorial complexity $R$, i.e., the number of vertices and edges of $R$.
@@ -577,14 +577,19 @@ Recall that, by construction of the apexed triangles, for each triangle of $\tau
 Let $\mathcal C$ be the set containing all chords that belong to the boundary of a triangle of $\tau_R$. 
 Therefore, $|\mathcal C| \leq 2|\tau_R|\leq 2\m$.
 
-To construct an $\varepsilon$-net of $\mathcal C$, we need some definitions (for more information on $\varepsilon$-nets refer to~\cite{ConstructionEpsilonNets}).
+To construct $\varepsilon$-nets, we need some definitions (for more information on $\varepsilon$-nets refer to~\cite{ConstructionEpsilonNets}).
 Let $\varphi$ be the set of all open \tcells of $P$.
 For each $t\in \varphi$, let $\mathcal C_t = \{C\in \mathcal C: C\cap t \neq \emptyset\}$ be the set of chords of $\mathcal C$ induced by $t$. 
 Finally, let $\varphi_\mathcal C = \{\mathcal C_t : t\in \varphi\}$ be the family of subsets of $\mathcal C$ induced by $\varphi$.
+Consider the set system $(\mathcal C, \varphi_\mathcal C)$ (denoted by $(\mathcal C, \varphi)$ for simplicity) defined by $\mathcal C$ and $\varphi$. 
+The proof of the next lemma is deferred to the Appendix for ease of readability.
+
+\begin{lemma}\label{lemma:bounded VC}
+The set system $(\mathcal C, \varphi)$ has constant VC-dimension.
+\end{lemma}
 
 Let $\varepsilon >0$ (the exact value of $\varepsilon$ will be specified later).
-Consider the range space $(\mathcal C, \varphi_\mathcal C)$ defined by $\mathcal C$ and $\varphi_\mathcal C$. 
-Because the VC-dimension of this range space is finite, we can compute an $\varepsilon$-net $N$ of $(\mathcal C, \varphi_\mathcal C)$ in $O(|\mathcal C|/\varepsilon)=O(\m)$ time~\cite{ConstructionEpsilonNets}. 
+Because the VC-dimension of the set system $(\mathcal C, \varphi)$ is finite by Lemma~\ref{lemma:bounded VC}, we can compute an $\varepsilon$-net $N$ of $(\mathcal C, \varphi)$ in $O(|\mathcal C|/\varepsilon) = O(\m)$ time~\cite{ConstructionEpsilonNets}. 
 The size of $N$ is $O(\frac{1}{\varepsilon} \log \frac{1}{\varepsilon}) = O(1)$ and its main property is that any \tcell that does not intersect a chord of $N$ will intersect at most $\varepsilon |\mathcal C|$ chords of $\mathcal C$. 
 
 Observe that $N$ partitions $R$ into $O(1)$ sub-polygons (not necessarily \tcells). We further refine this partition by performing a \tcell decomposition. That is, we shoot vertical rays up and down from each endpoint of $N$, and from the intersection point of  any two segments of $N$, see Figure~\ref{fig:Cutting of Chords}. Overall, this partitions $R$ into $O(1)$ \tcells such that each  either $(i)$  is a convex polygon contained in $P$ of at most four vertices, or otherwise $(ii)$ contains some chain of $\partial P$. 
@@ -594,7 +599,7 @@ Since $|N| = O(1)$, the whole decomposition can be computed in $O(\m)$ time (the
 \centering
 \includegraphics{img/CuttingOfChords.pdf}
 
-\caption{\small The $\epsilon$-net $N$ splits $P$ into $O(1)$ sub-polygons that are further refined into a \tcell decomposition using $O(1)$ ray-shooting queries from the vertices of the arrangement defined by~$N$.}
+\caption{\small The $\epsilon$-net $N$ splits $R$ into $O(1)$ sub-polygons that are further refined into a \tcell decomposition using $O(1)$ ray-shooting queries from the vertices of the arrangement defined by~$N$.}
 \label{fig:Cutting of Chords}
 \end{figure}
 
@@ -605,7 +610,7 @@ We then use the chord-oracle from Pollack et al.~\cite[Section~3]{pollackComputi
 The only requirement of this technique is that the function $\F{P}{x}$ coincides with the upper envelope of the apex functions when restricted to $C$.
 Which is true by Lemma~\ref{lemma:Optimization problem same as geodesic center} and from the fact that $\tau_R$ consists of all the apexed triangles of $\tau$ that intersect~$R$.
 
-Because the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter} runs in linear time on the number of functions defined on $C$, we can decide in total $O(\m)$ time in which side of $C$ the geodesic center of $P$ lies. 
+Because the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter} runs in time linear in the number of functions defined on $C$, we can decide in total $O(\m)$ time in which side of $C$ the geodesic center of $P$ lies. 
 Since our decomposition into \tcells has constant complexity, 
 we need to perform $O(1)$ calls to the oracle before determining the \tcell $\reg$ that contains the geodesic center of $P$. 
 
@@ -626,7 +631,7 @@ Overall, we need $O(\m)$ time to compute the at most $\varepsilon |\mathcal C|$ 
 By recursing on $\reg$, we guarantee that after $O(\log \m)$ iterations, we reduce the size of either $\tau_R$ or $\reg$ to constant. 
 In the former case, the minimum of $\F{P}{x}$ can be found by explicitly constructing function $\phi$ in $O(1)$ time. 
 In the latter case, we triangulate $\reg$ and apply the chord-oracle to determine which triangle will contain $\cp$. 
-The details needed to find the minimum of $\phi(x)$ inside this triangle are giving the next section.
+The details needed to find the minimum of $\phi(x)$ inside this triangle are given in the next section.
 
 %Since we halve the the size of the \tcell and the number of apexed triangles in each iteration, the total running time of this algorithm is $O(\m)$. 
 %Because $|\tau| = O(n)$ by Corollary~\ref{lemma:Size of tau}, we obtain the following result.
@@ -645,12 +650,13 @@ The key observation is that, as it happened with chords, the function $\phi(x)$ 
 %Thus, rather than further restricting the search to sub-\tcells within $\reg$, we will do a prune and search on the triangles~in~$\tau$.
 
 Let $\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}$ be the set of $m= O(n)$ apexed triangles of $\tau$ that intersect $\reg$. 
+Let $a_i$ and $w_i$ be the apex and the definer of $\triangle_i$, respectively.
 Let $g_i(x)$  be the apex function of $\triangle_i$ such that 
 $$g(x) = \left\{ \begin{array}{lll}
 |x a_i| + \kappa_i && \text{if }x\in \triangle_i\\
 -\infty&&\text{otherwise}
 \end{array}\right. ,$$
-where $a_i$ and $w_i$ are the apex and the definer of $\triangle_i$, respectively, and $\kappa_i = \g{a_i}{w_i}$ is a constant.
+where $\kappa_i = \g{a_i}{w_i}$ is a constant.
 
 %Recall that the geodesic center minimizes the function $\F{P}{x}$.
 By Lemma~\ref{lemma:Optimization problem same as geodesic center}, $\phi(x) = \F{P}{x}$. 
@@ -689,10 +695,10 @@ If the solution $(x, r)$ to (P2$'$) is known to lie to one side of $\gamma_{i,j}
 Thus, to solve (P2$'$) it sufficed to have a \emph{side-decision oracle} to determine in which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle in a way that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
 
 Once we have such an oracle, Megiddo's problem can be solved using a prune and search approach: pair the functions arbitrarily, and consider the set of $m/2$ separating planes defined by these pairs. For some constant $t$, compute a $1/t$-cutting in $\mathbb{R}^3$ of the separating planes.
-A $1/t$-cutting is a partition of the plane into $O(t^3) = O(1)$ convex regions each of which is of constant size and intersects at most $m/2t$ separating planes.
+A $1/t$-cutting is a partition of the plane into $O(t^3) = O(1)$ convex regions each of which is of constant complexity and intersects at most $m/2t$ separating planes.
 A cutting of planes can be computed in linear time in $\mathbb{R}^3$ for any $t = O(1)$~\cite{matousekCuttings}.
 After computing the cutting, determine in which of the regions the minimum lies by performing $O(1)$ calls to the side-decision oracle. 
-Because at least $(t-1)m/2t$ separating planes do not intersect this constant size region, for each of them we can discard one of the constraints as it becomes redundant. Repeating this algorithm recursively we obtain a linear running time.
+Because at least $(t-1)m/2t$ separating planes do not intersect this constant complexity region, for each of them we can discard one of the constraints as it becomes redundant. Repeating this algorithm recursively we obtain a linear running time.
 
 To solve (P2) we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only defined in the same way as in (P2$'$) in a triangular domain.
 Note that the vertices of each apexed triangle that intersect $\reg$ have their endpoints either outside of $\reg$ or on its boundary.
@@ -764,5 +770,77 @@ We can compute the geodesic center of any simple polygon $P$ of $n$ vertices in 
 
 \appendix
 \section{Bounding VC dimension}
+In this section, we provide the proof of Lemma~\ref{lemma:bounded VC}. That is, we want to prove that the set system $(\mathcal C, \varphi)$ has constant VC-dimension.
+Recall that $\mathcal C$ is a set of chords of $P$ and $\varphi$ is the set of all open \tcells of $P$.
+ 
+Let $A \subseteq \mathcal C$ be a subset of chords.
+We say that $A$ is \emph{shattered} by $\varphi$ if each of the subsets of $A$ can be obtained as the intersection of some $S\in \varphi$ with $A$, i.e., if for each $\sigma\subseteq A$, there exists $S\in \varphi$ such that $\sigma = S\cap A$. 
+The \emph{VC-dimension} of $(\mathcal C, \varphi)$ is the supremum of the sizes of all finite shattered subsets of $\mathcal C$.
+
+Let $\mathcal H = \{H : H\text{ is a half-polygon of }P\}$.
+Because each \tcell of $P$ is the intersection of at most four half-polygons of $P$,
+the following result is a direct consequence of Proposition 10.3.3 of~\cite[Chapter 10]{matouvsek2002lectures}.
+
+\begin{lemma}\label{lemma:Shattering}
+If $(\mathcal C, \mathcal H)$ has VC-dimension $d$, then $(\mathcal C, \varphi)$ has VC-dimension $O(d)$.
+\end{lemma}
+
+Let $\kappa$ be a sufficiently large constant to be determined later.
+Note that if no subset of $\mathcal C$ of size $\kappa$ is shattered by $\mathcal H$, then the VC-dimension of $(\mathcal C, \mathcal H)$ is at most $\kappa$.
+
+Let $A$ be an arbitrary subset of $\mathcal C$ such that $|A| = \kappa$. 
+By Lemma~\ref{lemma:Shattering}, it suffices to show that $A$ is not shattered by $\mathcal H$ to bound the VC-dimension of $(\mathcal C, \mathcal H)$ and hence of $(\mathcal C, \varphi)$.
+We spend the remainder of this section proving that $A$ is not shattered by $\mathcal H$.
+
+For any $B\subseteq A$, notice that $B$ partitions $P$ into sub-polygons. 
+
+\begin{lemma}\label{lemma:Hexagonal face}
+Let $B\subseteq A$. 
+If there is a $6$-cell $\sigma$ among the sub-polygons in which $B$ partitions~$P$,
+then $A$ is not shattered by $\mathcal H$.
+\end{lemma}
+\begin{proof}
+Let $C_1, \ldots, C_6$ be the chords supporting the six half-polygons whose intersection defines $\sigma$. Assume that $C_1, \ldots, C_6$ appear in these order when walking clockwise along the boundary of $\sigma$.
+Note that any half-polygon that intersects $C_1, C_3$ and $C_5$ must intersect either $C_2, C_4$ or $C_6$. 
+Therefore, the set $\{C_1, C_3, C_5\}$ cannot be obtained as the intersection of some half-polygon $H\in \mathcal H$ with $H$. 
+Because $\{C_1, C_3, C_5\}$ is also a subset of $A$, 
+we conclude that $A$ is not shattered by $\mathcal H$.
+\end{proof}
+
+Given two chords $C_1$ and $C_2$ of $A$, $C_1$ is \emph{separated} from $C_2$ if there exists a chord $S\in A$ such that $C_1$ and $C_2$ lie on different half-polygons supported by $S$.
+
+Note that if $A$ contains two chords $C_1$ and $C_2$ that are separated, then the subset~$\{C_1, C_2\}$ cannot be obtained as the intersection of a half-polygon $H\in \mathcal H$ with $A$, i.e., $A$ is not shattered by $\mathcal H$. 
+Therefore, we assume from now on that no two chords of $A$ are separated
+
+Let $G$ be the intersection graph of $A$, i.e., the graph with vertex set $A$ and an edge between two chords if they intersect. An Erd\"os-Szekeres type result result from Harborth and M\"oller~\cite{harborth1993esther} shows that every arrangement of nine pseudo-lines defines a hexagonal face.
+Thus, if $G$ has a clique of size nine, then that subset of chords is a set of pseudo-lines and splits $P$ into sub-polygons, one of which is a $6$-cell. 
+Therefore, if $G$ has a clique of size nine, then Lemma~\ref{lemma:Hexagonal face} implies that $A$ is not shattered by $\mathcal H$.
+Consequently, we assume from now on that $G$ has no clique of size nine. 
+
+Tur\'an's Theorem states that if $G$ has no clique of size nine, then it has at most $(7/16)\kappa^2$ edges.
+Let $C_1$ be the chord in $A$ with the smallest degree in $G$. Notice that $C_1$ has degree at most $7 \kappa/16$, as otherwise $G$ would have more than $(7/16)\kappa^2$ edges.
+Therefore, there are at least $9 \kappa/16$ chords of $A$ do not intersect $C_1$. 
+Consider the two half-polygons supported by $C_1$ and note that one of them, say $P'$, contains at least $9 \kappa/32$ chords of $A$ that do not intersect $C_1$. Let $A'$ be the set containing these chords.
+
+Let $G'$ be subgraph of $G$ induced by $A'$ and let $C_2$ be the chord of $A'$ with smallest degree in $G'$.
+Because $G'$ has no clique of size nine, we infer that $C_2$ has degree at most $7|A'|/16$.
+Thus, there is a set $A''$ of at least $9 |A'| /16$ chords of $A'$ that do not intersect $C_2$ (nor $C_1$).
+Because no tow chords of $A$ are separated, all chords in $A''$ are contained in the half-polygon supported by $C_2$ that contains $C_1$. Otherwise, these chords are separated from $C_1$ by $C_2$.
+
+Let $G''$ be the subgraph of $G$ induced by $A''$. By repeating the above procedure recursively on $G''$ and $A''$ four times more, we can obtain a set $C_1, \ldots, C_6$ such that for each $1\leq i\leq 6$, $C_1, \ldots, C_{i-1}$ are contained in the same half-polygon supported by $C_i$.
+Consequently, the set $\{C_1, \ldots, C_6\}\subseteq A$ partitions $P$ into sub-polygons one of which is a 6-cell bounded by the chords $C_1, \ldots, C_6$.
+
+Note that the above construction can be applied as long as 
+$$\left(\frac{9}{32}\right) \left(\frac{9}{16}\right)^4\kappa \geq 1.$$ 
+That is, as long as $|A| \geq 36$ we can always find a subset $B\subseteq A$ such that there is a $6$-cell among the sub-polygons in which $B$ partitions $P$. 
+Therefore, as long as $|A| \geq 36$, $A$ is not shattered by $\mathcal H$, i.e., the set system $(\mathcal C, \mathcal H)$ has VC-dimension at most 36.
+By Lemma~\ref{lemma:Shattering}, we obtain the following result.
+
+\vspace{.1in}
+\noindent $\blacktriangleright \mathbf{Lemma~\ref{lemma:bounded VC}.}$ 
+\emph{The set system $(\mathcal C, \varphi)$ has constant VC-dimension.
+}
+
+
 
 \end{document}

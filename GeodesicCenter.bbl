@@ -64,6 +64,11 @@ L.~J. Guibas and J.~Hershberger.
 \newblock Optimal shortest path queries in a simple polygon.
 \newblock {\em Journal of computer and system sciences}, 39(2):126--152, 1989.
 
+\bibitem{harborth1993esther}
+H.~Harborth and M.~M{\"o}ller.
+\newblock {\em The Esther-Klein-problem in the projective plane}.
+\newblock Inst. f{\"u}r Mathematik, TU Braunschweig, 1993.
+
 \bibitem{harel1984fast}
 D.~Harel and R.~E. Tarjan.
 \newblock Fast algorithms for finding nearest common ancestors.
@@ -88,6 +93,11 @@ D.-T. Lee and F.~P. Preparata.
 J.~Matou{\v{s}}ek.
 \newblock Approximations and optimal geometric divide-and-conquer.
 \newblock {\em Journal of Computer and System Sciences}, 50(2):203--208, 1995.
+
+\bibitem{matouvsek2002lectures}
+J.~Matou{\v{s}}ek.
+\newblock {\em Lectures on discrete geometry}, volume 108.
+\newblock Springer New York, 2002.
 
 \bibitem{ConstructionEpsilonNets}
 J.~Matou\v{s}ek.
