@@ -1,11 +1,11 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{Previous Work}{section.1}% 2
 \BOOKMARK [2][-]{subsection.1.2}{Outline}{section.1}% 3
-\BOOKMARK [1][-]{section.2}{Hourglasses and Funnels}{}% 4
-\BOOKMARK [2][-]{subsection.2.1}{Hourglasses}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.2}{Funnels}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Decomposing the boundary}{}% 7
-\BOOKMARK [1][-]{section.4}{Building hourglasses}{}% 8
+\BOOKMARK [1][-]{section.2}{Decomposing the boundary}{}% 4
+\BOOKMARK [1][-]{section.3}{Hourglasses}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Building hourglasses}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Funnels}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Funnels of marked vertices}{section.4}% 8
 \BOOKMARK [1][-]{section.5}{Covering the polygon with apexed triangles}{}% 9
 \BOOKMARK [2][-]{subsection.5.1}{Inside the transition hourglass}{section.5}% 10
 \BOOKMARK [2][-]{subsection.5.2}{Inside the funnels of marked vertices}{section.5}% 11
