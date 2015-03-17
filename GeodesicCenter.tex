@@ -97,7 +97,7 @@ To ease the description, we assume that each vertex of $P$ has a unique farthest
 This \emph{general position} condition was also assumed by Aronov et al.~\cite{aronov1993furthest} and can be obtained by applying a slight perturbation to the positions of the vertices~\cite{edelsbrunner1990simulation}.
 
 Let $\F{P}{x}$ be the function that maps each $x\in P$ to the distance to a farthest neighbor of $x$ (i.e., $\F{P}{x} = \g{x}{\ff{x}}$).
-A point $\cp\in P$ that minimizes $\F{P}{x}$ is called the \emph{geodesic center} of $P$. Similarly, a point $s\in P$ that maximizes $\F{P}{x}$ (together with its farthest neighbor) is called a \emph{geodesic diametral pair} and their distance is known as the \emph{geodesic diameter}. Asano and Toussaint~\cite{at-cgcsp-85} showed that the geodesic center is unique (whereas it is easy to see that several geodesic diametrical pairs may exist).
+A point $\cp\in P$ that minimizes $\F{P}{x}$ is called the \emph{geodesic center} of $P$. Similarly, a point $s\in P$ that maximizes $\F{P}{x}$ (together with its farthest neighbor) is called a \emph{geodesic diametral pair} and their distance is known as the \emph{geodesic diameter}. Asano and Toussaint~\cite{at-cgcsp-85} showed that the geodesic center is unique (whereas it is easy to see that several geodesic diametral pairs may exist).
 
 In this paper, we show how to compute the geodesic center of $P$ in $O(n)$ time.
 
@@ -137,7 +137,7 @@ Intuitively speaking, $g(x)$ maps points in $\triangle$ to their (geodesic) dist
 We guarantee that, for each point $x\in P$, there is one function $g$ defined in a triangle containing $x$, such that $g(x) = \F{P}{x}$.
 To compute these triangles and their corresponding functions, we proceed as follows.
 
-In Section~\ref{Section:Decomposing the boundary}, we use the matrix search technique introduced by Hershberger and Suri~\cite{hershberger1993matrix} to decompose the boundary of $P$, denoted by $\partial P$, into connected edge disjoint chains.
+In Section~\ref{Section:Decomposing the boundary}, we use the matrix search technique introduced by Hershberger and Suri~\cite{hershberger1993matrix} to decompose the boundary of $P$, denoted by $\partial P$, into connected edge-disjoint chains.
 Each chain is defined by either $(1)$ a consecutive list of vertices that have the same farthest neighbor $v$ (we say that $v$ is \emph{marked} if it has such a chain associated to it), or $(2)$ an edge whose endpoints have different farthest neighbors (such edge is called a \emph{transition edge}).
 
 In Section~\ref{Section: Building hourglasses}, we consider each transition edge $ab$ of $\partial P$ independently and compute its \emph{hourglass}. Intuitively, the hourglass of $ab$, $H_{ab}$, is the region of $P$ between two chains, the edge $ab$ and the chain of $\partial P$ that contains the farthest neighbors of all points in $ab$.
@@ -145,7 +145,7 @@ Inspired by a result of Suri~\cite{suri1989computing}, we show that the sum of t
 In addition, we provide a new technique to compute all these hourglasses in linear time.
 
 In Section~\ref{Section:Computing apexed triangles} we show how to compute the functions in $\Phi$ and their respective triangles.
-We distinguish two cases: (1) Inside each hourglass $H_{ab}$ of a transition edge, we use a technique introduced by Aronov et al.~\cite{aronov1993furthest} that uses the shortest-path trees of $a$ and $b$ in $H_{ab}$ to decompose $H_{ab}$ into $O(|H_{ab}|)$ triangles with their respective functions (for more information on shortest-path trees refer to~\cite{guibasShortestPathTree}). 
+We distinguish two cases: (1) Inside each hourglass $H_{ab}$ of a transition edge, we use a technique introduced by Aronov et al.~\cite{aronov1993furthest} that uses the shortest-path trees of $a$ and $b$ in $H_{ab}$ to construct $O(|H_{ab}|)$ triangles with their respective functions (for more information on shortest-path trees refer to~\cite{guibasShortestPathTree}). 
 (2) For each marked vertex $v$ we compute triangles that encode the distance from $v$. Moreover, we guarantee that these triangles cover every point of $P$ whose farthest neighbor is $v$. 
 Overall, we compute the $O(n)$ functions of $\Phi$ in linear time.
 
@@ -163,8 +163,8 @@ We call $C$ and $\partial P(\ff{p_0}, \ff{p_k})$ the \emph{top} and \emph{bottom
 \begin{figure}[tb]
 \centering
 \includegraphics{img/TransitionChains.pdf}
-\caption{\small Given two edge disjoint transition chains, their hourglasses are open and
-the bottom chains of their hourglasses are also edge disjoint. 
+\caption{\small Given two edge-disjoint transition chains, their hourglasses are open and
+the bottom chains of their hourglasses are also edge-disjoint. 
 Moreover, these bottom chains appear in the same cyclic order as the top chains along $\partial P$.}
 \label{fig:Transition chains and hourglasses}
 \end{figure}
@@ -178,25 +178,25 @@ If $C$ is a transition chain of $\partial P$, then the hourglass $H_C$ is an ope
 \end{lemma}
 
 Note that by Lemma~\ref{lemma:Transition hourglasses are open}, the hourglass of each transition chain is open.
-In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chains are edge disjoint.
+In the remainder of the paper, all the hourglasses considered are defined by a transition chain, i.e., they are open and their top and bottom chains are edge-disjoint.
 
 The following lemma is depicted in Figure~\ref{fig:Transition chains and hourglasses} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.
 \begin{lemma}\label{lemma:Ordering Lemma}
-Let $C_1, C_2, C_3$ be three edge disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then, the bottom chains of $H_{C_1}, H_{C_2}$ and $H_{C_3}$ are also edge disjoint and appear in this order when traversing clockwise the boundary of~$P$.
+Let $C_1, C_2, C_3$ be three edge-disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then, the bottom chains of $H_{C_1}, H_{C_2}$ and $H_{C_3}$ are also edge-disjoint and appear in this order when traversing clockwise the boundary of~$P$.
 \end{lemma}
 
 Let $\gamma$ be a  geodesic path joining two points on the boundary of $P$.
 We say that $\gamma$ \emph{separates} two points $x_1$ and $x_2$ of $\partial P$ if the points of $X=\{x_1, x_2\}$ and the endpoints of $\gamma$ alternate along the boundary of $P$ ($x_1$ and $x_2$ could coincide with the endpoints of $\gamma$ in degenerate cases). We say that a geodesic path $\gamma$ \emph{separates} an hourglass $H$ if it separates the points of its top chain from those of its  bottom chain.
 
 \begin{lemma}\label{lemma:Split paths}
-Let $C_1, \ldots, C_r$ be edge disjoint transition chains of $\partial P$. Then, there is a set of $t \leq 10$ geodesic paths $\gamma_1, \ldots, \gamma_t$ with endpoints on $\partial P$ such that for each $1\leq i\leq r$ there exists $1\leq j\leq t$ such that $\gamma_j$ separates $H_{C_i}$.
+Let $C_1, \ldots, C_r$ be edge-disjoint transition chains of $\partial P$. Then, there is a set of $t \leq 10$ geodesic paths $\gamma_1, \ldots, \gamma_t$ with endpoints on $\partial P$ such that for each $1\leq i\leq r$ there exists $1\leq j\leq t$ such that $\gamma_j$ separates $H_{C_i}$.
 Moreover, this set can be computed in $O(n)$ time.
 \end{lemma}
 \begin{proof}
 Aronov et al. showed that there exist four vertices $v_1, \ldots, v_4$ of $P$ and geodesic paths $\p{v_1}{v_2}, \p{v_2}{v_3}, \p{v_3}{v_4}$ such that for any point $x\in \partial P$, one of these paths separates $x$ from $\ff{x}$~\cite[Lemma 2.7.6]{aronov1993furthest}. Moreover, they show how to compute this set in $O(n)$ time.
 
 Let $\Gamma= \{\p{v_i}{v_j} : 1\leq i < j\leq 4\}$ and note that $v_1, \ldots, v_4$ split the boundary of $P$ into at most four connected components.
-If a chain $C_i$ is completely contained in one of these components, then one path of $\Gamma$ separates the top and bottom chain of $H_{C_i}$. Otherwise, some vertex $v_j$ is an interior vertex of $C_i$. However, because the chains $C_1, \ldots, C_r$ are edge disjoint, there are at most four chains in this situation. 
+If a chain $C_i$ is completely contained in one of these components, then one path of $\Gamma$ separates the top and bottom chain of $H_{C_i}$. Otherwise, some vertex $v_j$ is an interior vertex of $C_i$. However, because the chains $C_1, \ldots, C_r$ are edge-disjoint, there are at most four chains in this situation. 
 For each chain $C_i$ containing a vertex $v_j$, we add the geodesic path connecting the endpoints of $C_i$ to $\Gamma$.
 Therefore, $\Gamma$ consists of at most 10 geodesic paths and each hourglass $H_{C_i}$ has its top and bottom chain separated by some path of $\Gamma$.
 Since only $O(1)$ additional paths are computed, this can be done in linear time.
@@ -206,7 +206,7 @@ A \emph{chord} of $P$ is an edge joining two non-adjacent vertices $a$ and $b$ o
 
 \begin{lemma}\label{lemma:Edges appear a constant number of times}
 [A restatement of Lemma 3.4.3 of~\cite{aronov1993furthest}]
-Let $C_1, \ldots, C_r$ be a set of edge disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then each chord of $P$ appears in $O(1)$ hourglasses among $H_{C_1}, \ldots, H_{C_r}$.
+Let $C_1, \ldots, C_r$ be a set of edge-disjoint transition chains of $\partial P$ that appear in this order when traversing clockwise the boundary of $P$. Then each chord of $P$ appears in $O(1)$ hourglasses among $H_{C_1}, \ldots, H_{C_r}$.
 \end{lemma}
 \begin{proof}
 % that appears in three hourglasses $H_{C_i}, H_{C_j}$ and $H_{C_k}$ such that $1\leq i < j < k\leq r$. 
@@ -411,7 +411,7 @@ Let $v$ be a vertex of $B_{ab}$. If $R(v)\neq \emptyset$, then $R(v) \subset H_{
 %%%
 
 
-Our objective is to compute $O(|H_{ab}|)$ apexed triangles that cover $H_{ab}$, each with its distance function, such that the upper envelope of these apex functions coincides with $\F{P}{x}$ restricted to $H_{ab}$ where it ``matters''.
+Our objective is to compute $O(|H_{ab}|)$ apexed triangles contained in $H_{ab}$, each with its distance function, such that the upper envelope of these apex functions coincides with $\F{P}{x}$ restricted to $H_{ab}$ where it ``matters''.
 
 The same approach was already used by Pollack et al. in~\cite[Section 3]{pollackComputingCenter}. 
 Given a segment contained in the interior of $P$, they show 
@@ -517,7 +517,7 @@ Since $v = \ff{x}$, we know that $x\in R(v)$ and hence that $x \in \fn{v}{C_v}$.
 \end{proof}
 
 We now proceed to split a given funnel into $O(|\fn{v}{C_v}|)$ apexed triangles that encode the distance function from $v$. 
-To this end, we use the algorithm described by Guibas et al.~\cite[Section 2]{guibasShortestPathQueries} to compute the shortest-map of $v$ in $\fn{v}{C_v}$ in $O(|\fn{v}{C_v}|)$ time.
+To this end, we use the algorithm described by Guibas et al.~\cite[Section 2]{guibasShortestPathQueries} to compute the shortest-path map of $v$ in $\fn{v}{C_v}$ in $O(|\fn{v}{C_v}|)$ time.
 This algorithm produces a partition of $\fn{v}{C_v}$ into $O(|\fn{v}{C_v}|)$ interior disjoint triangles, such that each triangle consists of all points in $\fn{v}{C_v}$ whose shortest path to $v$ consists of the same sequence of vertices.
 Let $\triangle$ be a triangle in this partition and let $a$ be its apex, i.e., the first vertex found along each path $\p{x}{v}$, where $x\in \triangle$. We define the apex function $g_\triangle(x)$ of $\triangle$ as follows:
 $$g_\triangle(x) = \left\{ \begin{array}{lll}
@@ -785,8 +785,8 @@ the following result is a direct consequence of Proposition 10.3.3 of~\cite[Chap
 If $(\mathcal C, \mathcal H)$ has VC-dimension $d$, then $(\mathcal C, \varphi)$ has VC-dimension $O(d)$.
 \end{lemma}
 
-Let $\kappa$ be a sufficiently large constant to be determined later.
-Note that if no subset of $\mathcal C$ of size $\kappa$ is shattered by $\mathcal H$, then the VC-dimension of $(\mathcal C, \mathcal H)$ is at most $\kappa$.
+Let $\kappa>6$ be a sufficiently large constant to be determined later.
+Recall that if no subset of $\mathcal C$ of size $\kappa$ is shattered by $\mathcal H$, then the VC-dimension of $(\mathcal C, \mathcal H)$ is at most $\kappa$.
 
 Let $A$ be an arbitrary subset of $\mathcal C$ such that $|A| = \kappa$. 
 By Lemma~\ref{lemma:Shattering}, it suffices to show that $A$ is not shattered by $\mathcal H$ to bound the VC-dimension of $(\mathcal C, \mathcal H)$ and hence of $(\mathcal C, \varphi)$.
@@ -802,17 +802,17 @@ then $A$ is not shattered by $\mathcal H$.
 \begin{proof}
 Let $C_1, \ldots, C_6$ be the chords supporting the six half-polygons whose intersection defines $\sigma$. Assume that $C_1, \ldots, C_6$ appear in these order when walking clockwise along the boundary of $\sigma$.
 Note that any half-polygon that intersects $C_1, C_3$ and $C_5$ must intersect either $C_2, C_4$ or $C_6$. 
-Therefore, the set $\{C_1, C_3, C_5\}$ cannot be obtained as the intersection of some half-polygon $H\in \mathcal H$ with $H$. 
+Therefore, the set $\{C_1, C_3, C_5\}$ cannot be obtained as the intersection of some half-polygon $H\in \mathcal H$ with $A$. 
 Because $\{C_1, C_3, C_5\}$ is also a subset of $A$, 
 we conclude that $A$ is not shattered by $\mathcal H$.
 \end{proof}
 
-Given two chords $C_1$ and $C_2$ of $A$, $C_1$ is \emph{separated} from $C_2$ if there exists a chord $S\in A$ such that $C_1$ and $C_2$ lie on different half-polygons supported by $S$.
+Given two chords $C_1$ and $C_2$ of $A$, $C_1$ is \emph{separated} from $C_2$ if there exists a chord $S\in A$ such that $C_1$ and $C_2$ lie on different open half-polygons supported by $S$.
 
 Note that if $A$ contains two chords $C_1$ and $C_2$ that are separated, then the subset~$\{C_1, C_2\}$ cannot be obtained as the intersection of a half-polygon $H\in \mathcal H$ with $A$, i.e., $A$ is not shattered by $\mathcal H$. 
 Therefore, we assume from now on that no two chords of $A$ are separated
 
-Let $G$ be the intersection graph of $A$, i.e., the graph with vertex set $A$ and an edge between two chords if they intersect. An Erd\"os-Szekeres type result result from Harborth and M\"oller~\cite{harborth1993esther} shows that every arrangement of nine pseudo-lines defines a hexagonal face.
+Let $G$ be the intersection graph of $A$, i.e., the graph with vertex set $A$ and an edge between two chords if they intersect. An Erd\"os-Szekeres type result from Harborth and M\"oller~\cite{harborth1993esther} shows that every arrangement of nine pseudo-lines defines a hexagonal face.
 Thus, if $G$ has a clique of size nine, then that subset of chords is a set of pseudo-lines and splits $P$ into sub-polygons, one of which is a $6$-cell. 
 Therefore, if $G$ has a clique of size nine, then Lemma~\ref{lemma:Hexagonal face} implies that $A$ is not shattered by $\mathcal H$.
 Consequently, we assume from now on that $G$ has no clique of size nine. 
@@ -825,9 +825,9 @@ Consider the two half-polygons supported by $C_1$ and note that one of them, say
 Let $G'$ be subgraph of $G$ induced by $A'$ and let $C_2$ be the chord of $A'$ with smallest degree in $G'$.
 Because $G'$ has no clique of size nine, we infer that $C_2$ has degree at most $7|A'|/16$.
 Thus, there is a set $A''$ of at least $9 |A'| /16$ chords of $A'$ that do not intersect $C_2$ (nor $C_1$).
-Because no tow chords of $A$ are separated, all chords in $A''$ are contained in the half-polygon supported by $C_2$ that contains $C_1$. Otherwise, these chords are separated from $C_1$ by $C_2$.
+Because no two chords of $A$ are separated, all chords in $A''$ are contained in the half-polygon supported by $C_2$ that contains $C_1$. Otherwise, these chords are separated from $C_1$ by $C_2$.
 
-Let $G''$ be the subgraph of $G$ induced by $A''$. By repeating the above procedure recursively on $G''$ and $A''$ four times more, we can obtain a set $C_1, \ldots, C_6$ such that for each $1\leq i\leq 6$, $C_1, \ldots, C_{i-1}$ are contained in the same half-polygon supported by $C_i$.
+Let $G''$ be the subgraph of $G$ induced by $A''$. By repeating the above procedure recursively on $G''$ and $A''$ four times more, we can obtain a set $C_1, \ldots, C_6$ of pairwise disjoint chords such that for each $1\leq i\leq 6$, $C_1, \ldots, C_{i-1}$ are contained in the same half-polygon supported by $C_i$.
 Consequently, the set $\{C_1, \ldots, C_6\}\subseteq A$ partitions $P$ into sub-polygons one of which is a 6-cell bounded by the chords $C_1, \ldots, C_6$.
 
 Note that the above construction can be applied as long as 
