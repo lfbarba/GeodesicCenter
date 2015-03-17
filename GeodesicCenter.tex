@@ -396,6 +396,15 @@ $b)$ The decomposition of $\fn{v}{C}$ into apexed triangles produced by the shor
 
 \subsection{Funnels of marked vertices}
 Recall that for each marked vertex $v\in M$, we know at least of one vertex on $\partial P$ such that $v$ is its farthest neighbor.
+
+\begin{lemma}\label{lemma:Farthest points from marked are in funnel}
+Let $x$ be a point in $P$. If $\ff{x} = v$ for some marked vertex $v\in M$, then $x\in \fn{v}{C_v}$.
+\end{lemma}
+\begin{proof}
+Since $\ff{u_0} \neq \ff{u_k}$, $C_v$ is a transition chain. Moreover, $C_v$ contains $R(v)\cap \partial P$ by definition. Therefore, Lemma~\ref{lemma:Funnel contains Voronoi region} implies that $R(v)\subset \fn{v}{C_v}$.
+Since $v = \ff{x}$, we know that $x\in R(v)$ and hence that $x \in \fn{v}{C_v}$. 
+\end{proof}
+
 For any marked vertex $v$, let $u_1, \ldots, u_{k-1}$ be the vertices of $P$ such that $v = \ff{u_i}$ and assume that $u_1, \ldots, u_{k-1}$ are in clockwise order. Let $u_0$ and $u_k$ be the neighbors of $u_1$ and $u_{k-1}$ other than $u_2$ and $u_{k-2}$, respectively. Note that both $u_0 u_1$ and $u_{k-1}u_k$ are transition edges of $P$. Thus, we can assume that their transition hourglasses have been computed.
 
 Let $C_v = (u_0, \ldots, u_k)$ and consider the funnel $\fn{v}{C_v}$.
@@ -526,14 +535,6 @@ In other words, Lemma~\ref{lemma:Triangles inside hourglasses} says that no info
 In the next section we use a similar approach to construct a set of apexed triangles (and their corresponding apex functions), so as to encode the distance from the vertices of $M$.
 
 \subsection{Inside the funnels of marked vertices}
-
-\begin{lemma}\label{lemma:Farthest points from marked are in funnel}
-Let $x$ be a point in $P$. If $\ff{x} = v$ for some marked vertex $v\in M$, then $x\in \fn{v}{C_v}$.
-\end{lemma}
-\begin{proof}
-Since $\ff{u_0} \neq \ff{u_k}$, $C_v$ is a transition chain. Moreover, $C_v$ contains $R(v)\cap \partial P$ by definition. Therefore, Lemma~\ref{lemma:Funnel contains Voronoi region} implies that $R(v)\subset \fn{v}{C_v}$.
-Since $v = \ff{x}$, we know that $x\in R(v)$ and hence that $x \in \fn{v}{C_v}$. 
-\end{proof}
 
 We now proceed to split a given funnel into $O(|\fn{v}{C_v}|)$ apexed triangles that encode the distance function from $v$. 
 To this end, we use the algorithm described by Guibas et al.~\cite[Section 2]{guibasShortestPathQueries} to compute the shortest-path map of $v$ in $\fn{v}{C_v}$ in $O(|\fn{v}{C_v}|)$ time.
