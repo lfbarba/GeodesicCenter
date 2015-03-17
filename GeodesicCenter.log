@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  17 MAR 2015 15:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  17 MAR 2015 15:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1139,7 +1139,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 857.
  ) 
 Here is how much of TeX's memory you used:
  12950 strings out of 493117
- 196043 string characters out of 6135433
+ 196041 string characters out of 6135433
  323506 words of memory out of 5000000
  15790 multiletter control sequences out of 15000+600000
  185484 words of font info for 259 fonts, out of 8000000 for 9000
@@ -1183,7 +1183,7 @@ texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/201
 4/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on GeodesicCenter.pdf (20 pages, 667582 bytes).
+Output written on GeodesicCenter.pdf (20 pages, 667467 bytes).
 PDF statistics:
  567 PDF objects out of 1000 (max. 8388607)
  480 compressed objects within 5 object streams

@@ -818,7 +818,7 @@ Because $\{C_1, C_3, C_5\}$ is also a subset of $A$,
 we conclude that $A$ is not shattered by $\mathcal H$.
 \end{proof}
 
-Given two chords $C_1$ and $C_2$ of $A$, $C_1$ is \emph{separated} from $C_2$ if there exists a chord $S\in A$ such that $C_1$ and $C_2$ lie on different open half-polygons supported by $S$.
+Given two chords $C_1$ and $C_2$ of $A$, we say that $C_1$ and $C_2$ are \emph{separated} if there exists a chord $S\in A$ such that $C_1$ and $C_2$ lie on different open half-polygons supported by $S$.
 
 Note that if $A$ contains two chords $C_1$ and $C_2$ that are separated, then the subset~$\{C_1, C_2\}$ cannot be obtained as the intersection of a half-polygon $H\in \mathcal H$ with $A$, i.e., $A$ is not shattered by $\mathcal H$. 
 Therefore, we assume from now on that no two chords of $A$ are separated
@@ -829,16 +829,16 @@ In this case, Lemma~\ref{lemma:Hexagonal face} implies that $A$ is not shattered
 Consequently, we assume from now on that $G$ has no clique of size nine. 
 
 Tur\'an's Theorem~\cite{turan1941extremal} states that if $G$ has no clique of size nine, then it has at most $(7/16)\kappa^2$ edges.
-Let $C_1$ be the chord in $A$ with the smallest degree in $G$. Notice that $C_1$ has degree at most $7 \kappa/16$, as otherwise $G$ would have more than $(7/16)\kappa^2$ edges.
-Therefore, there are at least $9 \kappa/16$ chords of $A$ do not intersect $C_1$. 
+Let $C_1$ be the chord in $A$ with the smallest degree in $G$. Notice that $C_1$ has degree at most $7 \kappa/16$.
+Therefore, there are at least $9 \kappa/16$ chords of $A$ do not intersect~$C_1$. 
 Consider the two half-polygons supported by $C_1$ and note that one of them, say $P'$, contains at least $9 \kappa/32$ chords of $A$ that do not intersect $C_1$. Let $A'$ be the set containing these chords.
 
 Let $G'$ be subgraph of $G$ induced by $A'$ and let $C_2$ be the chord of $A'$ with smallest degree in $G'$.
 Because $G'$ has no clique of size nine, we infer that $C_2$ has degree at most $7|A'|/16$.
-Thus, there is a set $A''$ of at least $9 |A'| /16$ chords of $A'$ that do not intersect $C_2$ (nor $C_1$).
-Because no two chords of $A$ are separated, all chords in $A''$ are contained in the half-polygon supported by $C_2$ that contains $C_1$. Otherwise, these chords are separated from $C_1$ by $C_2$.
+Repeating the same argument, there is a set $A''$ of at least $9 |A'| /16$ chords of $A'$ that intersect neither $C_2$ nor $C_1$.
+Because no two chords of $A$ are separated, all chords in $A''$ are contained in the half-polygon supported by $C_2$ that contains $C_1$. Otherwise, $C_1$ and some of these chords are separated.
 
-Let $G''$ be the subgraph of $G$ induced by $A''$. By repeating the above procedure recursively on $G''$ and $A''$ four times more, we can obtain a set $C_1, \ldots, C_6$ of pairwise disjoint chords such that for each $1\leq i\leq 6$, $C_1, \ldots, C_{i-1}$ are contained in the same half-polygon supported by $C_i$.
+Let $G''$ be the subgraph of $G$ induced by $A''$. Repeating the above procedure recursively on $G''$ and $A''$ four more times, we obtain a set $C_1, \ldots, C_6$ of pairwise disjoint chords such that for each $1\leq i\leq 6$, $C_1, \ldots, C_{i-1}$ are contained in the same half-polygon supported by $C_i$.
 Consequently, the set $\{C_1, \ldots, C_6\}\subseteq A$ partitions $P$ into sub-polygons one of which is a 6-cell bounded by the chords $C_1, \ldots, C_6$.
 
 Note that the above construction can be applied as long as 
