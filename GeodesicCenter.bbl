@@ -142,4 +142,9 @@ S.~Suri.
 \newblock Computing geodesic furthest neighbors in simple polygons.
 \newblock {\em Journal of Computer and System Sciences}, 39(2):220--235, 1989.
 
+\bibitem{turan1941extremal}
+P.~Tur{\'a}n.
+\newblock On an extremal problem in graph theory.
+\newblock {\em Mat. Fiz. Lapok}, 48(436-452):137, 1941.
+
 \end{thebibliography}

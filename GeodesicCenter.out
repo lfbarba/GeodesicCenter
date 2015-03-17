@@ -10,6 +10,6 @@
 \BOOKMARK [2][-]{subsection.5.1}{Inside the transition hourglass}{section.5}% 10
 \BOOKMARK [2][-]{subsection.5.2}{Inside the funnels of marked vertices}{section.5}% 11
 \BOOKMARK [1][-]{section.6}{Prune and search}{}% 12
-\BOOKMARK [1][-]{section.7}{Solving the problem restricted to a triangle}{}% 13
+\BOOKMARK [1][-]{section.7}{Finding the center within a triangle}{}% 13
 \BOOKMARK [2][-]{subsection.7.1}{Optimization problem in a convex domain}{section.7}% 14
 \BOOKMARK [1][-]{appendix.A}{Bounding VC dimension}{}% 15
