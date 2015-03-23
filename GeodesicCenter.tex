@@ -42,6 +42,25 @@ was supported by the NRF grant 2011-0030044 (SRC-GAIA) funded by the Korea gover
   
 \authorrunning{Ahn, Barba, Bose, de Carufel, Korman and Oh} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
 
+\Copyright{Hee-Kap Ahn, Luis Barba, Prosenjit Bose, Jean-Lou de Carufel, Matias Korman and Eunjin Oh}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+\subjclass{I.3.5 Computational Geometry and Object Modeling}% mandatory: Please choose ACM 1998 classifications from http://www.acm.org/about/class/ccs98-html . E.g., cite as "F.1.1 Models of Computation". 
+\keywords{Geodesic distance, facility location, 1-center problem, simple polygons}% mandatory: Please provide 1-5 keywords
+
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\serieslogo{}%please provide filename (without suffix)
+\volumeinfo%(easychair interface)
+  {Billy Editor and Bill Editors}% editors
+  {2}% number of editors: 1, 2, ....
+  {Conference title on which this volume is based on}% event
+  {1}% volume
+  {1}% issue
+  {1}% starting page number
+\EventShortName{}
+\DOI{10.4230/LIPIcs.xxx.yyy.p}% to be completed by the volume editor
+% Editor-only macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \newcommand{\n}[1]{\ensuremath{n_{\scriptscriptstyle M}(#1)}}
 \newcommand{\F}[2]{\ensuremath{F_{\scriptscriptstyle #1}(#2)}}
@@ -106,12 +125,10 @@ In this paper, we show how to compute the geodesic center of $P$ in $O(n)$ time.
 
 \subsection{Previous Work}
 Since the early 1980s the problem of computing the geodesic center (and its counterpart, the geodesic diameter) has received a lot of attention from the computational geometry community. Chazelle~\cite{c-tpca-82} gave the first algorithm for computing the geodesic diameter (which runs in $O(n^2)$ time using linear space). Afterwards, Suri~\cite{suri1989computing} reduced it to $O(n\log n)$-time without increasing the space constraints. Finally, Hershberger and Suri~\cite{hershberger1993matrix} presented a fast matrix search technique, one application of which is a linear-time algorithm for computing the diameter.
-
 The first algorithm for computing the geodesic center was given by Asano and Toussaint~\cite{at-cgcsp-85}, and runs in $O(n^4\log n)$-time. In 1989, Pollack, Sharir, and Rote~\cite{pollackComputingCenter} improved it to $O(n\log n)$ time. Since then, it has been an open problem whether the geodesic center can be
 computed in linear time (indeed, this problem was explicitly posed by Pollack et al.~\cite{pollackComputingCenter} and later by Mitchell~\cite[Chapter 27]{m-gspno-00}).
 
 Several variations of these two problems have been considered. Indeed, the same problem has been studied under different metrics. For example, the $L_1$ geodesic distance~\cite{bkow-clgdcsplt-13},  the link distance~\cite{suri-mlpprp-87,k-ealdp-89,dls-aclcsp-92} (where we look for the path with the minimum possible number of bends or {\em links}), or even rectilinear link distance~\cite{ns-crldp-91,ns-oarlcrp-96} (a variation of the link distance in which only isothetic segments are allowed). The diameter and center of a simple polygon for both the $L_1$ and rectilinear link metrics can be computed in linear time (whereas $O(n\log n)$ time is needed for the link distance).
-
 Another natural extension is the computation of the diameter and center in polygonal domains (i.e., polygons with one or more holes). Polynomial time algorithms are known for both the diameter~\cite{bko-gdpd-13} and center~\cite{bko-cgcpd-14}, although the running times are significantly larger (i.e., $O(n^{7.73})$ and $O(n^{12+\varepsilon})$, respectively).
 
 \subsection{Outline}
@@ -133,7 +150,6 @@ or (2) find a triangle containing $\cp$.
 In the latter case, 
 we show that $\phi(x)$ is a convex function when restricted to this triangle. 
 Thus, finding its minimum becomes an optimization problem that we solve in Section~\ref{Section:Solving convex optimization poblem} using cuttings in $\mathbb{R}^3$.
-
 The key of this approach lies in the computation of the functions of $\Phi$ and their triangular domains. 
 Each function $g(x)$ of $\Phi$ is defined in  a triangular domain $\triangle$ contained in $P$ and is associated to a particular vertex $w$ of $P$. 
 Intuitively speaking, $g(x)$ maps points in $\triangle$ to their (geodesic) distance to $w$.
@@ -152,27 +168,23 @@ We distinguish two cases: (1) Inside each hourglass $H_{ab}$ of a transition edg
 (2) For each marked vertex $v$ we compute triangles that encode the distance from $v$. Moreover, we guarantee that these triangles cover every point of $P$ whose farthest neighbor is $v$. 
 Overall, we compute the $O(n)$ functions of $\Phi$ in linear time.
 
-\begin{wrapfigure}[14]{r}{0.5\textwidth}
-\raggedleft
-\vspace{-.55in}
-\includegraphics{img/MarkedVertices.pdf}
-\caption{\small Each vertex of the boundary of $P$ is assigned with a farthest neighbor which is then marked. 
-The boundary is then decomposed into vertex-disjoint chains, each associated with a marked vertex, joined by transition edges (blue) whose endpoints have different farthest neighbors.}
-\label{fig:Marked vertices decomposition}
-\end{wrapfigure}
-
 \section{Decomposing the boundary}\label{Section:Decomposing the boundary}
-In this section, we decompose the boundary of $P$ into chains of consecutive vertices that share the same farthest neighbor and edges of $P$ whose endpoints have distinct farthest neighbors.
+In this section, we decompose $\partial P$ into chains of consecutive vertices that share the same farthest neighbor and edges of $P$ whose endpoints have distinct farthest neighbors.
 
 Using a result from Hershberger and Suri~\cite{hershberger1993matrix}, in $O(n)$ time we can compute the farthest neighbor of each vertex of $P$.
 Recall that the farthest neighbor of each vertex of $P$ is always a convex vertex of $P$~\cite{at-cgcsp-85} and is unique by our general position assumption. 
 
 We mark the vertices of $P$ that are farthest neighbors of at least one vertex of $P$. Let $M$ denote the set of marked vertices of $P$ (clearly this set can be computed in $O(n)$ time after applying the result of Hershberger and Suri).
 In other words, $M$ contains all vertices of $P$ whose Voronoi region contains at least one vertex of $P$.
-
 Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ appear contiguously along $\partial P$~\cite{aronov1993furthest}. Therefore, after computing all these farthest neighbors, we effectively split the boundary into subchains, each associated with a different vertex of $M$; see Figure~\ref{fig:Marked vertices decomposition}.
 
-
+\begin{wrapfigure}[15]{r}{0.5\textwidth}
+\raggedleft
+\includegraphics{img/MarkedVertices.pdf}
+\caption{\small Each vertex of the boundary of $P$ is assigned with a farthest neighbor which is then marked. 
+The boundary is then decomposed into vertex-disjoint chains, each associated with a marked vertex, joined by transition edges (blue) whose endpoints have different farthest neighbors.}
+\label{fig:Marked vertices decomposition}
+\end{wrapfigure}
 Let $a$ and $b$ be the endpoints of a transition edge of $\partial P$ such that 
 $b$ is the clockwise neighbor of $a$ along $\partial P$. Because $ab$ is a transition edge, we know that $\ff{a}\neq \ff{b}$.
 Recall that we have computed $\ff{a}$ and $\ff{b}$ in the previous step and note that $a,b, \ff{a}, \ff{b}$ are in clockwise order. 
@@ -299,7 +311,6 @@ A subset $R\subset P$ is \emph{geodesically convex} if for every $x,y\in R$, the
 This funnel $\fn{v}{C}$ is then the minimum geodesically convex set that contains $v$ and $C$.
 
 Given two points $x,y\in P$, the (geodesic) \emph{bisector} of $x$ and $y$ is the set of points contained in $P$ that are equidistant from $x$ and $y$. This bisector is a curve, contained in $P$, that consists of straight-line segments and hyperbolic arcs. Moreover, this curve intersects $\partial P$ only at its endpoints~\cite[Lemma 3.22]{aronov1989geodesic}.
-
 The (farthest) \emph{Voronoi region} of a vertex $v$ of $P$ is the set of points $R(v) = \{x\in P : \F{P}{x} = \g{x}{v}\}$ (including boundary points).
 
 \begin{lemma}\label{lemma:Funnel contains Voronoi region}
@@ -348,14 +359,13 @@ $$g_\triangle(x) = \left\{ \begin{array}{lll}
 \end{array}\right.$$
 
 In this section, we show how to find a set of $O(n)$ apexed triangles of $P$ such that the upper envelope of their apex functions coincides with $\F{P}{x}$.
-To this end, we first decompose the transition hourglasses into apexed triangles that encode all the geodesic distance information inside them. For each marked vertex $v\in M$ we construct a funnel that contains the Voronoi region of $v$.  We then decompose this funnel into apexed triangles that encode the distance from $v$.
+To this end, we first decompose the transition hourglasses into apexed triangles that encode all the geodesic distance information inside them. For each marked vertex $v\in M$, we construct a funnel that contains the Voronoi region of $v$.  We then decompose this funnel into apexed triangles that encode the distance from $v$.
 
 \subsection{Inside the transition hourglass}
 Let $ab$ be a transition edge of $P$  such that $b$ is the clockwise neighbor of $a$ along $\partial P$.
 Let $B_{ab}$ denote the open bottom chain of $H_{ab}$.
 As noticed above, a point on $\partial P$ can be farthest from a vertex in $B_{ab}$ only if it lies in the open segment $ab$.
 That is, if $v$ is a vertex of $B_{ab}$ such that $R(v)\neq \emptyset$, then $R(v)\cap \partial P \subset ab$.
-
 In fact, not only this Voronoi region is inside $H_{ab}$ when restricted to the boundary of $P$, but we can further bound its location and show that $R(v)\subset H_{ab}$. 
  The next result follows trivially from Lemma~\ref{lemma:Funnel contains Voronoi region}.
 
@@ -373,7 +383,6 @@ Our objective is to compute $O(|H_{ab}|)$ apexed triangles contained in $H_{ab}$
 The same approach was already used by Pollack et al. in~\cite[Section 3]{pollackComputingCenter}. 
 Given a segment contained in the interior of $P$, they show 
 how to compute a linear number of apexed triangles such that $\F{P}{x}$ coincides with the upper envelope of the corresponding apex functions in the given segment.
-
 While the construction we follow is analogous, we use it in the transition hourglass $H_{ab}$ instead of the full polygon $P$. 
 Therefore, we have to specify what is the relation between the upper envelope of the computed functions and $\F{P}{x}$. 
 We will show that the upper envelope of the apex functions computed in $H_{ab}$ coincides with $\F{P}{x}$ inside the Voronoi region $R(v)$ of every vertex $v\in B_{ab}$.
@@ -483,7 +492,6 @@ The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, 
 Given a chord $C$ of $P$ a \emph{half-polygon} of $P$ is one of the two simple polygons in which $C$ splits $P$.
 A \emph{$k$-cell} of $P$ is a simple polygon obtained as the intersection of at most $k$ half-polygons.
 Because a $k$-cell is the intersection of geodesically convex sets, it is also geodesically convex. 
-
 The recursive algorithm described in this section takes as input a \tcell (initially equal to $P$) containing the geodesic center of $P$ and the set of apexed triangles of $\tau$ that intersect~$R$. In each iteration, it produces a new \tcell of smaller complexity that intersects just a fraction of the apexed triangles and contains the geodesic center of $P$. By recursing on this new cell, the complexity of the problem is reduced in each iteration.
 
 Let $R$ be a \tcell of $P$ containing the geodesic center of $P$ and let $\tau_R$ be the set of apexed triangles of $\tau$ that intersect~$R$. 
@@ -519,7 +527,6 @@ This can be done with two ray-shooting queries (each of which takes $O(\m)$ time
 We then use the chord-oracle from Pollack et al.~\cite[Section~3]{pollackComputingCenter} to decide which side of $C$ contains $\cp$.
 The only requirement of this technique is that the function $\F{P}{x}$ coincides with the upper envelope of the apex functions when restricted to $C$.
 Which is true by Lemma~\ref{lemma:Optimization problem same as geodesic center} and from the fact that $\tau_R$ consists of all the apexed triangles of $\tau$ that intersect~$R$.
-
 Because the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter} runs in time linear in the number of functions defined on $C$, we can decide in total $O(\m)$ time in which side of $C$ the geodesic center of $P$ lies. 
 Since our decomposition into \tcells has constant complexity, 
 we need to perform $O(1)$ calls to the oracle before determining the \tcell $\reg$ that contains the geodesic center of $P$. 
