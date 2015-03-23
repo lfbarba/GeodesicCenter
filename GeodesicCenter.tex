@@ -175,7 +175,7 @@ Overall, we compute the $O(n)$ functions of $\Sigma$ in linear time.
 In this section, we decompose the boundary of $P$ into chains of consecutive vertices that share the same farthest neighbor and edges of $P$ whose endpoints have distinct farthest neighbors.
 
 Using a result from Hershberger and Suri~\cite{hershberger1993matrix}, in $O(n)$ time we can compute the farthest neighbor of each vertex of $P$.
-Recall that the farthest neighbor of each vertex of $P$ is always a convex vertex of $P$~\cite{at-cgcsp-85} and is unique by our general position assumption. 
+Recall that the farthest neighbor of each vertex of $P$ is always a convex vertex of $P$~\cite{at-cgcsp-85} and is unique by our general position assumption. The (farthest) \emph{Voronoi region} of a vertex $v$ of $P$ is the set of points $R(v) = \{x\in P : \F{P}{x} = \g{x}{v}\}$ (including boundary points).
 
 We mark the vertices of $P$ that are farthest neighbors of at least one vertex of $P$. Let $M$ denote the set of marked vertices of $P$ (clearly this set can be computed in $O(n)$ time after applying the result of Hershberger and Suri).
 In other words, $M$ contains all vertices of $P$ whose Voronoi region contains at least one vertex of $P$.
@@ -191,6 +191,9 @@ The boundary is then decomposed into vertex-disjoint chains, each associated wit
 \label{fig:Marked vertices decomposition}
 \end{figure}
 
+Given two points $x$ and $y$ on $\partial P$, let $\partial P(x,y)$ be the polygonal chain that starts at $x$ and follows the boundary of $P$ clockwise until reaching $y$.
+We say that three (non-empty) disjoint sets $A,B$ and $C$ contained in $\partial P$ are in \emph{clockwise order} if $B\subset \partial P(a,c)$ for any $a\in A$ and any $c\in C$. (To ease notation, we say that three points $x,y,z\in \partial P$ are in clockwise order if $\{x\}, \{y\}$ and $\{z\}$ are in clockwise order).
+
 Let $a$ and $b$ be the endpoints of a transition edge of $\partial P$ such that 
 $b$ is the clockwise neighbor of $a$ along $\partial P$. Because $ab$ is a transition edge, we know that $\ff{a}\neq \ff{b}$.
 Recall that we have computed $\ff{a}$ and $\ff{b}$ in the previous step and note that $a,b, \ff{a}, \ff{b}$ are in clockwise order. 
@@ -202,9 +205,6 @@ In other words, the Voronoi region $R(v)$ restricted to $\partial P$ is containe
 
 
 \section{Hourglasses}\label{Section: Building hourglasses}
-
-Given two points $x$ and $y$ on $\partial P$, let $\partial P(x,y)$ be the polygonal chain that starts at $x$ and follows the boundary of $P$ clockwise until reaching $y$.
-We say that three (non-empty) disjoint sets $A,B$ and $C$ contained in $\partial P$ are in \emph{clockwise order} if $B\subset \partial P(a,c)$ for any $a\in A$ and any $c\in C$. (To ease notation, we say that three points $x,y,z\in \partial P$ are in clockwise order if $\{x\}, \{y\}$ and $\{z\}$ are in clockwise order).
 
 For any polygonal chain $C= \partial P(p_0, p_k)$, the \emph{hourglass} of $C$, denoted by $H_C$, is the simple polygon contained in $P$ bounded by $C$, $\p{p_k}{\ff{p_0}}$, $\partial P(\ff{p_0}, \ff{p_k})$ and $\p{\ff{p_k}}{ p_0}$; see Figure~\ref{fig:Transition chains and hourglasses}. 
 We call $C$ and $\partial P(\ff{p_0}, \ff{p_k})$ the \emph{top} and \emph{bottom} chains of $H_C$, respectively, while $\p{p_k}{ \ff{p_0}}$ and $\p{\ff{p_k}}{p_0}$ are referred to as the \emph{walls} of $H_C$.
@@ -378,8 +378,6 @@ A subset $R\subset P$ is \emph{geodesically convex} if for every $x,y\in R$, the
 This funnel $\fn{v}{C}$ is then the minimum geodesically convex set that contains $v$ and $C$.
 
 Given two points $x,y\in P$, the (geodesic) \emph{bisector} of $x$ and $y$ is the set of points contained in $P$ that are equidistant from $x$ and $y$. This bisector is a curve, contained in $P$, that consists of straight-line segments and hyperbolic arcs. Moreover, this curve intersects $\partial P$ only at its endpoints~\cite[Lemma 3.22]{aronov1989geodesic}.
-
-The (farthest) \emph{Voronoi region} of a vertex $v$ of $P$ is the set of points $R(v) = \{x\in P : \F{P}{x} = \g{x}{v}\}$ (including boundary points).
 
 \begin{lemma}\label{lemma:Funnel contains Voronoi region}
 Let $v$ be a vertex of $P$ and let $C$ be a transition chain such $R(v)\cap \partial P \subseteq C$ and $v\not\in C$.
