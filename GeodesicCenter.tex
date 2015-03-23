@@ -41,6 +41,26 @@ was supported by the NRF grant 2011-0030044 (SRC-GAIA) funded by the Korea gover
   
 \authorrunning{Ahn, Barba, Bose, de Carufel, Korman and Oh} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
 
+\Copyright{John Q. Open and Joan R. Access}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+\subjclass{Dummy classification -- please refer to \url{http://www.acm.org/about/class/ccs98-html}}% mandatory: Please choose ACM 1998 classifications from http://www.acm.org/about/class/ccs98-html . E.g., cite as "F.1.1 Models of Computation". 
+\keywords{Dummy keyword -- please provide 1--5 keywords}% mandatory: Please provide 1-5 keywords
+% Author macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\serieslogo{}%please provide filename (without suffix)
+\volumeinfo%(easychair interface)
+  {Billy Editor and Bill Editors}% editors
+  {2}% number of editors: 1, 2, ....
+  {Conference title on which this volume is based on}% event
+  {1}% volume
+  {1}% issue
+  {1}% starting page number
+\EventShortName{}
+\DOI{10.4230/LIPIcs.xxx.yyy.p}% to be completed by the volume editor
+% Editor-only macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \newcommand{\n}[1]{\ensuremath{n_{\scriptscriptstyle M}(#1)}}
 \newcommand{\F}[2]{\ensuremath{F_{\scriptscriptstyle #1}(#2)}}
@@ -114,18 +134,18 @@ Several variations of these two problems have been considered. Indeed, the same 
 Another natural extension is the computation of the diameter and center in polygonal domains (i.e., polygons with one or more holes). Polynomial time algorithms are known for both the diameter~\cite{bko-gdpd-13} and center~\cite{bko-cgcpd-14}, although the running times are significantly larger (i.e., $O(n^{7.73})$ and $O(n^{12+\varepsilon})$, respectively).
 
 \subsection{Outline}
-In order to compute the geodesic center, Pollack et al.~\cite{pollackComputingCenter} introduce a linear time \emph{chord-oracle}. Given a chord $C$ that splits $P$ into two sub-polygons, the oracle determines which sub-polygon contains $\cp$. Combining this operation with an efficient search on a triangulation of $P$, Pollack et al. narrow the search of $\cp$ within a triangle (and find the center using optimization techniques). Their approach however, does not allow them to reduce the complexity of the problem in each iteration, and hence it runs in $\Theta(n\log n)$ time. 
+In order to compute the geodesic center, $\cp$, Pollack et al.~\cite{pollackComputingCenter} introduce a linear time \emph{chord-oracle}. Given a chord $C$ that splits $P$ into two sub-polygons, the oracle determines which sub-polygon contains $\cp$. Combining this operation with an efficient search on a triangulation of $P$, Pollack et al. narrow the search of $\cp$ within a triangle (and find the center using optimization techniques). Their approach however, does not allow them to reduce the complexity of the problem in each iteration, and hence it runs in $\Theta(n\log n)$ time. 
 
 The general approach of our algorithm described in Section~\ref{section:Prune and search} is similar: 
 partition $P$ into $O(1)$ cells, use an oracle to determine which cell contains $\cp$, and recurse within the cell. 
 Our approach differs however in two important aspects that allows us to speed-up the algorithm. 
 First, we do not use the chords of a triangulation of $P$ to partition the problem into cells. 
 We use instead a cutting of a suitable set of chords.
-Secondly, we compute a set $\Phi$ of $O(n)$ functions, each defined in a triangular domain contained in $P$, such that their upper envelope, $\phi(x)$, coincides with $\F{P}{x}$. 
+Secondly, we compute a set $\Sigma$ of $O(n)$ functions, each defined in a triangular domain contained in $P$, such that their upper envelope, $\phi(x)$, coincides with $\F{P}{x}$. 
 Thus, we can ``ignore'' the polygon $P$ and focus only on finding the minimum of the function $\phi(x)$. 
 
 The search itself uses $\varepsilon$-nets and cutting techniques,
-which guarantee that both the size of the cell containing $\cp$ and the number of functions of $\Phi$ defined in it decrease by a constant fraction 
+which guarantee that both the size of the cell containing $\cp$ and the number of functions of $\Sigma$ defined in it decrease by a constant fraction 
 (and thus leads to an overall linear time algorithm).
 This search has however two stopping conditions, (1) reach a subproblem of constant size, 
 or (2) find a triangle containing $\cp$.
@@ -133,8 +153,8 @@ In the latter case,
 we show that $\phi(x)$ is a convex function when restricted to this triangle. 
 Thus, finding its minimum becomes an optimization problem that we solve in Section~\ref{Section:Solving convex optimization poblem} using cuttings in $\mathbb{R}^3$.
 
-The key of this approach lies in the computation of the functions of $\Phi$ and their triangular domains. 
-Each function $g(x)$ of $\Phi$ is defined in  a triangular domain $\triangle$ contained in $P$ and is associated to a particular vertex $w$ of $P$. 
+The key of this approach lies in the computation of the functions of $\Sigma$ and their triangular domains. 
+Each function $g(x)$ of $\Sigma$ is defined in  a triangular domain $\triangle$ contained in $P$ and is associated to a particular vertex $w$ of $P$. 
 Intuitively speaking, $g(x)$ maps points in $\triangle$ to their (geodesic) distance to $w$.
 We guarantee that, for each point $x\in P$, there is one function $g$ defined in a triangle containing $x$, such that $g(x) = \F{P}{x}$.
 To compute these triangles and their corresponding functions, we proceed as follows.
@@ -146,10 +166,10 @@ In Section~\ref{Section: Building hourglasses}, we consider each transition edge
 Inspired by a result of Suri~\cite{suri1989computing}, we show that the sum of the complexities of all hourglasses defined on a transition edge is $O(n)$. (The \emph{combinatorial complexity} (or simply complexity) of a geometric object is the total number of vertices and edges that define it.)
 In addition, we provide a new technique to compute all these hourglasses in linear time.
 
-In Section~\ref{Section:Computing apexed triangles} we show how to compute the functions in $\Phi$ and their respective triangles.
+In Section~\ref{Section:Computing apexed triangles} we show how to compute the functions in $\Sigma$ and their respective triangles.
 We distinguish two cases: (1) Inside each hourglass $H_{ab}$ of a transition edge, we use a technique introduced by Aronov et al.~\cite{aronov1993furthest} that uses the shortest-path trees of $a$ and $b$ in $H_{ab}$ to construct $O(|H_{ab}|)$ triangles with their respective functions (for more information on shortest-path trees refer to~\cite{guibasShortestPathTree}). 
 (2) For each marked vertex $v$ we compute triangles that encode the distance from $v$. Moreover, we guarantee that these triangles cover every point of $P$ whose farthest neighbor is $v$. 
-Overall, we compute the $O(n)$ functions of $\Phi$ in linear time.
+Overall, we compute the $O(n)$ functions of $\Sigma$ in linear time.
 
 \section{Decomposing the boundary}\label{Section:Decomposing the boundary}
 In this section, we decompose the boundary of $P$ into chains of consecutive vertices that share the same farthest neighbor and edges of $P$ whose endpoints have distinct farthest neighbors.
