@@ -1,0 +1,3 @@
+Let $P$ be a closed simple polygon with $n$ vertices.
+For any two points in $P$, the geodesic distance between them is the length of the shortest path that connects them among all paths contained in $P$. The  geodesic center of $P$ is the unique point in $P$ that minimizes the largest geodesic distance to all other points of $P$. In 1989, Pollack, Sharir and Rote [Disc. & Comput. Geom. 89] showed an $O(n log n)$-time algorithm that computes the geodesic center of $P$. Since then, a longstanding question has been whether this running time can be improved (explicitly posed by Mitchell [Handbook of Computational Geometry, 2000]). 
+In this paper we affirmatively answer this question and present a linear time algorithm to solve this problem.

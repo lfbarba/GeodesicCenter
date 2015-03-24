@@ -8,7 +8,7 @@
 \usepackage{lineno}
 \usepackage{xspace}
 \usepackage{wrapfig}
-\linenumbers
+%\linenumbers
 \usepackage{microtype}%if unwanted, comment out or use option "draft"
 
 %\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
@@ -262,14 +262,14 @@ Given $k$ disjoint transition chains $C_1, \ldots, C_k$  of $\partial P$, it hol
 \end{lemma}
 \begin{proof}
 
-Because the given transition chains are disjoint, Lemma~\ref{lemma:Ordering Lemma} implies that the bottom chains of their respective hourglasses are also disjoint. Therefore, the sum of the complexities of all the top and bottom chains of these hourglasses is $O(n)$. 
+Because the given transition chains are edge-disjoint, Lemma~\ref{lemma:Ordering Lemma} implies that the bottom chains of their respective hourglasses are also edge-disjoint. Therefore, the sum of the complexities of all the top and bottom chains of these hourglasses is $O(n)$. 
 To bound the complexity of their walls we use
 Lemma~\ref{lemma:Edges appear a constant number of times}. Since  no chord is used more than a constant number of times, it suffices to show that the total number of chords used by all these hourglasses is $O(n)$.
 
 To prove this, we use Lemma~\ref{lemma:Split paths} to construct $O(1)$ \emph{splitting chains} $\gamma_1, \ldots, \gamma_t$ such that for each $1\leq i\leq k$, there is a splitting chain $\gamma_j$ that separates the top and bottom chains of $H_{C_i}$.
 For each $1\leq j\leq t$, let $\mathcal H^j = \{H_{C_i} : \text{the top and bottom chain of $H_{C_i}$ are separated by }\gamma_j\}$.
 Since the complexity of the shortest-path trees of the endpoints of $\gamma_j$ is $O(n)$~\cite{guibasShortestPathTree},
-and from the fact that the chains $C_1, \ldots, C_k$ are disjoint,  Lemma~\ref{lemma:Suri's lemma} implies that
+and from the fact that the chains $C_1, \ldots, C_k$ are edge-disjoint,  Lemma~\ref{lemma:Suri's lemma} implies that
 the total number of edges in all the hourglasses of $\mathcal H^j$ is $O(n)$. Moreover, because each of these edges appears in $O(1)$ hourglasses among $C_1, \ldots, C_k$, we conclude that 
 $$\sum_{H \in \mathcal H^j } |H| = O(n).$$
 Since we have only $O(1)$ splitting chains, our result follows.
@@ -303,7 +303,7 @@ Moreover, all these hourglasses can be constructed in $O(n)$ time.
 
 Let $C = (p_0, \ldots, p_k)$ be a chain of $\partial P$ and let $v$ be a vertex of $P$ not in $C$.
 The \emph{funnel} of $v$ to $C$, denoted by $\fn{v}{C}$, is the simple polygon bounded by $C$, $\p{p_k}{v}$ and $\p{v}{p_0}$; see Figure~\ref{fig:Funnels and decomposition}~$(a)$. 
-Note that the paths $\p{v}{p_k}$ and $\p{v}{p_0}$ may coincide for a while before splitting into disjoint chains. 
+Note that the paths $\p{v}{p_k}$ and $\p{v}{p_0}$ may coincide for a while before splitting into edge-disjoint chains. 
 A subset $R\subset P$ is \emph{geodesically convex} if for every $x,y\in R$, the path $\p{x}{y}$ is contained in $R$.
 This funnel $\fn{v}{C}$ is then the minimum geodesically convex set that contains $v$ and $C$.
 See Lee and Preparata~\cite{lee1984euclidean} or Guibas et al.~\cite{guibasShortestPathTree} for more details on funnels.
@@ -523,8 +523,7 @@ In order to determine which \tcell contains the geodesic center of $P$,
 we extend each edge of a \tcell to a chord $C$. 
 This can be done with two ray-shooting queries (each of which takes $O(\m)$ time).
 We then use the chord-oracle from Pollack et al.~\cite[Section~3]{pollackComputingCenter} to decide which side of $C$ contains $\cp$.
-The only requirement of this technique is that the function $\F{P}{x}$ coincides with the upper envelope of the apex functions when restricted to $C$.
-Which is true by Lemma~\ref{lemma:Optimization problem same as geodesic center} and from the fact that $\tau_R$ consists of all the apexed triangles of $\tau$ that intersect~$R$.
+The only requirement of this technique is that the function $\F{P}{x}$ coincides with the upper envelope of the apex functions when restricted to $C$, which is true by Lemma~\ref{lemma:Optimization problem same as geodesic center} and from the fact that $\tau_R$ consists of all the apexed triangles of $\tau$ that intersect~$R$.
 Because the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter} runs in time linear in the number of functions defined on $C$, we can decide in total $O(\m)$ time in which side of $C$ the geodesic center of $P$ lies. 
 Since our decomposition into \tcells has constant complexity, 
 we need to perform $O(1)$ calls to the oracle before determining the \tcell $\reg$ that contains the geodesic center of $P$. 
