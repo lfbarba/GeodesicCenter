@@ -1,14 +1,9 @@
 \begin{thebibliography}{10}
 
 \bibitem{ArXivGeodesicCenter}
-H.~Ahn, L.~Barba, P.~Bose, J.~D. Carufel, M.~Korman, and E.~Oh.
+H.~Ahn, L.~Barba, P.~Bose, J.-L. {De Carufel}, M.~Korman, and E.~Oh.
 \newblock A linear-time algorithm for the geodesic center of a simple polygon.
 \newblock {\em CoRR}, abs/1501.00561, 2015.
-
-\bibitem{aronov1989geodesic}
-B.~Aronov.
-\newblock On the geodesic {V}oronoi diagram of point sites in a simple polygon.
-\newblock {\em Algorithmica}, 4(1-4):109--140, 1989.
 
 \bibitem{aronov1993furthest}
 B.~Aronov, S.~Fortune, and G.~Wilfong.
