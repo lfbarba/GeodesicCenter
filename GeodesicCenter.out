@@ -7,9 +7,10 @@
 \BOOKMARK [1][-]{section.4}{Funnels}{}% 7
 \BOOKMARK [2][-]{subsection.4.1}{Funnels of marked vertices}{section.4}% 8
 \BOOKMARK [1][-]{section.5}{Covering the polygon with apexed triangles}{}% 9
-\BOOKMARK [2][-]{subsection.5.1}{Inside the transition hourglass}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Inside a transition hourglass}{section.5}% 10
 \BOOKMARK [2][-]{subsection.5.2}{Inside the funnels of marked vertices}{section.5}% 11
 \BOOKMARK [1][-]{section.6}{Prune and search}{}% 12
 \BOOKMARK [1][-]{section.7}{Finding the center within a triangle}{}% 13
 \BOOKMARK [2][-]{subsection.7.1}{Optimization problem in a convex domain}{section.7}% 14
-\BOOKMARK [1][-]{appendix.A}{Bounding VC dimension}{}% 15
+\BOOKMARK [1][-]{section.8}{Further work}{}% 15
+\BOOKMARK [1][-]{appendix.A}{Bounding the VC dimension}{}% 16
