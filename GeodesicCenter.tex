@@ -121,7 +121,7 @@ Several variations of these two problems have been considered. Indeed, the same 
 Another natural extension is the computation of the diameter and center in polygonal domains (i.e., polygons with one or more holes). Polynomial time algorithms are known for both the diameter~\cite{bko-gdpd-13} and center~\cite{bko-cgcpd-14}, although the running times are significantly larger (i.e., $O(n^{7.73})$ and $O(n^{12+\varepsilon})$, respectively).
 
 \subsection{Outline}
-In order to compute the geodesic center, $\cp$, Pollack et al.~\cite{pollackComputingCenter} introduced a linear time \emph{chord-oracle}. Given a chord $C$ that splits $P$ into two sub-polygons, the oracle determines which sub-polygon contains $\cp$. Combining this operation with an efficient search on a triangulation of $P$, Pollack et al. narrow the search of $\cp$ within a triangle (and afterwards find the center using optimization techniques). Their approach however, does not allow them to reduce the complexity of the problem in each iteration, and hence it runs in $\Theta(n\log n)$ time. 
+In order to compute the geodesic center, $\cp$, Pollack et al.~\cite{pollackComputingCenter} introduced a linear time \emph{chord-oracle}. Given a chord $C$ that splits $P$ into two sub-polygons, the oracle determines which sub-polygon contains $\cp$. Combining this operation with an efficient search on a triangulation of $P$, Pollack et al. narrow the search for $\cp$ to be within a triangle (and afterwards find the center using optimization techniques). Their approach however, does not allow them to reduce the complexity of the problem in each iteration, and hence it runs in $\Theta(n\log n)$ time. 
 
 The general approach of our algorithm described in Section~\ref{section:Prune and search} is similar: 
 partition $P$ into $O(1)$ cells, use an oracle to determine which cell contains $\cp$, and recurse within the cell. 
@@ -140,7 +140,7 @@ In the latter case,
 we show that $\phi(x)$ is a convex function when restricted to this triangle. 
 Thus, finding its minimum becomes an optimization problem that we solve in Section~\ref{Section:Solving convex optimization poblem} using cuttings in $\mathbb{R}^3$.
 
-The key of this approach lies in the computation of the functions of $\Sigma$ and their triangular domains. 
+The key to this approach lies in the computation of the functions of $\Sigma$ and their triangular domains. 
 Each function $g(x)$ of $\Sigma$ is defined in a triangular domain $\triangle$ contained in $P$ and is associated to a particular vertex $w$ of $P$. 
 Intuitively speaking, $g(x)$ maps points in $\triangle$ to their (geodesic) distance to $w$.
 We guarantee that, for each point $x\in P$, there is one function $g$ defined in a triangle containing $x$, such that $g(x) = \F{P}{x}$.
@@ -276,7 +276,10 @@ Let $X$ (\emph{resp.} $Y$) be the set containing the LCA in $T_x$ (\emph{resp.} 
 
 \textbf{Case 1.} If there is a vertex  $x^*\in X$ lying after a vertex $y^*\in Y$ along $\p{x}{y}$, 
 then the path $\p{u}{v}$ contains the path $\p{y^*}{x^*}$. 
-In this case, the path $\p{u}{v}$ is the concatenation of the paths $\p{u}{y^*}$, $\p{y^*}{x^*}$, and $\p{x^*}{v}$ and that the three paths are contained in $T_x \cup T_y$.
+In this case, the path $\p{u}{v}$ coincides with the path $\p{u}{y}$ all the way from $u$ to $x^*$. Therefore, $\p{u}{v}$ can be partitioned into two paths $\p{u}{x^*}$ and $\p{x^*}{v}$.
+Since $y^*$ lies on $\p{u}{x^*}$, we conclude that $\p{u}{v}$
+ is the concatenation of the paths $\p{u}{y^*}$, $\p{y^*}{x^*}$, and $\p{x^*}{v}$.
+Furthermore, these three paths are contained in $T_x \cup T_y$ as $\p{u}{x^*}\subseteq  \p{y}{u}$, $\p{v}{y^*}\subseteq  \p{x}{v}$, and $\p{x^*}{y^*}\subseteq \p{x}{y}$.
 Moreover, $\p{u}{v}$ can be computed in time proportional to its length by traversing along the corresponding tree; see Figure~\ref{fig:Output Sensitive Algorithm} (top).
 
 \textbf{Case 2.} In this case the vertices of $X$ appear before the vertices of $Y$ along $\p{x}{y}$.
@@ -290,7 +293,7 @@ Define $v'$ analogously and compute it in $O(|\p{v}{v'}|)$ time.
 Let $P'$ be the polygon bounded by the geodesic paths $\p{x'}{u'}, \p{u'}{y'}, \p{y'}{v'}$ and  $\p{v'}{x'}$.
 Because the vertices of $X$ appear before those of $Y$ along $\p{x}{y}$, $P'$ is a simple polygon; see Figure~\ref{fig:Output Sensitive Algorithm} (bottom).
 
-In this case the path $\p{u}{y}$ is the union of $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
+In this case the path $\p{u}{v}$ is the union of $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
 Because $\p{u}{u'}$ and  $\p{v'}{v}$ can be computed in time proportional to their length, it suffices to compute $\p{u'}{v'}$ in $O(|$\p{u'}{v'}$|)$ time.
 
 Note that $P'$ is a simple polygon with only four convex vertices $x',u', y'$ and $v'$, which are connected by chains of reflex vertices.
@@ -625,7 +628,7 @@ Because a $k$-cell is the intersection of geodesically convex sets, it is also g
 The recursive algorithm described in this section takes as input a \tcell (initially equal to $P$) containing the geodesic center of $P$ and the set of apexed triangles of $\tau$ that intersect it. In each iteration, it produces a new \tcell of smaller complexity that intersects just a fraction of the apexed triangles and contains the geodesic center of $P$. By recursing on this new cell, the complexity of the problem is reduced in each iteration.
 
 Let $R$ be a \tcell of $P$ (initially equal to $P$) containing the geodesic center of $P$ and let $\tau_R$ be the set of apexed triangles of $\tau$ that intersect~$R$. 
-Let $\m = \max\{|R|, |\tau_R|\}$, where $|R|$ denotes the combinatorial complexity $R$.
+Let $\m = \max\{|R|, |\tau_R|\}$, where $|R|$ denotes the combinatorial complexity of $R$.
 Recall that, by construction of the apexed triangles, for each triangle of $\tau_R$ at least one and at most two of its boundary segments are chords of $P$.
 Let $\C$ be the set containing all chords that belong to the boundary of a triangle of $\tau_R$. 
 Therefore, $|\C| \leq 2|\tau_R|\leq 2\m$.
@@ -857,7 +860,7 @@ Recall that if no subset of $\C$ of size $\kappa$ is shattered by $\mathcal H$, 
 By Lemma~\ref{lemma:Shattering}, it suffices to show that $A$ is not shattered by $\mathcal H$ to bound the VC-dimension of $(\C, \mathcal H)$ and hence of $(\C, \varphi)$.
 We spend the remainder of this section proving that $A$ is not shattered by $\mathcal H$.
 
- A $6$-cell is \emph{strict} if it is defined as the intersection of six half-polygons, non of which are redundant, i.e., the removal of any of them modifies the $6$-cell.
+ A $6$-cell is \emph{strict} if it is defined as the intersection of six half-polygons, none of which are redundant, i.e., the removal of any of them modifies the $6$-cell.
 
 \begin{lemma}\label{lemma:Hexagonal face}
 If there are six chords of $A$ supporting six half-polygons whose intersection defines a strict $6$-cell $\sigma$,
