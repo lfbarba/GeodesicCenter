@@ -1,150 +1,171 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{aronov1989geodesic}
+\bibitem[Aronov(1989)]{aronov1989geodesic}
 B.~Aronov.
 \newblock On the geodesic {V}oronoi diagram of point sites in a simple polygon.
-\newblock {\em Algorithmica}, 4(1-4):109--140, 1989.
+\newblock \emph{Algorithmica}, 4\penalty0 (1-4):\penalty0 109--140, 1989.
 
-\bibitem{aronov1993furthest}
+\bibitem[Aronov et~al.(1993)Aronov, Fortune, and Wilfong]{aronov1993furthest}
 B.~Aronov, S.~Fortune, and G.~Wilfong.
 \newblock The furthest-site geodesic {V}oronoi diagram.
-\newblock {\em Discrete \& Computational Geometry}, 9(1):217--255, 1993.
+\newblock \emph{Discrete \& Computational Geometry}, 9\penalty0 (1):\penalty0
+  217--255, 1993.
 
-\bibitem{at-cgcsp-85}
+\bibitem[Asano and Toussaint(1985)]{at-cgcsp-85}
 T.~Asano and G.~Toussaint.
 \newblock Computing the geodesic center of a simple polygon.
 \newblock Technical Report SOCS-85.32, McGill University, 1985.
 
-\bibitem{bko-gdpd-13}
+\bibitem[Bae et~al.(2013)Bae, Korman, and Okamoto]{bko-gdpd-13}
 S.~W. Bae, M.~Korman, and Y.~Okamoto.
 \newblock The geodesic diameter of polygonal domains.
-\newblock {\em Discrete \& Computational Geometry}, 50(2):306--329, 2013.
+\newblock \emph{Discrete \& Computational Geometry}, 50\penalty0 (2):\penalty0
+  306--329, 2013.
 
-\bibitem{bko-cgcpd-14}
+\bibitem[Bae et~al.(2014{\natexlab{a}})Bae, Korman, and Okamoto]{bko-cgcpd-14}
 S.~W. Bae, M.~Korman, and Y.~Okamoto.
 \newblock Computing the geodesic centers of a polygonal domain.
-\newblock In {\em Proceedings of CCCG}, 2014.
+\newblock In \emph{Proceedings of CCCG}, 2014{\natexlab{a}}.
 
-\bibitem{bkow-clgdcsplt-13}
+\bibitem[Bae et~al.(2014{\natexlab{b}})Bae, Korman, Okamoto, and
+  Wang]{bkow-clgdcsplt-13}
 S.~W. Bae, M.~Korman, Y.~Okamoto, and H.~Wang.
 \newblock Computing the ${L}_1$ geodesic diameter and center of a simple
   polygon in linear time.
-\newblock In {\em Proceedings of LATIN}, pages 120--131, 2014.
+\newblock In \emph{Proceedings of LATIN}, pages 120--131, 2014{\natexlab{b}}.
 
-\bibitem{c-tpca-82}
+\bibitem[Chazelle(1982)]{c-tpca-82}
 B.~Chazelle.
 \newblock A theorem on polygon cutting with applications.
-\newblock In {\em Proceedings of FOCS}, pages 339--349, 1982.
+\newblock In \emph{Proceedings of FOCS}, pages 339--349, 1982.
+\newblock \doi{http://dx.doi.org/10.1109/SFCS.1982.58}.
 
-\bibitem{chazelle1991triangulating}
+\bibitem[Chazelle(1991)]{chazelle1991triangulating}
 B.~Chazelle.
 \newblock Triangulating a simple polygon in linear time.
-\newblock {\em Discrete \& Computational Geometry}, 6(1):485--524, 1991.
+\newblock \emph{Discrete \& Computational Geometry}, 6\penalty0 (1):\penalty0
+  485--524, 1991.
 
-\bibitem{dls-aclcsp-92}
+\bibitem[Djidjev et~al.(1992)Djidjev, Lingas, and Sack]{dls-aclcsp-92}
 H.~Djidjev, A.~Lingas, and J.-R. Sack.
 \newblock An {$O(n\log n)$} algorithm for computing the link center of a simple
   polygon.
-\newblock {\em Discrete \& Computational Geometry}, 8:131--152, 1992.
+\newblock \emph{Discrete \& Computational Geometry}, 8:\penalty0 131--152,
+  1992.
 
-\bibitem{edelsbrunner1990simulation}
+\bibitem[Edelsbrunner and M{\"u}cke(1990)]{edelsbrunner1990simulation}
 H.~Edelsbrunner and E.~P. M{\"u}cke.
 \newblock Simulation of simplicity: a technique to cope with degenerate cases
   in geometric algorithms.
-\newblock {\em ACM Transactions on Graphics}, 9(1):66--104, 1990.
+\newblock \emph{ACM Transactions on Graphics}, 9\penalty0 (1):\penalty0
+  66--104, 1990.
 
-\bibitem{guibasShortestPathTree}
+\bibitem[Guibas et~al.(1987)Guibas, Hershberger, Leven, Sharir, and
+  Tarjan]{guibasShortestPathTree}
 L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
 \newblock Linear-time algorithms for visibility and shortest path problems
   inside triangulated simple polygons.
-\newblock {\em Algorithmica}, 2(1-4):209--233, 1987.
+\newblock \emph{Algorithmica}, 2\penalty0 (1-4):\penalty0 209--233, 1987.
 
-\bibitem{guibasShortestPathQueries}
+\bibitem[Guibas and Hershberger(1989)]{guibasShortestPathQueries}
 L.~J. Guibas and J.~Hershberger.
 \newblock Optimal shortest path queries in a simple polygon.
-\newblock {\em Journal of computer and system sciences}, 39(2):126--152, 1989.
+\newblock \emph{Journal of computer and system sciences}, 39\penalty0
+  (2):\penalty0 126--152, 1989.
 
-\bibitem{harborth1993esther}
+\bibitem[Harborth and M{\"o}ller(1993)]{harborth1993esther}
 H.~Harborth and M.~M{\"o}ller.
-\newblock {\em The Esther-Klein-problem in the projective plane}.
+\newblock \emph{The Esther-Klein-problem in the projective plane}.
 \newblock Inst. f{\"u}r Mathematik, TU Braunschweig, 1993.
 
-\bibitem{harel1984fast}
+\bibitem[Harel and Tarjan(1984)]{harel1984fast}
 D.~Harel and R.~E. Tarjan.
 \newblock Fast algorithms for finding nearest common ancestors.
-\newblock {\em SIAM Journal on Computing}, 13(2):338--355, 1984.
+\newblock \emph{SIAM Journal on Computing}, 13\penalty0 (2):\penalty0 338--355,
+  1984.
 
-\bibitem{hershberger1993matrix}
+\bibitem[Hershberger and Suri(1997)]{hershberger1993matrix}
 J.~Hershberger and S.~Suri.
 \newblock Matrix searching with the shortest-path metric.
-\newblock {\em SIAM Journal on Computing}, 26(6):1612--1634, 1997.
+\newblock \emph{SIAM Journal on Computing}, 26\penalty0 (6):\penalty0
+  1612--1634, 1997.
 
-\bibitem{k-ealdp-89}
+\bibitem[Ke(1989)]{k-ealdp-89}
 Y.~Ke.
 \newblock An efficient algorithm for link-distance problems.
-\newblock In {\em Proceedings of SoCG}, pages 69--78, 1989.
+\newblock In \emph{Proceedings of SoCG}, pages 69--78, 1989.
 
-\bibitem{lee1984euclidean}
+\bibitem[Lee and Preparata(1984)]{lee1984euclidean}
 D.-T. Lee and F.~P. Preparata.
 \newblock Euclidean shortest paths in the presence of rectilinear barriers.
-\newblock {\em Networks}, 14(3):393--410, 1984.
+\newblock \emph{Networks}, 14\penalty0 (3):\penalty0 393--410, 1984.
 
-\bibitem{matousekCuttings}
+\bibitem[Matou{\v{s}}ek(1991)]{ConstructionEpsilonNets}
 J.~Matou{\v{s}}ek.
 \newblock Approximations and optimal geometric divide-and-conquer.
-\newblock {\em Journal of Computer and System Sciences}, 50(2):203--208, 1995.
+\newblock In \emph{Proceedings of the twenty-third annual ACM symposium on
+  Theory of computing}, pages 505--511. ACM, 1991.
 
-\bibitem{matouvsek2002lectures}
+\bibitem[Matou{\v{s}}ek(1995)]{matousekCuttings}
 J.~Matou{\v{s}}ek.
-\newblock {\em Lectures on discrete geometry}, volume 108.
+\newblock Approximations and optimal geometric divide-and-conquer.
+\newblock \emph{Journal of Computer and System Sciences}, 50\penalty0
+  (2):\penalty0 203--208, 1995.
+
+\bibitem[Matou{\v{s}}ek(2002)]{matouvsek2002lectures}
+J.~Matou{\v{s}}ek.
+\newblock \emph{Lectures on discrete geometry}, volume 108.
 \newblock Springer New York, 2002.
 
-\bibitem{ConstructionEpsilonNets}
-J.~Matou\v{s}ek.
-\newblock Construction of epsilon nets.
-\newblock In {\em Proceedings of SoCG}, pages 1--10, New York, 1989. ACM.
-
-\bibitem{megiddo1989ball}
+\bibitem[Megiddo(1989)]{megiddo1989ball}
 N.~Megiddo.
 \newblock On the ball spanned by balls.
-\newblock {\em Discrete \& Computational Geometry}, 4(1):605--610, 1989.
+\newblock \emph{Discrete \& Computational Geometry}, 4\penalty0 (1):\penalty0
+  605--610, 1989.
 
-\bibitem{m-gspno-00}
+\bibitem[Mitchell(2000)]{m-gspno-00}
 J.~S.~B. Mitchell.
 \newblock Geometric shortest paths and network optimization.
-\newblock In J.-R. Sack and J.~Urrutia, editors, {\em Handbook of Computational
-  Geometry}, pages 633--701. Elsevier, 2000.
+\newblock In J.-R. Sack and J.~Urrutia, editors, \emph{Handbook of
+  Computational Geometry}, pages 633--701. Elsevier, 2000.
 
-\bibitem{ns-crldp-91}
+\bibitem[Nilsson and Schuierer(1991)]{ns-crldp-91}
 B.~Nilsson and S.~Schuierer.
 \newblock Computing the rectilinear link diameter of a polygon.
-\newblock In {\em Proceedings of CG}, pages 203--215, 1991.
+\newblock In \emph{Proceedings of CG}, pages 203--215, 1991.
 
-\bibitem{ns-oarlcrp-96}
+\bibitem[Nilsson and Schuierer(1996)]{ns-oarlcrp-96}
 B.~Nilsson and S.~Schuierer.
 \newblock An optimal algorithm for the rectilinear link center of a rectilinear
   polygon.
-\newblock {\em Computational Geometry: Theory and Applications}, 6:169--194,
-  1996.
+\newblock \emph{Computational Geometry: Theory and Applications}, 6:\penalty0
+  169--194, 1996.
 
-\bibitem{pollackComputingCenter}
+\bibitem[Pollack et~al.(1989)Pollack, Sharir, and Rote]{pollackComputingCenter}
 R.~Pollack, M.~Sharir, and G.~Rote.
 \newblock Computing the geodesic center of a simple polygon.
-\newblock {\em Discrete \& Computational Geometry}, 4(1):611--626, 1989.
+\newblock \emph{Discrete \& Computational Geometry}, 4\penalty0 (1):\penalty0
+  611--626, 1989.
 
-\bibitem{suri-mlpprp-87}
+\bibitem[Suri(1987)]{suri-mlpprp-87}
 S.~Suri.
-\newblock {\em Minimum Link Paths in Polygons and Related Problems}.
+\newblock \emph{Minimum Link Paths in Polygons and Related Problems}.
 \newblock PhD thesis, Johns Hopkins Univ., 1987.
 
-\bibitem{suri1989computing}
+\bibitem[Suri(1989)]{suri1989computing}
 S.~Suri.
 \newblock Computing geodesic furthest neighbors in simple polygons.
-\newblock {\em Journal of Computer and System Sciences}, 39(2):220--235, 1989.
+\newblock \emph{Journal of Computer and System Sciences}, 39\penalty0
+  (2):\penalty0 220--235, 1989.
 
-\bibitem{turan1941extremal}
+\bibitem[Tur{\'a}n(1941)]{turan1941extremal}
 P.~Tur{\'a}n.
 \newblock On an extremal problem in graph theory.
-\newblock {\em Mat. Fiz. Lapok}, 48(436-452):137, 1941.
+\newblock \emph{Mat. Fiz. Lapok}, 48\penalty0 (436-452):\penalty0 137, 1941.
 
 \end{thebibliography}

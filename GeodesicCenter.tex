@@ -3,6 +3,7 @@
 \usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics,epsf}
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
+\usepackage[numbers]{natbib}
 
 \usepackage{algorithmic}
 \usepackage{algorithm}
@@ -92,8 +93,6 @@ For any two points in $P$, the geodesic distance between them is the length of t
 In this paper we affirmatively answer this question and present a linear time algorithm to solve this problem.
 \end{abstract}
 
-
-%A category including the fourth, optional field follows..
 
 \section{Introduction}
 Let $P$ be a simple polygon with $n$ vertices.
@@ -275,29 +274,36 @@ Moreover, all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 Let $X$ (\emph{resp.} $Y$) be the set containing the LCA in $T_x$ (\emph{resp.} $T_y$) of $u,y$, and of $v,y$ (\emph{resp.} $u,x$ and $x,y$). Note that the points of $X\cup Y$ lie on the path $\p{x}{y}$ and can be computed in $O(1)$ time by hypothesis. Moreover, using LCA queries, we can decide their order along the path $\p{x}{y}$ when traversing it from $x$ to $y$. (Both $X$ and $Y$ could consist of a single vertex in some degenerate situations.) Two cases arise: 
 
 \textbf{Case 1.} If there is a vertex  $x^*\in X$ lying after a vertex $y^*\in Y$ along $\p{x}{y}$, 
-then the path $\p{u}{v}$ contains the path $\p{y^*}{x^*}$. 
-In this case, the path $\p{u}{v}$ coincides with the path $\p{u}{y}$ all the way from $u$ to $x^*$. Therefore, $\p{u}{v}$ can be partitioned into two paths $\p{u}{x^*}$ and $\p{x^*}{v}$.
-Since $y^*$ lies on $\p{u}{x^*}$, we conclude that $\p{u}{v}$
+then the path $\p{u}{v}$ contains the path $\p{y^*}{x^*}$; see Figure~\ref{fig:Output Sensitive Algorithm} (top). 
+Since $x^*\in \p{u}{v}$, $\p{u}{v}$ can be partitioned into two paths $\p{u}{x^*}$ and $\p{x^*}{v}$.
+Note that $y^*$ lies either on $\p{u}{x^*}$ or on $\p{x^*}{v}$. Assume without loss of generality that $y^*$ lies on $\p{u}{x^*}$; otherwise swap the roles of $u$ and $v$.
+
+Because $y^*$ lies on $\p{u}{x^*}$, we conclude that $\p{u}{v}$
  is the concatenation of the paths $\p{u}{y^*}$, $\p{y^*}{x^*}$, and $\p{x^*}{v}$.
 Furthermore, these three paths are contained in $T_x \cup T_y$ as $\p{u}{x^*}\subseteq  \p{y}{u}$, $\p{v}{y^*}\subseteq  \p{x}{v}$, and $\p{x^*}{y^*}\subseteq \p{x}{y}$.
-Moreover, $\p{u}{v}$ can be computed in time proportional to its length by traversing along the corresponding tree; see Figure~\ref{fig:Output Sensitive Algorithm} (top).
+Therefore, $\p{u}{v}$ can be computed in time proportional to its length by traversing along the corresponding shortest-path trees.
 
 \textbf{Case 2.} In this case the vertices of $X$ appear before the vertices of $Y$ along $\p{x}{y}$.
 Let $x'$ (\emph{resp.} $y'$) be the vertex of $X$ (\emph{resp.} $Y$) closest to $x$ (\emph{resp.} $y$). 
+Notice that $x'$ is in fact the LCA in $T_x$ of $u$ and $v$ as $u,y$ and $v$ are in clockwise order. Analogously, $y'$ is the LCA in $T_y$ of $u$ and $v$.
 
-Let $u'$ be the last vertex of $\p{u}{x}$ that is also in $\p{u}{y}$.
+Let $u'$ be the last vertex of $\p{u}{x}$ that is also in $\p{u}{y}$ (maybe $u$ itself). Therefore, $\p{u'}{x}$ and $\p{u'}{y}$ coincide only at $u'$.
 Note that $u'$ can be constructed by walking from $u'$ towards $x$ until the path towards $y$ diverges. 
 Thus, $u'$ can be computed in $O(|\p{u}{u'}|)$ time. 
 Define $v'$ analogously and compute it in $O(|\p{v}{v'}|)$ time.
 
-Let $P'$ be the polygon bounded by the geodesic paths $\p{x'}{u'}, \p{u'}{y'}, \p{y'}{v'}$ and  $\p{v'}{x'}$.
-Because the vertices of $X$ appear before those of $Y$ along $\p{x}{y}$, $P'$ is a simple polygon; see Figure~\ref{fig:Output Sensitive Algorithm} (bottom).
-
-In this case the path $\p{u}{v}$ is the union of $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
+In this case, because $u'\in \p{u}{x}\cap \p{u}{v}$ by definition and since $y, v$ and $x$ are in clockwise order, the path $\p{u}{v}$ contains $u'$. Analogously, we know also the path $\p{u}{v}$ contains $v'$
+Therefore, the path $\p{u}{v}$ is the union of $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
 Because $\p{u}{u'}$ and  $\p{v'}{v}$ can be computed in time proportional to their length, it suffices to compute $\p{u'}{v'}$ in $O(|$\p{u'}{v'}$|)$ time.
 
-Note that $P'$ is a simple polygon with only four convex vertices $x',u', y'$ and $v'$, which are connected by chains of reflex vertices.
-Thus, the shortest path from $x'$ to $y'$ can have at most one diagonal edge connecting distinct reflex chains of $P'$. Since the rest of the points in $\p{u'}{v'}$ lie on the boundary of $P'$ and from the fact that each edge of $P'$ is an edge of $T_x\cup T_y$, we conclude all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
+Let $P'$ be the polygon bounded by the geodesic paths $\p{x'}{u'}, \p{u'}{y'}, \p{y'}{v'}$ and $\p{v'}{x'}$.
+By the definitions of $x',y',u'$ and $v'$ and since the vertices of $X$ appear before the vertices of $Y$ along $\p{x}{y}$, we know the four paths bounding $P'$ are pairwise interior disjoint, i.e., $P'$ is a simple polygon; see Figure~\ref{fig:Output Sensitive Algorithm} (bottom). 
+Recall that each of four paths bounding $P'$ is a shortest geodesic path. 
+We claim that $P'$ is a pseudo-quadrilateral with only four convex vertices being $x',u',y'$ and $v'$. 
+To show this, recall that each path bounding $P'$ is a shortest path. Thus, if $\p{x'}{u'}$ was not a path containing only reflex vertices of $P'$, then the shortest path from $x'$ to $u'$ restricted to $P'$ would be shorter than $\p{x'}{u'}$ which is  a contradiction since $P'\subseteq P$. Thus, each interior vertex of $\p{x'}{u'}$ is a  reflex vertices of $P'$. The same argument holds for each of the other three paths bounding $P'$. Therefore, $P'$ is a simple pseudo-quadrilateral with $x',u',y'$ and $v'$ as convex vertices.
+
+Consequently, the shortest path from $x'$ to $y'$ can have at most one diagonal edge connecting distinct reflex chains of $P'$. Since the rest of the points in $\p{u'}{v'}$ lie on the boundary of $P'$ and from the fact that each edge of $P'$ is an edge of $T_x\cup T_y$, we conclude all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$. 
+This was already shown by ~\citet[Lemma 4]{suri1989computing}.
 
 We want to find the common tangent between the reflex paths $\p{u'}{x'}$ and $\p{v'}{y'}$, or the common tangent of $\p{u'}{y'}$ and $\p{v'}{x'}$ as one of them belongs to the shortest path $\p{u'}{v'}$.
 Assume that the desired tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$. 
@@ -473,7 +479,7 @@ how to compute a linear number of apexed triangles such that $\F{P}{x}$ coincide
 
 While the construction we follow is analogous, we use it in the transition hourglass $H_{ab}$ instead of the full polygon $P$. 
 Therefore, we have to specify what is the relation between the upper envelope of the computed functions and $\F{P}{x}$. 
-We will show that the upper envelope of the apex functions computed in $H_{ab}$ coincides with $\F{P}{x}$ inside the Voronoi region $R(v)$ of every vertex $v\in B_{ab}$.
+We will show that the upper envelope of the apex functions computed in $H_{ab}$ coincides with $\F{P}{x}$ inside the Voronoi region $R(v)$ of every vertex $v$ in the bottom chain of $H_{ab}$.
 
 
 \subsection{Inside a transition hourglass}
@@ -500,7 +506,8 @@ Let $T_a$ and $T_b$ be the shortest-path trees in $H_{ab}$ rooted at $a$ and $b$
 We can compute these trees in $O(|H_{ab}|)$ time~\cite{guibasShortestPathTree}. 
 For each vertex $v$ such that  $\ff{a}, v$ and $\ff{b}$ are in clockwise order, let $v_a$ and $v_b$ be the neighbors of $v$ in the paths $\p{v}{a}$ and $\p{v}{ b}$, respectively.
 We say that a vertex $v$ is \emph{visible} from $ab$ if $v_a\neq v_b$.
-Note that if a vertex $v$ is visible, then the extension of the  segments $vv_a$ and $vv_b$ must intersect the top segment $ab$ at points $x_a$ and $x_b$, respectively. 
+Note that if $v_a \neq a$, then there $v_a$ is inside the triangle $\triangle(a,b,v)$ and the same holds for $v_b$. 
+Thus, if a vertex $v$ is visible, then the extension of the  segments $vv_a$ and $vv_b$ must intersect the top segment $ab$ at points $x_a$ and $x_b$, respectively.
 Therefore, for each visible vertex $v$, we obtain a triangle $\triangle_v = \triangle(v, x_a, x_b)$ as shown in Figure~\ref{fig:Hourglass Cover}.
 
 \begin{figure}[tb]
@@ -834,7 +841,7 @@ To generalize the result presented in this paper, we ask the following question.
 That is, the point in $P$ that minimizes the maximum geodesic distance to a point of $S$. While the (geodesic) farthest-point Voronoi diagram of $S$ provides the answer in $O((n+m) \log (n+m))$ time, we ask whether it is possible to compute this center in $O(n + m)$ time.
 
 
-\bibliographystyle{abbrv}
+\bibliographystyle{abbrvnat}
 \bibliography{Geodesic}
 
 \appendix
