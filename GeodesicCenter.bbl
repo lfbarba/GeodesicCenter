@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{27}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,7 +43,6 @@ S.~W. Bae, M.~Korman, Y.~Okamoto, and H.~Wang.
 B.~Chazelle.
 \newblock A theorem on polygon cutting with applications.
 \newblock In \emph{Proceedings of FOCS}, pages 339--349, 1982.
-\newblock \doi{http://dx.doi.org/10.1109/SFCS.1982.58}.
 
 \bibitem[Chazelle(1991)]{chazelle1991triangulating}
 B.~Chazelle.
@@ -60,7 +59,7 @@ H.~Djidjev, A.~Lingas, and J.-R. Sack.
 
 \bibitem[Edelsbrunner and M{\"u}cke(1990)]{edelsbrunner1990simulation}
 H.~Edelsbrunner and E.~P. M{\"u}cke.
-\newblock Simulation of simplicity: a technique to cope with degenerate cases
+\newblock Simulation of simplicity: {A} technique to cope with degenerate cases
   in geometric algorithms.
 \newblock \emph{ACM Transactions on Graphics}, 9\penalty0 (1):\penalty0
   66--104, 1990.
@@ -71,12 +70,6 @@ L.~Guibas, J.~Hershberger, D.~Leven, M.~Sharir, and R.~E. Tarjan.
 \newblock Linear-time algorithms for visibility and shortest path problems
   inside triangulated simple polygons.
 \newblock \emph{Algorithmica}, 2\penalty0 (1-4):\penalty0 209--233, 1987.
-
-\bibitem[Guibas and Hershberger(1989)]{guibasShortestPathQueries}
-L.~J. Guibas and J.~Hershberger.
-\newblock Optimal shortest path queries in a simple polygon.
-\newblock \emph{Journal of computer and system sciences}, 39\penalty0
-  (2):\penalty0 126--152, 1989.
 
 \bibitem[Harborth and M{\"o}ller(1993)]{harborth1993esther}
 H.~Harborth and M.~M{\"o}ller.
@@ -98,7 +91,8 @@ J.~Hershberger and S.~Suri.
 \bibitem[Ke(1989)]{k-ealdp-89}
 Y.~Ke.
 \newblock An efficient algorithm for link-distance problems.
-\newblock In \emph{Proceedings of SoCG}, pages 69--78, 1989.
+\newblock In \emph{Proceedings of the fifth annual Symposium on Computational
+  Geometry}, pages 69--78. ACM, 1989.
 
 \bibitem[Lee and Preparata(1984)]{lee1984euclidean}
 D.-T. Lee and F.~P. Preparata.
@@ -119,7 +113,7 @@ J.~Matou{\v{s}}ek.
 
 \bibitem[Matou{\v{s}}ek(2002)]{matouvsek2002lectures}
 J.~Matou{\v{s}}ek.
-\newblock \emph{Lectures on discrete geometry}, volume 108.
+\newblock \emph{Lectures on {D}iscrete {G}eometry}, volume 108.
 \newblock Springer New York, 2002.
 
 \bibitem[Megiddo(1989)]{megiddo1989ball}
@@ -134,17 +128,18 @@ J.~S.~B. Mitchell.
 \newblock In J.-R. Sack and J.~Urrutia, editors, \emph{Handbook of
   Computational Geometry}, pages 633--701. Elsevier, 2000.
 
-\bibitem[Nilsson and Schuierer(1991)]{ns-crldp-91}
-B.~Nilsson and S.~Schuierer.
-\newblock Computing the rectilinear link diameter of a polygon.
-\newblock In \emph{Proceedings of CG}, pages 203--215, 1991.
-
 \bibitem[Nilsson and Schuierer(1996)]{ns-oarlcrp-96}
 B.~Nilsson and S.~Schuierer.
 \newblock An optimal algorithm for the rectilinear link center of a rectilinear
   polygon.
 \newblock \emph{Computational Geometry: Theory and Applications}, 6:\penalty0
   169--194, 1996.
+
+\bibitem[Nilsson and Schuierer(1991)]{ns-crldp-91}
+B.~J. Nilsson and S.~Schuierer.
+\newblock Computing the rectilinear link diameter of a polygon.
+\newblock In \emph{Computational Geometry-Methods, Algorithms and
+  Applications}, pages 203--215. Springer, 1991.
 
 \bibitem[Pollack et~al.(1989)Pollack, Sharir, and Rote]{pollackComputingCenter}
 R.~Pollack, M.~Sharir, and G.~Rote.
@@ -166,6 +161,7 @@ S.~Suri.
 \bibitem[Tur{\'a}n(1941)]{turan1941extremal}
 P.~Tur{\'a}n.
 \newblock On an extremal problem in graph theory.
-\newblock \emph{Mat. Fiz. Lapok}, 48\penalty0 (436-452):\penalty0 137, 1941.
+\newblock \emph{Matematikai Žs Fizikai Lapok}, 48\penalty0 (436-452):\penalty0
+  137, 1941.
 
 \end{thebibliography}
