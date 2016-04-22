@@ -3,7 +3,6 @@
 \usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics,epsf}
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
-\usepackage[numbers]{natbib}
 
 \usepackage{algorithmic}
 \usepackage{algorithm}
@@ -41,7 +40,7 @@ Prosenjit Bose\footnotemark[2]
 \and
 Jean-Lou De Carufel\footnotemark[2]
 \and 
-Matias Korman\thanks{Tohoku University, {\tt mati@dais.is.tohoku.ac.jp}. M.~K. was supported in part by the ELC project (MEXT KAKENHI No. 12H00855 and 15H02665)}
+Matias Korman\thanks{Tohoku University, {\tt mati@dais.is.tohoku.ac.jp}. Partially supported by the ELC project (MEXT KAKENHI No. 24106008).}
 \and
 Eunjin Oh\footnotemark[1]%\thanks{Department of Mathematics, IMFM, and
 %        Department of Mathematics, FMF, University of Ljubljana, Slovenia.}
@@ -58,7 +57,6 @@ Eunjin Oh\footnotemark[1]%\thanks{Department of Mathematics, IMFM, and
 
 \newcommand{\g}[2]{\ensuremath{|\pi(#1, #2)|}}
 \newcommand{\p}[2]{\ensuremath{\pi(#1, #2)}}
-\newcommand{\link}[2]{\ensuremath{\#[{#1},{#2}]}}
 \newcommand{\reg}{\ensuremath{R'}}
 \newcommand{\tcell}{4-cell\xspace}
 \newcommand{\tcells}{4-cells\xspace}
@@ -91,9 +89,11 @@ Eunjin Oh\footnotemark[1]%\thanks{Department of Mathematics, IMFM, and
 \begin{abstract}
 Let $P$ be a closed simple polygon with $n$ vertices.
 For any two points in $P$, the geodesic distance between them is the length of the shortest path that connects them among all paths contained in $P$. The  geodesic center of $P$ is the unique point in $P$ that minimizes the largest geodesic distance to all other points of $P$. In 1989, Pollack, Sharir and Rote [Disc. \& Comput. Geom. 89] showed an $O(n\log n)$-time algorithm that computes the geodesic center of $P$. Since then, a longstanding question has been whether this running time can be improved. 
-In this paper we affirmatively answer this question and present a deterministic linear-time algorithm to solve this problem.
+In this paper we affirmatively answer this question and present a linear time algorithm to solve this problem.
 \end{abstract}
 
+
+%A category including the fourth, optional field follows..
 
 \section{Introduction}
 Let $P$ be a simple polygon with $n$ vertices.
@@ -101,12 +101,12 @@ Given two points $x,y$ in $P$ (either on the boundary or in the interior), the \
 
 The \emph{geodesic distance} between $x$ and $y$, denoted by $\g{x}{y}$, is the sum of the Euclidean lengths of each segment in $\p{x}{y}$. Throughout this paper, when referring to the distance between two points in $P$, we mean the geodesic distance between them. 
 
-Given a point $x\in P$, a (geodesic) \emph{farthest neighbor} of $x$ is a point $\f{P}{x}$ (or simply $\ff{x}$) of $P$ whose geodesic distance to $x$ is maximized. 
+Given a point $x\in P$, a (geodesic) \emph{farthest neighbor} of $x$, is a point $\f{P}{x}$ (or simply $\ff{x}$) of $P$ whose geodesic distance to $x$ is maximized. 
 To ease the description, we assume that each vertex of $P$ has a unique farthest neighbor. 
 This \emph{general position} condition was also assumed by Aronov et al.~\cite{aronov1993furthest} and can be obtained by applying a slight perturbation to the positions of the vertices~\cite{edelsbrunner1990simulation}.
 
 Let $\F{P}{x}$ be the function that maps each $x\in P$ to the distance to a farthest neighbor of $x$ (i.e., $\F{P}{x} = \g{x}{\ff{x}}$).
-A point $\cp\in P$ that minimizes $\F{P}{x}$ is called the \emph{geodesic center} of $P$. Similarly, a point $s\in P$ that maximizes $\F{P}{x}$ (together with $\ff{s}$) is called a \emph{geodesic diametral pair} and their distance is known as the \emph{geodesic diameter}. Asano and Toussaint~\cite{at-cgcsp-85} showed that the geodesic center is unique whereas it is easy to see that several geodesic diametral pairs may exist.
+A point $\cp\in P$ that minimizes $\F{P}{x}$ is called the \emph{geodesic center} of $P$. Similarly, a point $s\in P$ that maximizes $\F{P}{x}$ (together with $\ff{s}$) is called a \emph{geodesic diametral pair} and their distance is known as the \emph{geodesic diameter}. Asano and Toussaint~\cite{at-cgcsp-85} showed that the geodesic center is unique (whereas it is easy to see that several geodesic diametral pairs may exist).
 
 In this paper we show how to compute the geodesic center of $P$ in $O(n)$ time.
 
@@ -116,16 +116,16 @@ Since the early 80s the problem of computing the geodesic center (and its counte
 The first algorithm for computing the geodesic center was given by Asano and Toussaint~\cite{at-cgcsp-85}, and runs in $O(n^4\log n)$-time. In 1989, Pollack, Sharir, and Rote~\cite{pollackComputingCenter} improved it to $O(n\log n)$ time. Since then, it has been an open problem whether the geodesic center can be
 computed in linear time (indeed, this problem was explicitly posed by Pollack et al.~\cite{pollackComputingCenter} and later by Mitchell~\cite[Chapter 27]{m-gspno-00}).
 
-The same problem has been studied under different metrics such as the $L_1$ geodesic distance~\cite{bkow-clgdcsplt-13},  the link distance~\cite{suri-mlpprp-87,k-ealdp-89,dls-aclcsp-92} (where we look for the path with the minimum possible number of bends or {\em links}), or even rectilinear link distance~\cite{ns-crldp-91,ns-oarlcrp-96} (a variation of the link distance in which only isothetic segments are allowed). The diameter and center of a simple polygon for both the $L_1$ and rectilinear link metrics can be computed in linear time (whereas $O(n\log n)$ time is needed to compute both the center and diameter under the link distance).
+Several variations of these two problems have been considered. Indeed, the same problem has been studied under different metrics. For example, the $L_1$ geodesic distance~\cite{bkow-clgdcsplt-13},  the link distance~\cite{suri-mlpprp-87,k-ealdp-89,dls-aclcsp-92} (where we look for the path with the minimum possible number of bends or {\em links}), or even rectilinear link distance~\cite{ns-crldp-91,ns-oarlcrp-96} (a variation of the link distance in which only isothetic segments are allowed). The diameter and center of a simple polygon for both the $L_1$ and rectilinear link metrics can be computed in linear time (whereas $O(n\log n)$ time is needed for the link distance).
 
-Another natural extension is the computation of the diameter and center in polygonal domains (i.e., polygons with one or more holes). Polynomial time algorithms are known for both the diameter~\cite{bko-gdpd-13} and center~\cite{bko-cgcpd-14} under the Euclidean metric, although the running times are significantly larger (i.e., $O(n^{7.73})$ and $O(n^{12+\varepsilon})$, respectively). Slightly faster algorithms exist to compute both the center and the diameter under the $L_1$ metric in polygonal domains~\cite{PolygonalDomainsL1}.
+Another natural extension is the computation of the diameter and center in polygonal domains (i.e., polygons with one or more holes). Polynomial time algorithms are known for both the diameter~\cite{bko-gdpd-13} and center~\cite{bko-cgcpd-14}, although the running times are significantly larger (i.e., $O(n^{7.73})$ and $O(n^{12+\varepsilon})$, respectively).
 
 \subsection{Outline}
-In order to compute the geodesic center, $\cp$, Pollack et al.~\cite{pollackComputingCenter} introduced a linear time \emph{chord-oracle}. Given a chord $C$ that splits $P$ into two sub-polygons, the oracle determines which sub-polygon contains $\cp$. Combining this operation with an efficient search on a triangulation of $P$, Pollack et al.~narrow the search for $\cp$ to be within a triangle (and afterwards find the center using optimization techniques). Their approach however, does not allow them to reduce the complexity of the problem in each iteration, and hence it runs in $\Theta(n\log n)$ time. 
+In order to compute the geodesic center, $\cp$, Pollack et al.~\cite{pollackComputingCenter} introduced a linear time \emph{chord-oracle}. Given a chord $C$ that splits $P$ into two sub-polygons, the oracle determines which sub-polygon contains $\cp$. Combining this operation with an efficient search on a triangulation of $P$, Pollack et al. narrow the search of $\cp$ within a triangle (and afterwards find the center using optimization techniques). Their approach however, does not allow them to reduce the complexity of the problem in each iteration, and hence it runs in $\Theta(n\log n)$ time. 
 
 The general approach of our algorithm described in Section~\ref{section:Prune and search} is similar: 
 partition $P$ into $O(1)$ cells, use an oracle to determine which cell contains $\cp$, and recurse within the cell. 
-Our approach differs, however, in two important aspects that allow us to speed-up the algorithm. 
+Our approach differs however in two important aspects that allows us to speed-up the algorithm. 
 First, we do not use the chords of a triangulation of $P$ to partition the problem into cells. 
 We use instead a cutting of a suitable set of chords.
 Secondly, we compute a set $\Sigma$ of $O(n)$ functions, each defined in a triangular domain contained in $P$, such that their upper envelope, $\phi(x)$, coincides with $\F{P}{x}$. 
@@ -133,24 +133,24 @@ Thus, we can ``ignore'' the polygon $P$ and focus only on finding the minimum of
 
 The search itself uses $\varepsilon$-nets and cutting techniques,
 which guarantee that both the size of the cell containing $\cp$ and the number of functions of $\Sigma$ defined in it decrease by a constant fraction 
-(and thus lead to an overall linear time algorithm).
-However, this search has two stopping conditions, (1) reach a subproblem of constant size, 
+(and thus leads to an overall linear time algorithm).
+This search has however two stopping conditions, (1) reach a subproblem of constant size, 
 or (2) find a triangle containing $\cp$.
 In the latter case, 
 we show that $\phi(x)$ is a convex function when restricted to this triangle. 
-Therefore, to find its minimum we can use standard optimization techniques based on cuttings in $\mathbb{R}^3$. This procedure is described in Section~\ref{Section:Solving convex optimization problem}.
+Thus, finding its minimum becomes an optimization problem that we solve in Section~\ref{Section:Solving convex optimization poblem} using cuttings in $\mathbb{R}^3$.
 
-The key to this approach lies in the computation of the functions of $\Sigma$ and their triangular domains. 
-Each function $g(x)$ of $\Sigma$ is defined in a triangular domain $\triangle$ contained in $P$ and is associated with a particular vertex $w$ of $P$. 
+The key of this approach lies in the computation of the functions of $\Sigma$ and their triangular domains. 
+Each function $g(x)$ of $\Sigma$ is defined in a triangular domain $\triangle$ contained in $P$ and is associated to a particular vertex $w$ of $P$. 
 Intuitively speaking, $g(x)$ maps points in $\triangle$ to their (geodesic) distance to $w$.
 We guarantee that, for each point $x\in P$, there is one function $g$ defined in a triangle containing $x$, such that $g(x) = \F{P}{x}$.
 To compute these triangles and their corresponding functions, we proceed as follows.
 
-In Section~\ref{Section:Decomposing the boundary}, we decompose the boundary of $P$, denoted by $\partial P$, into connected edge-disjoint chains.
+In Section~\ref{Section:Decomposing the boundary}, we use the matrix search technique introduced by Hershberger and Suri~\cite{hershberger1993matrix} to decompose the boundary of $P$, denoted by $\partial P$, into connected edge-disjoint chains.
 Each chain is defined by either $(1)$ a consecutive list of vertices that have the same farthest neighbor $v$ (we say that $v$ is \emph{marked} if it has such a chain associated to it), or $(2)$ an edge whose endpoints have different farthest neighbors (such edge is called a \emph{transition edge}).
 
 In Section~\ref{Section: Building hourglasses}, we consider each transition edge $ab$ of $\partial P$ independently and compute its \emph{hourglass}. Intuitively, the hourglass of $ab$, $H_{ab}$, is the region of $P$ between two chains, the edge $ab$ and the chain of $\partial P$ that contains the farthest neighbors of all points in $ab$.
-Inspired by a result of Suri~\cite{suri1989computing}, we show that the sum of the complexities of all hourglasses defined on a transition edge is $O(n)$. (The \emph{combinatorial complexity}, or simply \emph{complexity} of a geometric object, is the total number of vertices and edges that define it.)
+Inspired by a result of Suri~\cite{suri1989computing}, we show that the sum of the complexities of all hourglasses defined on a transition edge is $O(n)$. (The \emph{combinatorial complexity}, or simply complexity of a geometric object is the total number of vertices and edges that define it.)
 In addition, we provide a new technique to compute all these hourglasses in linear time.
 
 While the hourglasses cover a big part of $P$, to complete the coverage we need to consider \emph{funnels} from each marked vertex. Intuitively, the funnel of a marked vertex $v$ is the region of $P$ that contains all the paths from $v$ to every point of $\partial P$ that is farther from $v$ than from any other vertex of $P$. In Section~\ref{section:Building Funnels}, we prove that the total complexity of all the funnels of all marked vertices is $O(n)$. Moreover, we provide an algorithm to compute all these funnels in linear time.
@@ -175,7 +175,7 @@ Given a vertex $v$ of $P$, the vertices of $P$ whose farthest neighbor is $v$ ap
 \centering
 \includegraphics{img/MarkedVertices.pdf}
 
-\caption{\small Each vertex of the boundary of $P$ is associated with a farthest neighbor, which is then marked. 
+\caption{\small Each vertex of the boundary of $P$ is assigned with a farthest neighbor which is then marked. 
 The boundary is then decomposed into vertex-disjoint chains, each associated with a marked vertex, joined by transition edges (blue) whose endpoints have different farthest neighbors.}
 \label{fig:Marked vertices decomposition}
 \end{figure}
@@ -215,7 +215,8 @@ Moreover, these bottom chains appear in the same cyclic order as the top chains 
 \label{fig:Transition chains and hourglasses}
 \end{figure}
 
-In the remainder of the paper, all the hourglasses considered are defined by a transition chain. In particular, they are open by Lemma~\ref{lemma:Transition hourglasses are open} and their top and bottom chains are edge-disjoint.
+Note that by Lemma~\ref{lemma:Transition hourglasses are open}, the hourglass of each transition chain is open.
+In the remainder of the paper, all the hourglasses considered are defined by a transition chain. That is, they are open and their top and bottom chains are edge-disjoint.
 
 The following lemma is depicted in Figure~\ref{fig:Transition chains and hourglasses} and is a direct consequence of the Ordering Lemma proved by Aronov et al.~\cite[Corollary 2.7.4]{aronov1993furthest}.
 \begin{lemma}\label{lemma:Ordering Lemma}
@@ -224,7 +225,7 @@ Let $C_1, C_2, C_3$ be three edge-disjoint transition chains of $\partial P$ in 
 
 Let $\gamma$ be a  geodesic path joining two points on the boundary of $P$.
 We say that $\gamma$ \emph{separates} two points $x_1$ and $x_2$ of $\partial P$ if the points of $X=\{x_1, x_2\}$ and the endpoints of $\gamma$ alternate along the boundary of $P$. 
-We also say that $\gamma$ separates $x_1$ and $x_2$ if either of them coincides with an endpoint of $\gamma$.
+For consistency, we also say that $\gamma$ separates $x_1$ and $x_2$ if either of them coincides with an endpoint of $\gamma$.
 We say that a geodesic path $\gamma$ \emph{separates} an hourglass $H$ if it separates the points of its top chain from those of its  bottom chain.
 
 \begin{lemma}\label{lemma:Split paths}
@@ -232,7 +233,7 @@ Let $C_1, \ldots, C_r$ be edge-disjoint transition chains of $\partial P$. Then,
 Moreover, this set can be computed in $O(n)$ time.
 \end{lemma}
 \begin{proof}
-Aronov et al.~showed that there exist four vertices $v_1, \ldots, v_4$ of $P$ and geodesic paths $\p{v_1}{v_2}, \p{v_2}{v_3}, \p{v_3}{v_4}$ such that for any point $x\in \partial P$, one of these paths separates $x$ from $\ff{x}$~\cite[Lemma 2.7.6]{aronov1993furthest}. Moreover, they show how to compute this set in $O(n)$ time.
+Aronov et al. showed that there exist four vertices $v_1, \ldots, v_4$ of $P$ and geodesic paths $\p{v_1}{v_2}, \p{v_2}{v_3}, \p{v_3}{v_4}$ such that for any point $x\in \partial P$, one of these paths separates $x$ from $\ff{x}$~\cite[Lemma 2.7.6]{aronov1993furthest}. Moreover, they show how to compute this set in $O(n)$ time.
 
 Let $\Gamma= \{\p{v_i}{v_j} : 1\leq i < j\leq 4\}$ and note that $v_1, \ldots, v_4$ split the boundary of $P$ into at most four connected components.
 If a chain $C_i$ is completely contained in one of these components, then one path of $\Gamma$ separates the top and bottom chain of $H_{C_i}$. Otherwise, some vertex $v_j$ is an interior vertex of $C_i$. However, because the chains $C_1, \ldots, C_r$ are edge-disjoint, there are at most four chains in this situation. 
@@ -249,13 +250,13 @@ Let $C_1, \ldots, C_r$ be a set of edge-disjoint transition chains of $\partial 
 \end{lemma}
 \begin{proof}
 % that appears in three hourglasses $H_{C_i}, H_{C_j}$ and $H_{C_k}$ such that $1\leq i < j < k\leq r$. 
-Note that chords can appear only on walls of hourglasses. Because  hourglasses are open, any chord must be an edge on exactly one wall of each of these hourglasses. Assume, for the sake of contradiction, that there exist two points $s,t\in P$ whose chord $st$ is in three hourglasses $H_{C_i}, H_{C_j}$ and $H_{C_k}$ (for some $1\leq i < j < k\leq r$) such that $s$ is visited before $t$ when going from the top chain to the bottom one along the walls of the three hourglasses.
+Note that chords can only appear on walls of hourglasses. Because  hourglasses are open, any chord must be an edge on exactly one wall of each of these hourglasses. Assume, for the sake of contradiction, that there exist two points $s,t\in P$ whose chord $st$ is in three hourglasses $H_{C_i}, H_{C_j}$ and $H_{C_k}$ (for some $1\leq i < j < k\leq r$) such that $s$ is visited before $t$ when going from the top chain to the bottom one along the walls of the three hourglasses.
 %Assume that $s$ is visited before $t$ when going from the top chain to the bottom one along the walls of .
 Let $s_i$ and $t_i$ be the points in the in the top and bottom chains of $H_{C_i}$, respectively, such that $\p{s_i}{t_i}$ is the wall of $H_{C_i}$ that contains $st$ (analogously, we define $s_k$ and $t_k$).
 
 Because $C_i, C_j, C_k$ are in clockwise order, Lemma~\ref{lemma:Ordering Lemma} implies that the bottom chains of $C_i, C_j$ and $C_k$ are also in clockwise order. Therefore, $C_j$ lies between $s_i$ and $s_k$ and the bottom chain of $H_{C_j}$ lies between $t_i$ and $t_k$. 
-That is, for each $x\in C_j$ and each $y$ in the bottom chain of $H_{C_j}$, the geodesic path $\p{x}{y}$ is ``sandwiched'' between the paths $\p{s_i}{t_i}$ and $\p{s_k}{t_k}$.
-In particular, $\p{x}{y}$ contains $st$ for each pair of points in the top and bottom chains of $H_{C_j}$.
+That is, for each $x\in C_j$ and each $y$ in the bottom chain of $H_{C_j}$, the geodesic path $\p{x}{y}$ is ``sandwiched'' by the paths $\p{s_i}{t_i}$ and $\p{s_k}{t_k}$.
+In particular, $\p{x}{y}$ contains $st$ for each pair of points in the top and bottom chain of $H_{C_j}$.
 However, this implies that the hourglass $H_{C_j}$ is not open---a contradiction that comes from assuming that $st$ lies in the  wall of three open hourglasses, when this wall is traversed from the top chain to the bottom chain. 
 Analogous arguments can be used to bound the total number of walls that contain the edge $st$ (when traversed in any direction) to $O(1)$.
 \end{proof}
@@ -264,57 +265,43 @@ Analogous arguments can be used to bound the total number of walls that contain 
 %Let $C$ be a transition chain and let $B_C$ be the bottom chain of $H_C$. Let $x,y$ be two vertices such that $\p{x}{y}$ separates $C$ from $B_C$.  If $T_x$ and $T_y$ are the shortest-path trees of $x$ and $y$ in $P$, then for each $u\in C$ and each $v\in B_C$, all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 %\end{lemma}
 
-Given two points $x$ and $y$ in $P$, let $\link{x}{y}$ denote the number of edges in the path $\p{x}{y}$.
-
 \begin{lemma}\label{lemma:Suri's lemma}
 Let $x, u, y, v$ be four vertices of $P$ in clockwise order.
 Given the shortest-path trees $T_x$ and $T_y$ of $x$ and $y$ in $P$, respectively, such that $T_x$ and $T_y$ can answer lowest common ancestor (LCA) queries in $O(1)$ time, 
-we can compute the path $\p{u}{v}$ in $O(\link{u}{v})$ time. 
+we can compute the path $\p{u}{v}$ in $O(|\p{u}{v}|)$ time. 
 Moreover, all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 \end{lemma}
 \begin{proof}
-Let $X$ (resp.~$Y$) be the set containing the LCA in $T_x$ (resp.~$T_y$) of $u,y$, and of $v,y$ (resp.~$u,x$ and $x,y$). Note that the points of $X\cup Y$ lie on the path $\p{x}{y}$ and can be computed in $O(1)$ time by hypothesis. Moreover, using LCA queries, we can decide their order along the path $\p{x}{y}$ when traversing it from $x$ to $y$. (Both $X$ and $Y$ could consist of a single vertex in some degenerate situations.) Two cases arise, either (1) there is a vertex  $x^*\in X$ lying after a vertex $y^*\in Y$ along $\p{x}{y}$ or (2), all vertices of $X^*$ lie before those of $Y^*$ along $\p{x}{y}$.
+Let $X$ (\emph{resp.} $Y$) be the set containing the LCA in $T_x$ (\emph{resp.} $T_y$) of $u,y$, and of $v,y$ (\emph{resp.} $u,x$ and $x,y$). Note that the points of $X\cup Y$ lie on the path $\p{x}{y}$ and can be computed in $O(1)$ time by hypothesis. Moreover, using LCA queries, we can decide their order along the path $\p{x}{y}$ when traversing it from $x$ to $y$. (Both $X$ and $Y$ could consist of a single vertex in some degenerate situations.) Two cases arise: 
 
 \textbf{Case 1.} If there is a vertex  $x^*\in X$ lying after a vertex $y^*\in Y$ along $\p{x}{y}$, 
-then the path $\p{u}{v}$ contains the path $\p{y^*}{x^*}$; see Figure~\ref{fig:Output Sensitive Algorithm} (top). 
-Since $x^*\in \p{u}{v}$, $\p{u}{v}$ can be partitioned into two paths $\p{u}{x^*}$ and $\p{x^*}{v}$.
-Note that $y^*$ lies either on $\p{u}{x^*}$ or on $\p{x^*}{v}$. Assume without loss of generality that $y^*$ lies on $\p{u}{x^*}$; otherwise swap the roles of $u$ and $v$.
-
-Because $y^*$ lies on $\p{u}{x^*}$, we conclude that $\p{u}{v}$
- is the concatenation of the paths $\p{u}{y^*}$, $\p{y^*}{x^*}$ and $\p{x^*}{v}$.
-Furthermore, these three paths are contained in $T_x \cup T_y$ as $\p{u}{x^*}\subseteq  \p{y}{u}$, $\p{v}{y^*}\subseteq  \p{x}{v}$, and $\p{x^*}{y^*}\subseteq \p{x}{y}$.
-Therefore, $\p{u}{v}$ can be computed in time proportional to the number of its edges by traversing the corresponding shortest-path trees.
+then the path $\p{u}{v}$ contains the path $\p{y^*}{x^*}$. 
+In this case, the path $\p{u}{v}$ is the concatenation of the paths $\p{u}{y^*}$, $\p{y^*}{x^*}$, and $\p{x^*}{v}$ and that the three paths are contained in $T_x \cup T_y$.
+Moreover, $\p{u}{v}$ can be computed in time proportional to its length by traversing along the corresponding tree; see Figure~\ref{fig:Output Sensitive Algorithm} (top).
 
 \textbf{Case 2.} In this case the vertices of $X$ appear before the vertices of $Y$ along $\p{x}{y}$.
-Let $x'$ (resp.~$y'$) be the vertex of $X$ (resp.~$Y$) closest to $x$ (resp.~$y$). 
-Notice that $x'$ is in fact the LCA in $T_x$ of $u$ and $v$ as $u,y$ and $v$ are in clockwise order. Analogously, $y'$ is the LCA in $T_y$ of $u$ and $v$.
+Let $x'$ (\emph{resp.} $y'$) be the vertex of $X$ (\emph{resp.} $Y$) closest to $x$ (\emph{resp.} $y$). 
 
-Let $u'$ be the last vertex of $\p{u}{x}$ that is also in $\p{u}{y}$ (maybe $u$ itself). Therefore, $\p{u'}{x}$ and $\p{u'}{y}$ coincide only at $u'$.
+Let $u'$ be the last vertex of $\p{u}{x}$ that is also in $\p{u}{y}$.
 Note that $u'$ can be constructed by walking from $u'$ towards $x$ until the path towards $y$ diverges. 
-Thus, $u'$ can be computed in $O(\link{u}{u'})$ time. 
-Define $v'$ analogously and compute it in $O(\link{v}{v'})$ time.
+Thus, $u'$ can be computed in $O(|\p{u}{u'}|)$ time. 
+Define $v'$ analogously and compute it in $O(|\p{v}{v'}|)$ time.
 
-Because $u'\in \p{u}{x}\cap \p{u}{v}$ by definition and since $y, v$ and $x$ are in clockwise order, the path $\p{u}{v}$ contains $u'$. Analogously, we know the path $\p{u}{v}$ contains $v'$.
-Therefore, the path $\p{u}{v}$ is the union of $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
-Because $\p{u}{u'}$ and  $\p{v'}{v}$ can be computed in time proportional to the number of their edges, it suffices to compute $\p{u'}{v'}$ in $O(\link{u'}{v'})$ time.
+Let $P'$ be the polygon bounded by the geodesic paths $\p{x'}{u'}, \p{u'}{y'}, \p{y'}{v'}$ and  $\p{v'}{x'}$.
+Because the vertices of $X$ appear before those of $Y$ along $\p{x}{y}$, $P'$ is a simple polygon; see Figure~\ref{fig:Output Sensitive Algorithm} (bottom).
 
-Let $P'$ be the polygon bounded by the geodesic paths $\p{x'}{u'}, \p{u'}{y'}, \p{y'}{v'}$ and $\p{v'}{x'}$.
-By the definitions of $x',y',u'$ and $v'$, and since the vertices of $X$ appear before the vertices of $Y$ along $\p{x}{y}$, we know the four paths bounding $P'$ are pairwise interior disjoint, i.e., $P'$ is a simple polygon; see Figure~\ref{fig:Output Sensitive Algorithm} (bottom). 
-We claim that $P'$ is a pseudo-quadrilateral with only four convex vertices being $x',u',y'$ and $v'$. 
-To show this, recall that each path bounding $P'$ is a shortest path. Thus, the path $\p{x'}{u'}$ contains only reflex vertices of $P'$; otherwise, the shortest path from $x'$ to $u'$ restricted to $P'$ would be shorter than $\p{x'}{u'}$ which is  a contradiction as $P'\subseteq P$. 
-Thus, each interior vertex of the path $\p{x'}{u'}$ is a reflex vertex of $P'$. 
-The same argument holds for each of the other three paths bounding $P'$. Therefore, $P'$ is a simple pseudo-quadrilateral with $x',u',y'$ and $v'$ as its four convex vertices.
+In this case the path $\p{u}{y}$ is the union of $\p{u}{u'}, \p{u'}{v'}$ and $\p{v'}{v}$.
+Because $\p{u}{u'}$ and  $\p{v'}{v}$ can be computed in time proportional to their length, it suffices to compute $\p{u'}{v'}$ in $O(|$\p{u'}{v'}$|)$ time.
 
-Consequently, the shortest path from $u'$ to $v'$ can have at most one diagonal edge connecting distinct reflex chains of $P'$. Since the rest of the points in $\p{u'}{v'}$ lie on the boundary of $P'$ and because each edge of $P'$ is an edge of $T_x\cup T_y$, we conclude all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$. 
-In fact, this was already shown by~\citet[Lemma 4]{suri1989computing}.
+Note that $P'$ is a simple polygon with only four convex vertices $x',u', y'$ and $v'$, which are connected by chains of reflex vertices.
+Thus, the shortest path from $x'$ to $y'$ can have at most one diagonal edge connecting distinct reflex chains of $P'$. Since the rest of the points in $\p{u'}{v'}$ lie on the boundary of $P'$ and from the fact that each edge of $P'$ is an edge of $T_x\cup T_y$, we conclude all edges of $\p{u}{v}$, except perhaps one, belong to $T_x\cup T_y$.
 
-We want to find the common tangent from either $\p{u'}{x'}$ or $\p{u'}{y'}$ to either $\p{v'}{x'}$ or $\p{v'}{y'}$ that belongs to the shortest path $\p{u'}{v'}$.
-Assume that the desired tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$, we consider the other three possible cases later. 
+We want to find the common tangent between the reflex paths $\p{u'}{x'}$ and $\p{v'}{y'}$, or the common tangent of $\p{u'}{y'}$ and $\p{v'}{x'}$ as one of them belongs to the shortest path $\p{u'}{v'}$.
+Assume that the desired tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$. 
 Since these paths consist only of reflex vertices, the problem can be reduced to finding the common tangent of two convex polygons. 
-By slightly modifying the linear time algorithm to compute this tangent, we can make it run in $O(\link{u'}{v'})$ time.
+By slightly modifying the linear time algorithm to compute this tangents, we can make it run in $O(|\p{u'}{v'}|)$ time.
 
-Since we do not know if the tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$, we process the four pairs of paths in parallel and stop when finding the desired tangent. 
-Therefore, we can compute $\p{u'}{v'}$ in $O(\link{u'}{v'})$ time and consequently, we can compute $\p{u}{v}$ in $O(\link{u}{v})$ time.
+Since we do not know if the tangent lies between the paths $\p{u'}{x'}$ and $\p{v'}{y'}$, we process the chains $\p{u'}{y'}$ and $\p{v'}{x'}$ in parallel and stop when finding the desired tangent. Consequently, we can compute the path $\p{u}{v}$ in time proportional to its length. 
 \end{proof}
 
 \begin{figure}[tb]
@@ -356,27 +343,25 @@ In order to construct the triangle cover of $P$, we construct the transition hou
 By Lemma~\ref{lemma:Split paths} we can compute a set $\Gamma$ of $O(1)$ paths such that for any transition edge $ab$, the transition hourglass $H_{ab}$ is separated by one (or more) paths in this set. For each endpoint of the $O(1)$ paths of $\Gamma$, we compute its shortest-path tree in linear time~\cite{chazelle1991triangulating,guibasShortestPathTree}. In addition, we preprocess these trees in linear time to support constant time LCA queries~\cite{harel1984fast}. Both computations need linear time per endpoint and use $O(n)$ space. Since we do this process for a constant number of endpoints, overall this preprocessing takes $O(n)$ time. 
 
 Let $\gamma\in \Gamma$ be a separating path. Note that $\gamma$ separates the boundary of $P$ into two chains $S_\gamma$ and $S'_\gamma$ such that $S_\gamma\cup S'_\gamma = \partial P$.
-Let $\mathcal H(\gamma)$ be the set of transition hourglasses separated by $\gamma$ whose transition edge is contained in $S_\gamma$ (whenever an hourglass is separated by more than one path, we pick one arbitrarily). Note that we can classify all transition hourglasses into their corresponding sets $\mathcal H(\gamma)$ in $O(n)$ time (since $|\Gamma| = O(1)$).
+Let $\mathcal H(\gamma)$ be the set of transition hourglasses separated by $\gamma$ whose transition edge is contained in $S_\gamma$ (whenever an hourglass is separated by more than one path, we pick one arbitrarily). Note that we can classify all transition hourglasses into the sets $\mathcal H(\gamma)$ in $O(n)$ time (since $|\Gamma| = O(1)$).
 
 \begin{lemma}
 Given a separating path $\gamma\in \Gamma$, it holds that $\sum_{H\in \mathcal H(\gamma)} |H| = O(n)$. Moreover, we can compute all transition hourglasses of $\mathcal H(\gamma)$ in $O(n)$ time.
 \end{lemma}
 \begin{proof}
-
-
 Since all transition hourglasses in $\mathcal H$ are defined from disjoint transition edges,
 Lemma~\ref{lemma:Bounding complexity of hourglasses} implies that $\sum_{H\in \mathcal H(\gamma)} |H| = O(n)$.
 
-By construction, each wall of these hourglasses consists of a (geodesic) path that connects a point in $S_\gamma$ with a point in $S'_\gamma$. Let $u\in S_\gamma$ and $v\in S'_\gamma$ be two vertices such that $\p{u}{v}$ is the wall of a hourglass in $\mathcal H(\gamma)$.
+By construction, the wall of each of these hourglasses consists of a (geodesic) path that connects a point in $S_\gamma$ with a point in $S'_\gamma$. Let $u\in S_\gamma$ and $v\in S'_\gamma$ be two vertices such that $\p{u}{v}$ is the wall of a hourglass in $\mathcal H(\gamma)$.
 Because LCA queries can be answered in $O(1)$ time, 
-Lemma~\ref{lemma:Suri's lemma} allows us to compute this path in $O(\link{u}{v})$ time. 
-Therefore, we can compute all hourglasses of $\mathcal H(\gamma)$ in $O(\sum_{H\in \mathcal H(\gamma)} |H| + n) = O(n)$ time. 
+Lemma~\ref{lemma:Suri's lemma} allows us to compute this path in $O(|\p{u}{v}|)$ time. 
+Therefore, we can compute all hourglasses of $\mathcal H(\gamma)$ in $O(\sum_{H\in \mathcal H(\gamma)} |H| + n) = O(n)$. 
 \end{proof}
 
 Because  $|\Gamma| = O(1)$ and since every transition hourglass is separated by at least one path in~$\Gamma$, we obtain the following result.
 
 \begin{corollary}\label{corollary: Hourglass partition}
-The total complexity of the transition hourglasses of all transition edges of $P$ is $O(n)$.
+The added complexity of the transition hourglasses of all transition edges of $P$ is $O(n)$.
 Moreover, all these hourglasses can be constructed in $O(n)$ time.
 \end{corollary}
 
@@ -389,27 +374,32 @@ We call $C$ the \emph{main chain} of $\fn{v}{C}$ while $\p{p_k}{v}$ and $\p{v}{p
 See Lee and Preparata~\cite{lee1984euclidean} or Guibas et al.~\cite{guibasShortestPathTree} for more details on funnels.
 
 A subset $R\subset P$ is \emph{geodesically convex} if for every $x,y\in R$, the path $\p{x}{y}$ is contained in $R$.
-This funnel $\fn{v}{C}$ is then the inclusion-wise smallest geodesically convex set that contains $v$ and $C$.
+This funnel $\fn{v}{C}$ is then the minimum geodesically convex set that contains $v$ and $C$.
 
 Given two points $x,y\in P$, the (geodesic) \emph{bisector} of $x$ and $y$ is the set of points contained in $P$ that are equidistant from $x$ and $y$. This bisector is a curve, contained in $P$, that consists of straight-line segments and hyperbolic arcs. Moreover, this curve intersects $\partial P$ only at its endpoints~\cite[Lemma 3.22]{aronov1989geodesic}.
 
 \begin{lemma}\label{lemma:Funnel contains Voronoi region}
-Let $v$ be a vertex of $P$ and let $C$ be a transition chain such that $R(v)\cap \partial P \subset C$ and $v\not\in C$.
-Then $R(v)$ is contained in the funnel $\fn{v}{C}$.
+Let $v$ be a vertex of $P$ and let $C$ be a transition chain such $R(v)\cap \partial P \subseteq C$ and $v\not\in C$.
+Then, $R(v)$ is contained in the funnel $\fn{v}{C}$
 \end{lemma}
 \begin{proof}
 Let $a$ and $b$ be the endpoints of $C$ such that $a,b, \ff{a}$ and $\ff{b}$ are in clockwise order.
-Because $R(v)\cap \partial P\subset C$, we know that $\ff{a}, v$ and $\ff{b}$ are in clockwise order by Lemma~\ref{lemma:Ordering Lemma}. Moreover, we also know that $\g{a}{v} < \g{a}{\ff{a}}$ and $\g{b}{v} < \g{b}{\ff{b}}$ as $a,b\notin R(v)$. 
+Because $R(v)\cap \partial P\subset C$, we know that $\ff{a}, v$ and $\ff{b}$ are in clockwise order.
 
-Assume for a contradiction that there is a point of $R(v)$ lying outside of $\fn{v}{C}$. 
-Since $R(v)\cap \partial P \subset C$ and by continuity,  the boundaries of $R(v)$ and $\fn{v}{C}$ must intersect at a point $w$ not in $\partial P$.
-Recall that the boundary of $\fn{v}{C}$ is exactly the union of $C$ and the paths $\p{v}{a}$ and $\p{v}{b}$. 
-Therefore, $w$ lies in either $\p{v}{a}$ or $\p{v}{b}$. Assume without loss of generality that $w\in \p{v}{b}$, the case where $w$ lies in $\p{v}{a}$ is analogous. Because $w\in \p{v}{b}$, we know that $\g{b}{w} + \g{w}{v} = \g{b}{v}$.
-Moreover, since $w\in R(v)$, we know that $\g{w}{\ff{b}} \leq \g{w}{v}$. 
+Let $\alpha$ (\emph{resp.} $\beta$) be the bisector of $v$ and $\ff{a}$ (\emph{resp.} $\ff{b}$).
+Let $h_a$ (\emph{resp.} $h_b$) be the set of points of $P$ that are farther from $v$ than from $\ff{a}$ (\emph{resp.} $\ff{b}$).
+Note that $\alpha$ is the boundary of $h_a$ while $\beta$ bounds $h_b$.
 
-By the triangle inequality and since $w\notin \partial P$, we get that
-$$\g{b}{\ff{b}} \leq \g{b}{w} + \g{w}{\ff{b}} \leq \g{b}{w} + \g{w}{v} = \g{b}{v}.$$
-However, we knew that $\g{b}{v} < \g{b}{\ff{b}}$---a contradiction that comes from assuming that $R(v)$ is not contained in $\fn{v}{C}$.
+By definition, we know that $R(v)\subseteq h_a\cap h_b$. Therefore, it suffices to show that $h_a\cap h_b\subset \fn{v}{C}$.
+Assume for a contradiction that there is a point of $h_a\cap h_b$ lying outside of $\fn{v}{C}$. 
+By continuity of the geodesic distance, the boundaries of $h_a\cap h_b$ and $\fn{v}{C}$ must intersect.
+Because $a\notin h_a$ and $b\notin h_b$, both bisectors $\alpha$ and $\beta$ must have an endpoint on the edge $ab$.
+Since the boundaries of $h_a\cap h_b$ and $\fn{v}{C}$ intersect, we infer that $\beta \cap \p{v}{b}\neq \emptyset$ or $\alpha \cap \p{v}{a}\neq \emptyset$.
+Without loss of generality, assume that there is a point $w\in \beta \cap \p{v}{b}$, the case where $w$ lies in $\alpha \cap \p{v}{a}$ is analogous. 
+
+Since $w\in \beta$, we know that $\g{w}{v} = \g{w}{ \ff{b}}$. By the triangle inequality and since $w$ cannot be a vertex of $P$ as $w$ intersects $\partial P$ only at its endpoints, we get that
+$$\g{b}{\ff{b}} < \g{b}{w} + \g{w}{\ff{b}} = \g{b}{w} + \g{w}{v} = \g{b}{v}.$$
+Which implies that $b$ is farther from $v$ than from $\ff{b}$---a contradiction that comes from assuming that $h_a\cap h_b$ is not contained in $\fn{v}{C}$.
 \end{proof}
 
 \begin{figure}[tb]
@@ -422,7 +412,9 @@ $b)$ The decomposition of $\fn{v}{C}$ into apexed triangles produced by the shor
 \end{figure}
 
 \subsection{Funnels of marked vertices}
-Recall that for each marked vertex $v\in M$, we know of at least one vertex on $\partial P$ such that $v$ is its farthest neighbor. Let $u_1, \ldots, u_{k-1}$ be the vertices of $P$ such that $v = \ff{u_i}$ and assume that $u_1, \ldots, u_{k-1}$ are in clockwise order. Let $u_0$ and $u_k$ be the neighbors of $u_1$ and $u_{k-1}$ other than $u_2$ and $u_{k-2}$, respectively. Note that both $u_0 u_1$ and $u_{k-1}u_k$ are transition edges of~$P$. 
+Recall that for each marked vertex $v\in M$, we know at least of one vertex on $\partial P$ such that $v$ is its farthest neighbor.
+
+For any marked vertex $v$, let $u_1, \ldots, u_{k-1}$ be the vertices of $P$ such that $v = \ff{u_i}$ and assume that $u_1, \ldots, u_{k-1}$ are in clockwise order. Let $u_0$ and $u_k$ be the neighbors of $u_1$ and $u_{k-1}$ other than $u_2$ and $u_{k-2}$, respectively. Note that both $u_0 u_1$ and $u_{k-1}u_k$ are transition edges of~$P$. 
 Let $C_v = (u_0, \ldots, u_k)$ and consider the funnel $\fn{v}{C_v}$ defined by $v$.
 
 \begin{lemma}\label{lemma:Farthest points from marked are in funnel}
@@ -436,9 +428,11 @@ Since $v = \ff{x}$, we know that $x\in R(v)$ and hence that $x \in \fn{v}{C_v}$.
 We focus now on computing the funnels defined by the marked vertices of $P$.
 
 \begin{lemma}\label{lemma: Computing a single funnel}
-Given a marked vertex $v$ such that $C_v = (u_0, \ldots, u_k)$, it holds that $|\fn{v}{C_v}| = O(k + |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$. Moreover, $\fn{v}{C_v}$ can be computed in $O(|\fn{v}{C_v}|)$ time assuming that the transition hourglasses $H_{u_0 u_1}$ and $H_{u_{k-1}u_k}$ have already been computed.
+Given a marked vertex $v$ such that $C_v = (u_0, \ldots, u_k)$, it holds that $|\fn{v}{C_v}| = O(k + |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$. Moreover, $\fn{v}{C_v}$ can be computed in $O(|\fn{v}{C_v}|)$ time.
 \end{lemma}
 \begin{proof}
+Since $H_{u_0 u_1}$ and $H_{u_{k-1}u_k}$ are transition hourglasses, we can assume that they have been computed using Corollary~\ref{corollary: Hourglass partition}.
+
 Because $v = \ff{u_1} = \ff{u_{k-1}}$, we know that $v$ is a vertex of both $H_{u_0 u_1}$ and  $H_{u_{k-1}u_k}$. 
 By definition, we have $\p{v}{ u_0}\subset H_{u_0u_1}$ and $\p{v}{u_k}\subset H_{u_{k-1}u_k}$. Thus, we can compute both paths $\p{v}{ u_0}$ and $\p{v}{u_k}$ in $O( |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$ time~\cite{guibasShortestPathTree} and their complexities are $O( |H_{u_0 u_1}|)$ and $O( |H_{u_{k-1}u_k}|)$, respectively.
 So, overall, the funnel $\fn{v}{C_v}$ has total complexity $O(k + |H_{u_0 u_1}| + |H_{u_{k-1}u_k}|)$ and can be constructed in linear time in its size.
@@ -451,7 +445,7 @@ Because the funnel of each marked vertex can be computed in linear time in its s
 
 
 \begin{corollary}\label{corollary: Marked vertices funnels construction}
-The total complexity of the funnels of all marked vertices of $P$ is $O(n)$. 
+The added complexity of the funnels of all marked vertices of $P$ is $O(n)$. 
 Moreover, all these funnels can be constructed in $O(n)$ time.
 \end{corollary}
 
@@ -465,17 +459,18 @@ $$g_\triangle(x) = \left\{ \begin{array}{lll}
 |xa| + \g{a}{w} = \g{x}{w} && \text{if $x\in \triangle$}
 \end{array}\right.$$
 
-Intuitively, $\triangle$ bounds a constant complexity region in which the geodesic distance function from $w$ is explicitly stored by our algorithm. 
+Intuitively, $\triangle$ bounds a constant complexity region where the geodesic distance function from $w$ is explicitly stored by our algorithm. 
 
 In this section, we show how to find a set of $O(n)$ apexed triangles of $P$ such that the upper envelope of their apex functions coincides with $\F{P}{x}$.
 To this end, we first decompose the transition hourglasses into apexed triangles that encode all the geodesic distance information inside them. For each marked vertex $v\in M$ we construct a funnel that contains the Voronoi region of $v$.  We then decompose this funnel into apexed triangles that encode the distance from~$v$.
 
-The same approach was already used by Pollack et al.~in~\cite[Section 3]{pollackComputingCenter} for a segment contained in the interior of $P$. They show 
+The same approach was already used by Pollack et al. in~\cite[Section 3]{pollackComputingCenter}. 
+Given a segment contained in the interior of $P$, they show 
 how to compute a linear number of apexed triangles such that $\F{P}{x}$ coincides with the upper envelope of the corresponding apex functions in the given segment.
 
-While the construction we follow is analogous, we use it in each transition hourglass $H_{ab}$ instead of the full polygon $P$. 
+While the construction we follow is analogous, we use it in the transition hourglass $H_{ab}$ instead of the full polygon $P$. 
 Therefore, we have to specify what is the relation between the upper envelope of the computed functions and $\F{P}{x}$. 
-We will show that the upper envelope of the apex functions computed in $H_{ab}$ coincides with $\F{P}{x}$ inside the Voronoi region $R(v)$ of every vertex $v$ in the bottom chain of $H_{ab}$.
+We will show that the upper envelope of the apex functions computed in $H_{ab}$ coincides with $\F{P}{x}$ inside the Voronoi region $R(v)$ of every vertex $v\in B_{ab}$.
 
 
 \subsection{Inside a transition hourglass}
@@ -487,7 +482,7 @@ That is, if $v$ is a vertex of $B_{ab}$ such that $R(v)\neq \emptyset$, then $R(
 In fact, not only this Voronoi region is inside $H_{ab}$ when restricted to the boundary of $P$, but we can further bound its location and show that $R(v)\subset H_{ab}$. 
  The next result follows trivially from Lemma~\ref{lemma:Funnel contains Voronoi region}.
 
-\begin{corollary}\label{corollary:Cell contained in geodesic triangle}
+\begin{corollary}\label{lemma:Cell contained in geodesic triangle}
 Let $v$ be a vertex of $B_{ab}$. Then $R(v) \subset H_{ab}$.
 \end{corollary}
 %\begin{proof}
@@ -502,23 +497,19 @@ Let $T_a$ and $T_b$ be the shortest-path trees in $H_{ab}$ rooted at $a$ and $b$
 We can compute these trees in $O(|H_{ab}|)$ time~\cite{guibasShortestPathTree}. 
 For each vertex $v$ such that  $\ff{a}, v$ and $\ff{b}$ are in clockwise order, let $v_a$ and $v_b$ be the neighbors of $v$ in the paths $\p{v}{a}$ and $\p{v}{ b}$, respectively.
 We say that a vertex $v$ is \emph{visible} from $ab$ if $v_a\neq v_b$.
-Since $v_a\neq v_b$, the paths $\p{v}{a}$ and $\p{v}{b}$ are interior disjoint. 
-Therefore, the funnel $\fn{v}{ab}$ bounded by these paths and the segment $ab$ is a pseudo-triangle with $a, b$ and $v$ as its only convex vertices (if $\fn{v}{ab}$ had any other convex vertex, we could take a shortcut and find a shorter path between $a$ and $v$ or between $b$ and $v$).
-Since $ab$ is a side of $\fn{v}{ab}$, we infer that $v_a$ and $v_b$ lie in the (straight-line) triangle $\triangle(a,b,v)$. 
-
-Thus, if vertex $v$ is visible, then the extension of the  segments $vv_a$ and $vv_b$ must intersect the top segment $ab$ at points $x_a$ and $x_b$, respectively.
-Therefore, for each visible vertex $v$, we obtain a (straight-line) triangle $\triangle_v = \triangle(v, x_a, x_b)$ as shown in Figure~\ref{fig:Hourglass Cover}.
+Note that if a vertex $v$ is visible, then the extension of the  segments $vv_a$ and $vv_b$ must intersect the top segment $ab$ at points $x_a$ and $x_b$, respectively. 
+Therefore, for each visible vertex $v$, we obtain a triangle $\triangle_v = \triangle(v, x_a, x_b)$ as shown in Figure~\ref{fig:Hourglass Cover}.
 
 \begin{figure}[tb]
 \centering
 \includegraphics{img/HourglassCover.pdf}
 
-\caption{\small (left) A vertex $v$ visible from the segment $ab$ lying on the bottom chain of $H_{ab}$, and the triangle $\triangle_v$ that contains the portion of $ab$ visible from $v$. (right) The children $u_1$ and $u_2$ of $v$ are visible from $ab$ while $u_3$ is not. The triangle  $\triangle_v$ is split into apexed triangles by the rays going from $u_1$ and $u_2$ to $v$. }
+\caption{\small (left) A vertex $v$ visible from the segment $ab$ lying on the bottom chain of $H_{ab}$, and the triangle $\triangle_v$ which contains the portion of $ab$ visible from $v$. (right) The children $u_1$ and $u_2$ of $v$ are visible from $ab$ while $u_3$ is not. The triangle  $\triangle_v$ is split into apexed triangles by the rays going from $u_1$ and $u_2$ to $v$. }
 \label{fig:Hourglass Cover}
 \end{figure}
 
 We further split $\triangle_v$ into a series of triangles with apex at $v$ as follows: 
-Let $u$ be a child of $v$ in either $T_a$ or $T_b$. As noted by \citet{pollackComputingCenter}, $u$ can be of three types, either (1) $u$ is not visible from $ab$ (and is hence a child of $v$ in both $T_a$ and $T_b$); or (2) $u$ is visible from $ab$, is a child of $v$ only in $T_b$, and $v_b v u$ is a left turn; or (3) $u$ is visible from $ab$, is a child of $v$ only in $T_a$, and $v_a v u$ is a right turn.
+Let $u$ be a child of $v$ in either $T_a$ or $T_b$. As noted by Pollack et al., $v$ can be of three types, either (1) $u$ is not visible from $ab$ (and is hence a child of $v$ in both $T_a$ and $T_b$); or (2) $u$ is visible from $ab$, is a child of $v$ only in $T_b$, and $v_b v u$ is a left turn; or (3) $u$ is visible from $ab$, is a child of $v$ only in $T_a$, and $v_a v u$ is a right turn.
 
 Let $u_1, \ldots, u_{k-1}$ be the children of $v$ of type $(2)$ sorted in clockwise order around $v$.
 Let $c(v)$ be the maximum distance from $v$ to any invisible vertex in the subtrees of $T_a$ and $T_b$ rooted at $v$; if no such vertex exists, then $c(v) = 0$. 
@@ -531,8 +522,8 @@ For each $1\leq i\leq k-1$, extend the segment $u_iv$ past $v$ until it intersec
 We define then $k$ apexed triangles contained in $\triangle_v$ as follows. 
 For each $0\leq i\leq k-1$, consider the triangle $\triangle(s_i, v, s_{i+1})$ whose associated apexed (left) function is 
 $$f_i(x) = \left\{ \begin{array}{lll}
-|xv| + \max_{j>i}\{c(v), |vu_j| + d_l(u_j)\} && \text{if $x\in \triangle(s_i, v, s_{i+1})$},\\
--\infty&&\text{otherwise.}
+|xv| + \max_{j>i}\{c(v), |vu_j| + d_l(u_j)\} && \text{if $x\in \triangle(s_i, v, s_{i+1})$}\\
+-\infty&&\text{otherwise}
 \end{array}\right.$$
 In a symmetric manner, we define a set of apexed triangles induced by the type (3) children of~$v$ and their respective apexed (right) functions.
 
@@ -549,15 +540,10 @@ there is an apexed triangle $\triangle\in \mathcal A_{ab}$ with apex function $g
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-Let $p\in P$ such that $\ff{p}\in B_{ab}$ and
-let $\mathcal A_{ab}$ be the set of apexed triangles computed in $H_{ab}$ by the above procedure. 
-We claim that $p$ lies inside an apexed triangle of $\mathcal A_{ab}$. To show this, note that since $p\in R(\ff{p})$, Corollary~\ref{corollary:Cell contained in geodesic triangle} implies that $p\in H_{ab}$. 
+Because $p\in R(\ff{p})$, Lemma~\ref{lemma:Cell contained in geodesic triangle} implies that $p\in H_{ab}$. 
 Consider the path $\p{p}{\ff{p}}$ and let $v$ be the successor of $p$ along this path. 
-Because $p\in R(\ff{p})$, the ray shooting from $v$ towards $p$ stays within $R(\ff{p})$ until hitting the boundary of $P$ as shown by~\citet[Lemma 2.6.6]{aronov1993furthest}. Consequently, this ray must intersect the segment $ab$ which implies that $v$ is visible from $ab$. Therefore, $p$ lies inside $\triangle_v$ and hence it is contained in one of the apex triangles defined by $v$ during the construction of $\mathcal A_{ab}$. 
-That is, there is an apexed triangle $\triangle\in \mathcal A_{ab}$ with apex $v$ and definer $\ff{p}$ that contains $p$.
-
-Since the apex function of $\triangle$ encodes the geodesic distance to a vertex of $P$ and
-because $\F{P}{x}$ is the upper envelope of all the geodesic functions, we know that $g(p) \leq \F{P}{p}$.
+By construction of $\mathcal A_{ab}$, there is a triangle $\triangle\in \mathcal A_{ab}$ apexed at $v$ with definer $w$ that contains $p$. The apex function $g(x)$ of $\triangle$ encodes the geodesic distance from $x$ to $w$. 
+Because $\F{P}{x}$ is the upper envelope of all the geodesic functions, we know that $g(p) \leq \F{P}{p}$.
 
 To prove the other inequality, note that if $v = \ff{p}$, then trivially $g(p) = |pv| + \g{v}{w} \geq |pv| = \g{p}{\ff{p}} = \F{P}{p}$. 
 Otherwise, let $z$ be the next vertex after $v$ in the path $\p{p}{\ff{p}}$. Three cases arise:
@@ -577,14 +563,14 @@ To bound the running time, note that the recursive functions $d_l, d_r$ and $c$ 
 Because the sum of the degrees of all vertices in $T_a$ and $T_b$ is $O(|T_a| + |T_b|)$ and from the fact that both $|T_a|$ and $|T_b|$ are $O(|H_{ab}|)$, we conclude that the total running time to construct $\mathcal A_{ab}$ is $O(|H_{ab}|)$.
 \end{proof}
 
-In other words, Lemma~\ref{lemma:Triangles inside hourglasses} says that no information on farthest neighbors is lost if within $H_{ab}$ we consider only the functions of $\mathcal A_{ab}$.  
-In the next section we use a similar approach to encode distances to marked vertices.
+In other words, Lemma~\ref{lemma:Triangles inside hourglasses} says that no information on farthest neighbors is lost if we only consider the functions of $\mathcal A_{ab}$ within $H_{ab}$.  
+In the next section we use a similar approach to construct a set of apexed triangles (and their corresponding apex functions), so as to encode the distance from the vertices of $M$.
 
 \subsection{Inside the funnels of marked vertices}
 
 We now proceed to split a given funnel into $O(|\fn{v}{C_v}|)$ apexed triangles that encode the distance function from $v$. 
-To this end, we use the algorithm described by~\citet[Section 2]{guibasShortestPathTree} to compute the shortest-path map of $v$ in $\fn{v}{C_v}$ in $O(|\fn{v}{C_v}|)$ time.
-This algorithm produces a partition of $\fn{v}{C_v}$ into $O(|\fn{v}{C_v}|)$ interior disjoint triangles with vertices on $\partial P$, such that each triangle consists of all points in $\fn{v}{C_v}$ whose shortest path to $v$ consists of the same sequence of vertices; see Figure~\ref{fig:Funnels and decomposition}$(b)$.
+To this end, we use the algorithm described by Guibas et al.~\cite[Section 2]{guibasShortestPathQueries} to compute the shortest-path map of $v$ in $\fn{v}{C_v}$ in $O(|\fn{v}{C_v}|)$ time.
+This algorithm produces a partition of $\fn{v}{C_v}$ into $O(|\fn{v}{C_v}|)$ interior disjoint triangles with vertices on $\partial P$, such that each triangle consists of all points in $\fn{v}{C_v}$ whose shortest path to $v$ consists of the same sequence of vertices; see Figure~\ref{fig:Funnels and decomposition} $(b)$.
 Let $\triangle$ be a triangle in this partition and let $a$ be its apex, i.e., the first vertex found along each path $\p{x}{v}$, where $x\in \triangle$. We define the apex function $g_\triangle(x)$ of $\triangle$ as follows:
 $$g_\triangle(x) = \left\{ \begin{array}{lll}
 |x a| + \g{a}{v} && \text{if }x\in \triangle\\
@@ -609,8 +595,7 @@ Therefore, there is an apexed triangle $\triangle$ with apex function $g(x)$ suc
 With the tools introduced in the previous sections, we can describe the prune and search algorithm to compute the geodesic center. 
 The idea of the algorithm is to partition $P$ into $O(1)$ cells, determine in which cell of $P$ the center lies and recurse on that cell as a new subproblem with smaller complexity.
 
-Once we find the cell $R$ that contains the center, we can discard all apexed triangles that do not intersect $R$. 
-Using cuttings to produce this partition of $P$, we can show that both the complexity of $R$, and the number of apexed triangles that intersect it decrease by a constant fraction in each iteration of the algorithm. This process is then repeated until either of the two objects has constant descriptive size. 
+We can discard all apexed triangles that do not intersect the new cell containing the center. Using cuttings to produce this partition of $P$, we can show that both the complexity of the cell containing the center, and the number of apexed triangles that intersect it decrease by a constant fraction in each iteration of the algorithm. This process is then repeated until either of the two objects has constant descriptive size. 
 
 Let $\tau$ be the set of all apexed triangles computed in previous sections. 
 Corollary~\ref{corollary: Hourglass partition} and Lemma~\ref{lemma:Triangles inside hourglasses} bound the number of apexed triangles constructed inside the transition hourglasses, while Corollary~\ref{corollary: Marked vertices funnels construction} and Lemma~\ref{lemma:Triangles inside funnels} do so inside the funnels of the marked vertices. We obtain the following.
@@ -633,16 +618,16 @@ The functions $\phi(x)$ and $\F{P}{x}$ coincide in the domain of points of $P$, 
 %Regardless of the case, there is an apexed triangle $\triangle$ that contains $p$ such that its apex function $g(p) = \F{P}{p}$. Since each apex function represents the geodesic distance from some vertex of $P$, we know that $\phi(p) \leq \F{P}{p}$. By construction, we also have $g(p) \leq \phi(p)$. Because $g(p) = \F{P}{p}$ and since $g(p) \leq \phi(p) \leq  \F{P}{p}$, we conclude that $\phi(p) = \F{P}{p}$ proving our claim. 
 %\end{proof}
 
-Given a chord $C$ of $P$, a \emph{half-polygon} of $P$ is one of the two simple polygons in which $C$ splits $P$.
+Given a chord $C$ of $P$ a \emph{half-polygon} of $P$ is one of the two simple polygons in which $C$ splits $P$.
 A \emph{$k$-cell} of $P$ is a simple polygon obtained as the intersection of at most $k$ half-polygons.
 Because a $k$-cell is the intersection of geodesically convex sets, it is also geodesically convex. 
 
 The recursive algorithm described in this section takes as input a \tcell (initially equal to $P$) containing the geodesic center of $P$ and the set of apexed triangles of $\tau$ that intersect it. In each iteration, it produces a new \tcell of smaller complexity that intersects just a fraction of the apexed triangles and contains the geodesic center of $P$. By recursing on this new cell, the complexity of the problem is reduced in each iteration.
 
 Let $R$ be a \tcell of $P$ (initially equal to $P$) containing the geodesic center of $P$ and let $\tau_R$ be the set of apexed triangles of $\tau$ that intersect~$R$. 
-Let $\m = \max\{|R|, |\tau_R|\}$, where $|R|$ denotes the combinatorial complexity of $R$.
-Let $\C$ be the set containing all chords that belong to the boundary of a triangle of $\tau_R$. 
+Let $\m = \max\{|R|, |\tau_R|\}$, where $|R|$ denotes the combinatorial complexity $R$.
 Recall that, by construction of the apexed triangles, for each triangle of $\tau_R$ at least one and at most two of its boundary segments are chords of $P$.
+Let $\C$ be the set containing all chords that belong to the boundary of a triangle of $\tau_R$. 
 Therefore, $|\C| \leq 2|\tau_R|\leq 2\m$.
 
 To construct $\varepsilon$-nets, we need some definitions (for more information on $\varepsilon$-nets refer to~\cite{ConstructionEpsilonNets}).
@@ -657,7 +642,7 @@ The set system $(\C, \varphi)$ has constant VC-dimension.
 \end{lemma}
 
 Let $\varepsilon >0$ be a sufficiently small constant whose exact value will be specified later.
-Because of Lemma~\ref{lemma:bounded VC}, we can compute an $\varepsilon$-net $N$ of $(\C, \varphi)$ in $O(|\C|/\varepsilon) = O(\m)$ time~\cite{ConstructionEpsilonNets}. 
+Because the VC-dimension of the set system $(\C, \varphi)$ is finite by Lemma~\ref{lemma:bounded VC}, we can compute an $\varepsilon$-net $N$ of $(\C, \varphi)$ in $O(|\C|/\varepsilon) = O(\m)$ time~\cite{ConstructionEpsilonNets}. 
 The size of $N$ is $O(\frac{1}{\varepsilon} \log \frac{1}{\varepsilon}) = O(1)$ and its main property is that any \tcell that does not intersect a chord of $N$ will intersect at most $\varepsilon |\C|$ chords of $\C$. 
 
 Observe that $N$ partitions $R$ into $O(1)$ sub-polygons (not necessarily \tcells). We further refine this partition to obtain \tcells. That is, we shoot vertical rays up and down from each endpoint of $N$, and from the intersection point of  any two segments of $N$, see Figure~\ref{fig:Cutting of Chords}. Overall, this partitions $R$ into $O(1)$ \tcells such that each  either $(i)$  is a convex polygon contained in $P$ of at most four vertices, or otherwise $(ii)$ contains some chain of $\partial P$. 
@@ -693,15 +678,16 @@ Therefore, we can assume that $\cp$ lies in the interior of $\reg$. Moreover, si
 %Claim that these chords split the boundary of $P$ into at most 2\varepsilon \m + 1 subsegments which are the ones that define the apexed triangles. Therefore, there cannot be many triangles.
 
 
+Observe that both the complexity of $\reg$ and $\tau_{\reg}$ decrease by a constant fraction. Indeed, by construction of the cutting at most $2\varepsilon \m$ apexed triangles can intersect $\reg$ (and thus $|\tau_{\reg}|\leq 2\varepsilon \m$). 
+
+In order to bound the complexity of $\reg$ we use Corollary~\ref{corollary:Optimization problem same as geodesic center}: function $\F{P}{x}$  is defined in each point of $\reg$, and in particular for each vertex $v$ of $\reg$ there must exist an apexed triangle $\Delta\in \tau_{R'}$ such that $v\in \Delta$. By definition of apexed triangles, each such triangle can contain at most three vertices of $\reg$. Combining this fact with the bound of $|\tau_{\reg}|$ we obtain that $\reg$ has at most $3|\tau_{\reg}| \leq 6\varepsilon \m$ vertices.
+Thus, if we choose $\varepsilon = 1/12$, we guarantee that both the size of the \tcell $\reg$ and the number of apexed triangles in $\tau_{\reg}$ are at most $\m/2$. 
+
 %Further notice that, by construction of our partition, $\reg$ is geodesically convex.  If $\reg$ is bounded only by chords, then it must be a a convex trapezoid $\reg$ containing $\cp$ and this phase of the algorithm finishes. 
 %Otherwise, $\reg$ is a \tcell bounded by at most two chains contained in $\partial P$ and at most three segments contained in chords of the generated subdivision; see Figure~\ref{fig:Cutting of Chords}. 
 
-In order to proceed with the algorithm on  $\reg$ recursively, we need to prune the apexed triangles that do not intersect with $\reg$. For each apexed triangle $\triangle\in \tau_R$, we can determine in constant time if it intersects $\reg$ (either one of the endpoints is in $\reg\cap \partial P$ or the two boundaries have non-empty intersection in the interior of $P$). 
+In order to proceed with the algorithm on  $\reg$ recursively, we need to compute the set $\tau_{\reg}$ with the at most $\varepsilon |\C|$ apexed triangles of $\tau_R$ that intersect $\reg$ (i.e., prune the apexed triangles that do not intersect with $\reg$). For each apexed triangle $\triangle\in \tau_R$, we can determine in constant time if it intersects $\reg$ (either one of the endpoints is in $\reg\cap \partial P$ or the two boundaries have non-empty intersection in the interior of $P$). 
 Overall, we need $O(\m)$ time to compute the at most $\varepsilon |\C|$ triangles of $\tau_R$ that intersect $\reg$.
-
-Observe that both the complexity of $\reg$ and $\tau_{\reg}$ decrease by a constant fraction. Indeed, by construction of the cutting at most $2\varepsilon \m$ apexed triangles can intersect $\reg$ (and thus $|\tau_{\reg}|\leq 2\varepsilon \m$). 
-In order to bound the complexity of $\reg$ we use Corollary~\ref{corollary:Optimization problem same as geodesic center}: function $\F{P}{x}$  is defined in each point of $\reg$, and in particular for each vertex $v$ of $\reg$ there must exist an apexed triangle $\Delta\in \tau_{R'}$ such that $v\in \Delta$. By definition of apexed triangles, each such triangle can contain at most three vertices of $\reg$. Combining this fact with the bound of $|\tau_{\reg}|$ we obtain that $\reg$ has at most $3|\tau_{\reg}| \leq 6\varepsilon \m$ vertices.
-Thus, if we choose $\varepsilon = 1/12$, we guarantee that both the size of the \tcell $\reg$ and the number of apexed triangles in $\tau_{\reg}$ are at most $\m/2$. 
 
 By recursing on $\reg$, we guarantee that after $O(\log \m)$ iterations, we reduce the size of either $\tau_R$ or $\reg$ to constant. 
 In the former case, the minimum of $\F{P}{x}$ can be found by explicitly constructing function $\phi$ in $O(1)$ time. 
@@ -712,16 +698,16 @@ The details needed to find the minimum of $\phi(x)$ inside this triangle are giv
 %Because $|\tau| = O(n)$ by Corollary~\ref{lemma:Size of tau}, we obtain the following result.
 
 \begin{lemma}\label{lemma:Finding the convex trapezoid}
-In $O(n)$ time we can find either the geodesic center of $P$ or a triangle inside $P$ that contains the geodesic center.
+In $O(n)$ time we can find either the geodesic center of $P$ or a triangle containing the geodesic center.
 \end{lemma}
 
-\section{Finding the center within a triangle}\label{Section:Solving convex optimization problem}
-In order to complete the algorithm it remains to show how to find the geodesic center of $P$ for the case in which $\reg$ is a triangle inside $P$. If this triangle is in the interior of $P$, it may happen that several apexed triangles of $\tau$ (up to a linear number) fully contain $\reg$. 
+\section{Finding the center within a triangle}\label{Section:Solving convex optimization poblem}
+In order to complete the algorithm it remains to show how to find the geodesic center of $P$ for the case in which $\reg$ is a triangle. If this triangle is in the interior of $P$, it may happen that several apexed triangles of $\tau$ (up to a linear number) fully contain $\reg$. 
 Thus, the pruning technique used in the previous section cannot be further applied. We solve this case with a different approach.
   
 %In the previous section we show how to find either the geodesic center of $P$, or a convex trapezoid $\reg$contained in $P$ that contains this center. 
 Recall that $\phi(x)$ denotes the upper envelope of the apex functions of the triangles in~$\tau$, and the geodesic center is the point that minimizes $\phi$.
-The key observation is that, as with chords, the function $\phi(x)$ restricted to $\reg$ is convex. 
+The key observation is that, as it happened with chords, the function $\phi(x)$ restricted to $\reg$ is convex. 
 %Thus, rather than further restricting the search to sub-\tcells within $\reg$, we will do a prune and search on the triangles~in~$\tau$.
 
 Let $\tau_{\reg}  = \{\triangle_{1}, \triangle_{2}, \ldots, \triangle_{m}\}$ be the set of $m= O(n)$ apexed triangles of $\tau$ that intersect $\reg$. 
@@ -729,8 +715,8 @@ Let $a_i$ and $w_i$ be the apex and the definer of $\triangle_i$, respectively.
 Let $g_i(x)$  be the apex function of $\triangle_i$ such that 
 $$g(x) = \left\{ \begin{array}{lll}
 |x a_i| + \kappa_i && \text{if }x\in \triangle_i\\
--\infty&&\text{otherwise,}
-\end{array}\right.$$
+-\infty&&\text{otherwise}
+\end{array}\right. ,$$
 where $\kappa_i = \g{a_i}{w_i}$ is a constant.
 
 %Recall that the geodesic center minimizes the function $\F{P}{x}$.
@@ -741,24 +727,24 @@ Therefore, the problem of finding the center is equivalent to the following opti
 $$\text{$g_i(x) \leq r$, for $1\leq i \leq m$}.$$
 
 Thus, we need to find the solution to (P1) to find the geodesic center of $P$.
-We use some ideas due to Megiddo in order to simplify the description of (P1)~\cite{megiddo1989ball}.
+We use some remarks described by Megiddo in order to simplify the description of (P1)~\cite{megiddo1989ball}.
 
 To simplify the formulas, we square the equation $|x a_i| \leq r - \kappa_i$:
 $$\|x\|^2 - 2x\cdot a_i + \|a_i\|^2  = |x a_i|^2 \leq (r - \kappa_i)^2 = r^2 - 2r\kappa_i + \kappa_i^2.$$ 
 And finally for each $1\leq i\leq m$, we define the function $h_i(x, r)$ as follows:
 $$h_i(x, r) = \left\{ \begin{array}{lll}
  \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2 && \text{if }x\in \triangle_i\\
--\infty&&\text{otherwise.}
-\end{array}\right. $$
+-\infty&&\text{otherwise}
+\end{array}\right. \ .$$
 %$$h_i(x, r) = \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2 \leq 0$$
 
 Therefore, our optimization problem can be reformulated as:
 
 \textbf{(P2).} Find a point $(x,r)\in \mathbb{R}^3$ such that $r$ is minimized subject to $x\in \reg$ and 
-$$h_i(x, r) \leq 0 \text{ and  $r > \max\{\kappa_i\}$, for each $i$ such that $x\in \triangle_i$}.$$
+$$h_i(x, r) \leq 0 \text{ and  $r > \max\{\kappa_i\}$, for $1\leq i \leq m$}.$$
 
-Let $h_i'(x,r) = \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2$ be a function defined in the entire plane and let (P2$'$) be an optimization problem equivalent to (P2) in which every instance of $h_i(x,r)$ is replaced by $h_i'(x,r)$.
-We provide some of the intuition used by Megiddo in~\cite{megiddo1989ball} to solve (P2$'$).
+Let $h_i'(x,r) = \|x\|^2 - 2x\cdot a_i + \|a_i\|^2  - r^2 + 2r\kappa_i - \kappa_i^2$ be a function defined in the entire plane and let (P2$'$) be an optimization problem equivalent to (P2) where every instance of $h_i(x,r)$ is replaced by $h_i'(x,r)$.
+The optimization (P2$'$) was studied by Megiddo in~\cite{megiddo1989ball}. We provide some of the intuition used by Megiddo to solve this problem.
 
 Although the functions $h_i'(x,r)$ are not linear, they all have the same non-linear terms. Therefore, for $i\neq j$, we get that equation
 $h_i'(x,r) = h_j'(x, r)$ defines a \emph{separating plane}
@@ -767,15 +753,15 @@ $$\gamma_{i,j} = \{(x, r) \in \mathbb{R}^3:  2( \kappa_i - \kappa_j) r - 2 (a_i 
 As noted by Megiddo~\cite{megiddo1989ball}, this separating plane has the following property:
 If the solution $(x, r)$ to (P2$'$) is known to lie to one side of $\gamma_{i,j}$, then one of the constraints is redundant. 
 
-Thus, to solve (P2$'$) it sufficed to have a \emph{side-decision oracle} to determine in which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle so that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
+Thus, to solve (P2$'$) it sufficed to have a \emph{side-decision oracle} to determine in which side of a plane $\gamma_{i,j}$ the solution lies. Megiddo showed how to implement this oracle in a way that the running time is proportional to the number of constraints~\cite{megiddo1989ball}.
 
 Once we have such an oracle, problem (P2$'$) can be solved using a prune and search approach: pair the functions arbitrarily, and consider the set of $m/2$ separating planes defined by these pairs. For some constant $t$, compute a $1/t$-cutting in $\mathbb{R}^3$ of the separating planes.
-A $1/t$-cutting is a partition of the space into $O(t^3) = O(1)$ convex regions each of which is of constant complexity and intersects at most $m/2t$ separating planes.
+A $1/t$-cutting is a partition of the plane into $O(t^3) = O(1)$ convex regions each of which is of constant complexity and intersects at most $m/2t$ separating planes.
 A cutting of planes can be computed in linear time in $\mathbb{R}^3$ for any $t = O(1)$~\cite{matousekCuttings}.
 After computing the cutting, determine in which of the regions the minimum lies by performing $O(1)$ calls to the side-decision oracle. 
-Because at least $(t-1)m/2t$ separating planes do not intersect this constant complexity region, for each of them we can discard one of the constraints as redundant. By repeating this algorithm recursively we obtain a linear running time.
+Because at least $(t-1)m/2t$ separating planes do not intersect this constant complexity region, for each of them we can discard one of the constraints as it becomes redundant. By repeating this algorithm recursively we obtain a linear running time.
 
-To solve (P2) we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions, which are defined only in triangular domains. 
+To solve (P2) we follow a similar approach, but our set of separating planes needs to be extended in order to handle apex functions as they are only defined in the same way as in (P2$'$) in a triangular domain.
 Note that no vertex of an apexed triangle can lie inside $\reg$.
 
 \subsection{Optimization problem in a convex domain}
@@ -789,12 +775,12 @@ For each pair of apexed triangles $(\triangle_i, \triangle_j)$ we define its pla
 For each chord of $P$ bounding either $\triangle_i$ or $\triangle_j$ (at most two chords on each triangle), consider the line extending this chord and the vertical extrusion of this line in $\mathbb{R}^3$, i.e., the plane containing this chord orthogonal to $Z_0$. The set containing these planes, together with the separating plane~$\gamma_{i,j}$, is the plane-set of the pair $(\triangle_i, \triangle_j)$.
 
 Let $\Gamma$ be the union of all the plane-sets defined by the $m/2$ pairs of apexed triangles. 
-Because the plane-set of each pair $(\triangle_i, \triangle_j)$ consists of at most five planes, at least one of which is unique to this pair, namely $\gamma_{i,j}$, we infer that $m/2\leq |\Gamma| \leq 5m/2$.
+Because the plane-set of each pair $(\triangle_i, \triangle_j)$ consists of at most five planes and at least one unique to this pair, namely $\gamma_{i,j}$, we infer that $m/2\leq |\Gamma| \leq 5m/2$.
 
 Compute a $1/t$-cutting of $\Gamma$ in $O(m)$ time for some constant $t$ to be specified later.
 Because $t$ is constant, this $1/t$-cutting splits the space into $O(1)$ convex regions, each bounded by a constant number of planes~\cite{matousekCuttings}. 
 Using a side-decision algorithm (to be specified later), we can determine the region $Q$ of the cutting that contains the solution to (P2). Because $Q$ is the region of a $1/t$-cutting of $\Gamma$, we know that at most $|\Gamma|/t$ planes of $\Gamma$ intersect $Q$. 
-In particular, at most $|\Gamma|/t$ plane-sets intersect $Q$ and hence, at least $(t-1)|\Gamma|/t \geq (t-1)m/2t$ plane-sets do not intersect~$Q$.
+In particular, at most $|\Gamma|/t$ plane-sets intersect $Q$ and hence, at least $(t-1)|\Gamma|/t \geq (t-1)m/2t$ plane-sets do not intersect $Q$.
 
 Let $(\triangle_i, \triangle_j)$ be a pair whose plane-set does not intersect $Q$. 
 Let $Q'$ be the projection of $Q$ on the plane $Z_0$. Because the plane-set of this pair does not intersect $Q$, we know that $Q'$ intersects neither the boundary of $\triangle_i$ nor that of $\triangle_j$.
@@ -815,9 +801,9 @@ Thus, the running time of this algorithm is bounded by the recurrence $T(m) = T(
 Because $m = O(n)$, we can find the solution to (P2) in $O(n)$ time.
 
 The last detail is the implementation of the side-decision algorithm. 
-Given a plane~$\gamma$, we need to determine on which side the solution to (P2) lies.
+Given a plane~$\gamma$, we need to determine in which side lies the solution to (P2).
 To this end, we solve (P2) restricted to~$\gamma$, i.e., with the additional constraint of $(x,r)\in \gamma$. 
-This approach was used by Megiddo~\cite{megiddo1989ball}; the idea is to recurse by reducing the dimension of the problem.
+This approach was used by Megiddo~\cite{megiddo1989ball}, the idea is to recurse by reducing the dimension of the problem.
 Another approach is to use a slight modification of the chord-oracle described by Pollack et al.~\cite[Section~3]{pollackComputingCenter}. 
 
 Once the solution to (P2) restricted to $\gamma$ is known, we can follow the same idea used by Megiddo~\cite{megiddo1989ball} to find the side of $\gamma$ containing the global solution to (P2). 
@@ -839,15 +825,13 @@ We can compute the geodesic center of any simple polygon $P$ of $n$ vertices in 
 \end{theorem}
 
 \section{Further work}
-Another way to compute the center of a simple polygon is to compute the farthest-point Voronoi diagram of its vertices. While the best known algorithm for this task runs in $O(n\log n )$ time, only a trivial $\Omega(n)$ lower bound is known for this instance of the problem. Therefore, it is natural to ask if the farthest-point Voronoi diagram of the set of vertices of a simple polygon can be computed in $O(n)$ time. 
+Another way to compute the center of a simple polygon is to compute the farthest-point Voronoi diagram of its vertices. While the best known algorithm for this task runs in $O(n\log n )$ time, no lower bound is known for this instance of the problem. Therefore, it is natural to ask if the farthest-point Voronoi diagram of the set of vertices of a simple polygon can be computed in $O(n)$ time.
 
-To generalize the result presented in this paper, we ask the following question. 
-Given a set $S$ of $m$ points inside of a simple polygon $P$ with $n$ vertices, how fast can we compute the center of $S$ inside $P$?
-That is, the point in $P$ that minimizes the maximum geodesic distance to a point of $S$. 
-While the (geodesic) farthest-point Voronoi diagram of $S$ provides the answer in $O((n+m) \log (n+m))$ time, we ask whether it is possible to compute this center in $O(n + m)$ time.
+To generalize the result presented in this paper, we ask the following question. Given a set $S$ of $m$ points inside of a simple polygon $P$ with $n$ vertices, how fast can we compute the center of $S$ inside $P$?
+That is, the point in $P$ that minimizes the maximum geodesic distance to a point of $S$. While the (geodesic) farthest-point Voronoi diagram of $S$ provides the answer in $O((n+m) \log (n+m))$ time, we ask whether it is possible to compute this center in $O(n + m)$ time.
 
 
-\bibliographystyle{abbrvnat}
+\bibliographystyle{abbrv}
 \bibliography{Geodesic}
 
 \appendix
@@ -873,14 +857,14 @@ Recall that if no subset of $\C$ of size $\kappa$ is shattered by $\mathcal H$, 
 By Lemma~\ref{lemma:Shattering}, it suffices to show that $A$ is not shattered by $\mathcal H$ to bound the VC-dimension of $(\C, \mathcal H)$ and hence of $(\C, \varphi)$.
 We spend the remainder of this section proving that $A$ is not shattered by $\mathcal H$.
 
- A $6$-cell is \emph{strict} if it is defined as the intersection of six half-polygons, none of them redundant, i.e., the removal of any of them modifies the $6$-cell.
+ A $6$-cell is \emph{strict} if it is defined as the intersection of six half-polygons, non of which are redundant, i.e., the removal of any of them modifies the $6$-cell.
 
 \begin{lemma}\label{lemma:Hexagonal face}
 If there are six chords of $A$ supporting six half-polygons whose intersection defines a strict $6$-cell $\sigma$,
 then $A$ is not shattered by $\mathcal H$.
 \end{lemma}
 \begin{proof}
-Let $C_1, \ldots, C_6$ be the chords supporting the six half-polygons whose intersection defines $\sigma$. Assume that $C_1, \ldots, C_6$ appear in this order when walking clockwise along the boundary of $\sigma$.
+Let $C_1, \ldots, C_6$ be the chords supporting the six half-polygons whose intersection defines $\sigma$. Assume that $C_1, \ldots, C_6$ appear in these order when walking clockwise along the boundary of $\sigma$.
 Note that any half-polygon that intersects $C_1, C_3$ and $C_5$ must intersect either $C_2, C_4$ or $C_6$. 
 Therefore, the set $\{C_1, C_3, C_5\}\subseteq A$ cannot be obtained as the intersection of some half-polygon $H\in \mathcal H$ with $A$. 
 Consequently $A$ is not shattered by $\mathcal H$.
@@ -897,22 +881,21 @@ In this case, Lemma~\ref{lemma:Hexagonal face} implies that $A$ is not shattered
 Consequently, we assume from now on that $\G$ has no clique of size nine. 
 
 Tur\'an's Theorem~\cite{turan1941extremal} states that if $\G$ has no clique of size nine, then it has at most $(7/16)\kappa^2$ edges.
-Let $C_1$ be the chord in $A$ with the smallest degree in $\G$. Notice that $C_1$ has degree at most $7 \kappa/8$.
-Therefore, there are at least $\kappa/8$ chords of $A$ that do not intersect~$C_1$. 
-Consider the two half-polygons supported by $C_1$ and note that one of them, say $P'$, contains at least $ \kappa/16$ chords of $A$ that do not intersect $C_1$. Let $A'$ be the set containing these chords.
+Let $C_1$ be the chord in $A$ with the smallest degree in $\G$. Notice that $C_1$ has degree at most $7 \kappa/16$.
+Therefore, there are at least $9 \kappa/16$ chords of $A$ do not intersect~$C_1$. 
+Consider the two half-polygons supported by $C_1$ and note that one of them, say $P'$, contains at least $9 \kappa/32$ chords of $A$ that do not intersect $C_1$. Let $A'$ be the set containing these chords.
 
 Let $\G'$ be subgraph of $\G$ induced by $A'$ and let $C_2$ be the chord of $A'$ with smallest degree in $\G'$.
-Because $\G'$ has no clique of size nine, we infer that $C_2$ has degree at most $7|A'|/8$.
-Repeating the same argument, there is a set $A''$ of at least $|A'| /8$ chords of $A'$ that intersect neither $C_2$ nor $C_1$.
+Because $\G'$ has no clique of size nine, we infer that $C_2$ has degree at most $7|A'|/16$.
+Repeating the same argument, there is a set $A''$ of at least $9 |A'| /16$ chords of $A'$ that intersect neither $C_2$ nor $C_1$.
 Because we assumed that no two chords of $A$ are separated, all chords in $A''$ must be contained in the half-polygon supported by $C_2$ that contains $C_1$. Otherwise, $C_1$ and some of these chords are separated by $C_2$.
 
 Let $\G''$ be the subgraph of $\G$ induced by $A''$. Repeating the above procedure recursively on $\G''$ and $A''$ four more times, we obtain a set $C_1, \ldots, C_6$ of pairwise disjoint chords such that for each $1\leq i\leq 6$, $C_1, \ldots, C_{i-1}$ are contained in the same half-polygon supported by $C_i$.
 Consequently, the set $\{C_1, \ldots, C_6\}$ bounds a strict $6$-cell.
 
 The above process can be applied as long as 
-$$\left(\frac{1}{16}\right) \left(\frac{1}{8}\right)^4\kappa \geq 1.$$ 
-That is, as long as $|A| \geq 65,536$ we can always find 6 such chords defining a strict $6$-cell. 
-In this case, Lemma~\ref{lemma:Hexagonal face} implies that $A$ is not shattered by $\mathcal H$. Consequently, no set of 65,536 chord is shattered, i.e., the set system $(\C, \mathcal H)$ has VC-dimension at most 65,535.
+$$\left(\frac{9}{32}\right) \left(\frac{9}{16}\right)^4\kappa \geq 1.$$ 
+That is, as long as $|A| \geq 36$ we can always find 6 such chords defining a strict $6$-cell. In this case, Lemma~\ref{lemma:Hexagonal face} implies that $A$ is not shattered by $\mathcal H$. Consequently, no set of 36 chord is shattered, i.e., the set system $(\C, \mathcal H)$ has VC-dimension at most 35.
 By Lemma~\ref{lemma:Shattering}, we obtain the following result.
 
 \vspace{.1in}
